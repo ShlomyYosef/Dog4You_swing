@@ -62,5 +62,4 @@ public class UserUI extends JFrame {
 		txtpnAge.setBounds(10, 193, 66, 20);
 		contentPane.add(txtpnAge);
 	}
-
 }
