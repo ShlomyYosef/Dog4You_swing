@@ -2,7 +2,7 @@ package model;
 
 public class Dog {
 	
-
+//3232
 	private String Name;
     private String Race;
 	private String Character;
