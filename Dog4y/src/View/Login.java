@@ -1,20 +1,30 @@
 package View;
 
-import java.awt.BorderLayout;
+
+
 import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
-import javax.swing.DropMode;
+
+import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+
 
 public class Login extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private JTextField textField;
@@ -71,7 +81,7 @@ public class Login extends JFrame {
 		JTextPane txtpnLogInTo_1 = new JTextPane();
 		txtpnLogInTo_1.setEditable(false);
 		txtpnLogInTo_1.setText("Log in to your account");
-		txtpnLogInTo_1.setBounds(131, 177, 139, 20);
+		txtpnLogInTo_1.setBounds(84, 177, 139, 20);
 		contentPane.add(txtpnLogInTo_1);
 		
 		JButton btnNewButton = new JButton("Log in");
@@ -81,5 +91,10 @@ public class Login extends JFrame {
 		JButton btnNewButton_1 = new JButton("Sign in");
 		btnNewButton_1.setBounds(221, 356, 89, 23);
 		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/dog-icon.png")));
+		lblNewLabel.setBounds(151, 34, 139, 110);
+		contentPane.add(lblNewLabel);
 	}
 }
