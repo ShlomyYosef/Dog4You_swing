@@ -1,7 +1,7 @@
 package model;
 
 public class Client extends User{
-	//2321
+	
 	private String Name;
 	private String Address;
 	private int Age;
@@ -22,6 +22,7 @@ public class Client extends User{
 	public String getPhoneNumber() {
 		return this.PhoneNumber;
 	}
+	
 	public String getName() 
 	{
 		return this.Name;
