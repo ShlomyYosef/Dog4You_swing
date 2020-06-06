@@ -16,7 +16,18 @@ public class Dog {
 
 	public Dog(String name, String race, String character, String finalSize, String location, int dogId, int kennelId,
 			boolean vaccsine, boolean furtille, boolean tamed) {
-		super();
+		
+	setName(name);
+	setRace(race);
+	setCharacter(character);
+	setFinalSize(finalSize);
+	setLocation(location);
+	setDogId(dogId);
+	setKennelId(kennelId);
+	setVaccsine(vaccsine);
+	setFurtille(furtille);
+	setTamed(tamed);
+		
 	}
 
 
