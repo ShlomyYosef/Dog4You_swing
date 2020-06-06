@@ -14,6 +14,11 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.JTable;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
+import javax.swing.JList;
 
 public class UserUI extends JFrame {
 
@@ -185,7 +190,11 @@ public class UserUI extends JFrame {
          });   
 		cb_AdvancedOptions.setBounds(10, 180, 141, 23);
 		contentPane.add(cb_AdvancedOptions);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBackground(Color.PINK);
+		textPane.setEditable(false);
+		textPane.setBounds(368, 73, 433, 319);
+		contentPane.add(textPane);
 	}
-	
-	
 }
