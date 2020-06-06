@@ -1,19 +1,19 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
-import javax.swing.JList;
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
-import javax.swing.JButton;
+import javax.swing.JTextPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class UserUI extends JFrame {
 
@@ -50,12 +50,12 @@ public class UserUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextPane txtpnDear = new JTextPane();
-		txtpnDear.setEditable(false);
-		txtpnDear.setEnabled(false);
-		txtpnDear.setText("Dear");
-		txtpnDear.setBounds(10, 11, 66, 20);
-		contentPane.add(txtpnDear);
+		JTextPane txtpn_dear_user = new JTextPane();
+		txtpn_dear_user.setEditable(false);
+		txtpn_dear_user.setEnabled(false);
+		txtpn_dear_user.setText("Dear");
+		txtpn_dear_user.setBounds(10, 11, 66, 20);
+		contentPane.add(txtpn_dear_user);
 		
 		JTextPane txtpnSearch = new JTextPane();
 		txtpnSearch.setText("Search");
@@ -75,17 +75,16 @@ public class UserUI extends JFrame {
 		txtpnAge.setBounds(10, 104, 44, 20);
 		contentPane.add(txtpnAge);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(86, 104, 94, 20);
-		contentPane.add(comboBox);
+		JComboBox cb_age = new JComboBox();
+		cb_age.setBounds(86, 104, 94, 20);
+		contentPane.add(cb_age);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(86, 73, 94, 20);
-		contentPane.add(comboBox_1);
+		JComboBox cb_race = new JComboBox();
+		cb_race.setBounds(86, 73, 94, 20);
+		contentPane.add(cb_race);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Advanced options");
-		chckbxNewCheckBox.setBounds(10, 180, 141, 23);
-		contentPane.add(chckbxNewCheckBox);
+ 
+
 		
 		JTextPane txtpnLocation = new JTextPane();
 		txtpnLocation.setEditable(false);
@@ -93,62 +92,100 @@ public class UserUI extends JFrame {
 		txtpnLocation.setBounds(10, 137, 57, 20);
 		contentPane.add(txtpnLocation);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(86, 135, 94, 20);
-		contentPane.add(comboBox_2);
+		JComboBox cb_location = new JComboBox();
+		cb_location.setBounds(86, 135, 94, 20);
+		contentPane.add(cb_location);
 		
 		JTextPane txtpnPersonality = new JTextPane();
 		txtpnPersonality.setEditable(false);
 		txtpnPersonality.setText("Personality:");
 		txtpnPersonality.setBounds(10, 228, 72, 20);
 		contentPane.add(txtpnPersonality);
+		txtpnPersonality.setVisible(false);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(86, 228, 94, 20);
-		contentPane.add(comboBox_3);
+		JComboBox cb_Presonality = new JComboBox();
+		cb_Presonality.setBounds(86, 228, 94, 20);
+		contentPane.add(cb_Presonality);
+		cb_Presonality.setVisible(false);
 		
 		JTextPane txtpnVaccine = new JTextPane();
 		txtpnVaccine.setEditable(false);
 		txtpnVaccine.setText("Vaccine:");
 		txtpnVaccine.setBounds(10, 271, 57, 20);
 		contentPane.add(txtpnVaccine);
+		txtpnVaccine.setVisible(false);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Yes");
-		rdbtnNewRadioButton.setBounds(86, 271, 57, 23);
-		contentPane.add(rdbtnNewRadioButton);
+		JRadioButton rb_vaccine_yes = new JRadioButton("Yes");
+		rb_vaccine_yes.setBounds(86, 271, 57, 23);
+		contentPane.add(rb_vaccine_yes);
+		rb_vaccine_yes.setVisible(false);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("No");
-		rdbtnNewRadioButton_1.setBounds(145, 271, 57, 23);
-		contentPane.add(rdbtnNewRadioButton_1);
+		JRadioButton rb_vaccine_no = new JRadioButton("No");
+		rb_vaccine_no.setBounds(145, 271, 57, 23);
+		contentPane.add(rb_vaccine_no);
+		rb_vaccine_no.setVisible(false);
 		
 		JTextPane txtpnTrained = new JTextPane();
 		txtpnTrained.setText("Trained:");
 		txtpnTrained.setBounds(10, 311, 44, 20);
 		contentPane.add(txtpnTrained);
+		txtpnTrained.setVisible(false);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Yes");
-		rdbtnNewRadioButton_2.setBounds(86, 308, 57, 23);
-		contentPane.add(rdbtnNewRadioButton_2);
+		JRadioButton rb_trained_yes = new JRadioButton("Yes");
+		rb_trained_yes.setBounds(86, 308, 57, 23);
+		contentPane.add(rb_trained_yes);
+		 rb_trained_yes.setVisible(false);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("No");
-		rdbtnNewRadioButton_3.setBounds(145, 311, 44, 23);
-		contentPane.add(rdbtnNewRadioButton_3);
+		JRadioButton rb_trained_no = new JRadioButton("No");
+		rb_trained_no.setBounds(145, 311, 44, 23);
+		contentPane.add(rb_trained_no);
+		rb_trained_no.setVisible(false);
 		
 		JTextPane txtpnFurtille = new JTextPane();
 		txtpnFurtille.setText("Furtille:");
 		txtpnFurtille.setBounds(10, 347, 44, 20);
 		contentPane.add(txtpnFurtille);
+		txtpnFurtille.setVisible(false);
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Yes");
-		rdbtnNewRadioButton_4.setBounds(86, 344, 57, 23);
-		contentPane.add(rdbtnNewRadioButton_4);
+		JRadioButton rb_furtille_yes = new JRadioButton("Yes");
+		rb_furtille_yes.setBounds(86, 344, 57, 23);
+		contentPane.add(rb_furtille_yes);
+		rb_furtille_yes.setVisible(false);
 		
-		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("No");
-		rdbtnNewRadioButton_5.setBounds(145, 344, 109, 23);
-		contentPane.add(rdbtnNewRadioButton_5);
+		JRadioButton rb_furtille_no = new JRadioButton("No");
+		rb_furtille_no.setBounds(145, 344, 109, 23);
+		contentPane.add(rb_furtille_no);
+		rb_furtille_no.setVisible(false);
 		
-		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBounds(180, 180, 89, 23);
-		contentPane.add(btnNewButton);
+		JButton btn_search = new JButton("Search");
+		btn_search.setBounds(180, 180, 89, 23);
+		contentPane.add(btn_search);
+		
+		JCheckBox cb_AdvancedOptions = new JCheckBox("Advanced options");
+		cb_AdvancedOptions.addItemListener(new ItemListener() {    
+            public void itemStateChanged(ItemEvent e) {    
+            	boolean flag = false;
+             if(e.getStateChange()==1) 
+            	 flag = true;
+             
+            	txtpnPersonality.setVisible(flag);
+            	txtpnFurtille.setVisible(flag);
+            	txtpnTrained.setVisible(flag);
+            	txtpnVaccine.setVisible(flag);
+            	
+            	cb_Presonality.setVisible(flag);
+            	rb_vaccine_yes.setVisible(flag);
+            	rb_vaccine_no.setVisible(flag);
+            	rb_furtille_yes.setVisible(flag);
+            	rb_furtille_no.setVisible(flag);
+               	rb_trained_yes.setVisible(flag);
+            	rb_trained_no.setVisible(flag);
+             	          
+            }    
+         });   
+		cb_AdvancedOptions.setBounds(10, 180, 141, 23);
+		contentPane.add(cb_AdvancedOptions);
 	}
+	
+	
 }
