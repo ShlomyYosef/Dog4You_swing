@@ -20,6 +20,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.JList;
 
+
 public class UserUI extends JFrame {
 
 	/**
@@ -192,8 +193,8 @@ public class UserUI extends JFrame {
 		contentPane.add(cb_AdvancedOptions);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBackground(Color.PINK);
 		textPane.setEditable(false);
+		textPane.setBackground(Color.PINK);
 		textPane.setBounds(368, 73, 433, 319);
 		contentPane.add(textPane);
 	}
