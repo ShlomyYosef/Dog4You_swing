@@ -2,7 +2,6 @@ package model;
 
 public class Dog {
 	
-//3232
 	private String Name;
     private String Race;
 	private String Character;
@@ -20,66 +19,105 @@ public class Dog {
 		super();
 	}
 
-	
+
 	public String getName() {
-		return Name;
+		return this.Name;
 	}
+
+
+	public String getRace() {
+		return this.Race;
+	}
+
+
+	public String getCharacter() {
+		return this.Character;
+	}
+
+
+	public String getFinalSize() {
+		return this.FinalSize;
+	}
+
+
+	public String getLocation() {
+		return this.Location;
+	}
+
+
+	public int getDogId() {
+		return this.DogId;
+	}
+
+
+	public int getKennelId() {
+		return this.KennelId;
+	}
+
+
+	public boolean isVaccsine() {
+		return this.Vaccsine;
+	}
+
+
+	public boolean isFurtille() {
+		return this.Furtille;
+	}
+
+
+	public boolean isTamed() {
+		return this.Tamed;
+	}
+
+
 	public void setName(String name) {
 		this.Name = name;
 	}
-	public String getRace() {
-		return Race;
-	}
+
+
 	public void setRace(String race) {
 		this.Race = race;
 	}
-	public String getCharacter() {
-		return Character;
-	}
+
+
 	public void setCharacter(String character) {
 		this.Character = character;
 	}
-	public String getFinalSize() {
-		return FinalSize;
-	}
+
+
 	public void setFinalSize(String finalSize) {
 		this.FinalSize = finalSize;
 	}
-	public String getLocation() {
-		return Location;
-	}
+
+
 	public void setLocation(String location) {
 		this.Location = location;
 	}
-	public int getDogId() {
-		return DogId;
-	}
+
+
 	public void setDogId(int dogId) {
 		this.DogId = dogId;
 	}
-	public int getKennelId() {
-		return KennelId;
-	}
+
+
 	public void setKennelId(int kennelId) {
 		this.KennelId = kennelId;
 	}
-	public boolean isVaccsine() {
-		return Vaccsine;
-	}
+
+
 	public void setVaccsine(boolean vaccsine) {
 		this.Vaccsine = vaccsine;
 	}
-	public boolean isFurtille() {
-		return Furtille;
-	}
+
+
 	public void setFurtille(boolean furtille) {
 		this.Furtille = furtille;
 	}
-	public boolean isTamed() {
-		return Tamed;
-	}
+
+
 	public void setTamed(boolean tamed) {
 		this.Tamed = tamed;
 	}
-	
+
+
 }
