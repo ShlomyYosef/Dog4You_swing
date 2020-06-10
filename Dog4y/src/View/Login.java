@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 
 public class Login extends JFrame {
@@ -66,30 +67,30 @@ public class Login extends JFrame {
 		
 		passwordField = new JPasswordField();
 		passwordField.setToolTipText("");
-		passwordField.setBounds(171, 250, 139, 20);
+		passwordField.setBounds(171, 194, 139, 20);
 		contentPane.add(passwordField);
 		
 		txt_user_name = new JTextField();
 		txt_user_name.setToolTipText("Username");
-		txt_user_name.setBounds(171, 208, 139, 20);
+		txt_user_name.setBounds(171, 163, 139, 20);
 		contentPane.add(txt_user_name);
 		txt_user_name.setColumns(10);
 		
 		JTextPane txtpnUser = new JTextPane();
 		txtpnUser.setEditable(false);
 		txtpnUser.setText("User");
-		txtpnUser.setBounds(84, 208, 57, 20);
+		txtpnUser.setBounds(84, 163, 57, 20);
 		contentPane.add(txtpnUser);
 		
 		JTextPane txtpnPassword = new JTextPane();
 		txtpnPassword.setText("Password");
-		txtpnPassword.setBounds(84, 252, 66, 20);
+		txtpnPassword.setBounds(84, 194, 66, 20);
 		contentPane.add(txtpnPassword);
 		
 		JTextPane txtpnLogTitle = new JTextPane();
 		txtpnLogTitle.setEditable(false);
 		txtpnLogTitle.setText("Log in to your account");
-		txtpnLogTitle.setBounds(84, 177, 139, 20);
+		txtpnLogTitle.setBounds(85, 132, 139, 20);
 		contentPane.add(txtpnLogTitle);
 
 		JButton btn_login = new JButton("Log in");
@@ -106,7 +107,7 @@ public class Login extends JFrame {
 	 
 	    	    }); 
 		
-		btn_login.setBounds(84, 356, 91, 23);
+		btn_login.setBounds(84, 256, 91, 23);
 		contentPane.add(btn_login);
 		
 		JButton btn_sign_in = new JButton("Sign in");
@@ -116,16 +117,23 @@ public class Login extends JFrame {
 				
 			}
 		});
-		btn_sign_in.setBounds(219, 356, 91, 23);
+		btn_sign_in.setBounds(219, 256, 91, 23);
 		contentPane.add(btn_sign_in);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/dog-icon.png")));
-		lblNewLabel.setBounds(151, 34, 139, 110);
+		lblNewLabel.setBounds(151, 11, 139, 110);
 		contentPane.add(lblNewLabel);
 		
 		JButton btn_guest = new JButton("Guest");
-		btn_guest.setBounds(151, 310, 89, 23);
+		btn_guest.setBounds(153, 300, 89, 23);
 		contentPane.add(btn_guest);
+		
+		JTextPane txtpnForgotPassword = new JTextPane();
+		txtpnForgotPassword.setForeground(Color.BLUE);
+		txtpnForgotPassword.setEditable(false);
+		txtpnForgotPassword.setText("Forgot password?");
+		txtpnForgotPassword.setBounds(171, 225, 139, 20);
+		contentPane.add(txtpnForgotPassword);
 	}
 }
