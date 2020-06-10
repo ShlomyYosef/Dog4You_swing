@@ -107,7 +107,7 @@ public class Login extends JFrame {
 	 
 	    	    }); 
 		
-		btn_login.setBounds(84, 256, 91, 23);
+		btn_login.setBounds(85, 297, 91, 23);
 		contentPane.add(btn_login);
 		
 		JButton btn_sign_in = new JButton("Sign in");
@@ -117,7 +117,7 @@ public class Login extends JFrame {
 				
 			}
 		});
-		btn_sign_in.setBounds(219, 256, 91, 23);
+		btn_sign_in.setBounds(219, 297, 91, 23);
 		contentPane.add(btn_sign_in);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -126,7 +126,7 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btn_guest = new JButton("Guest");
-		btn_guest.setBounds(153, 300, 89, 23);
+		btn_guest.setBounds(158, 347, 89, 23);
 		contentPane.add(btn_guest);
 		
 		JTextPane txtpnForgotPassword = new JTextPane();
