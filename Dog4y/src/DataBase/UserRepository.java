@@ -57,7 +57,7 @@ public class UserRepository implements UserRepositoryInterface {
 	@Override
 	public User findByName(String name) {
 		for (User user : users) {
-			if (name.equals(user)) {
+			if (name.equals(user.getUserName())) {
 				return user;
 			}
 		}

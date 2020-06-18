@@ -9,19 +9,27 @@ public class User implements Serializable {
 	private String UserName;
 	private String Password;
 	private static long idCounter = 0;
+	public long id=0;
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public User(String email, String userName, String password) {
 		Email = email;
 		UserName = userName;
 		Password = password;
-		setIdCounter(getIdCounter() + 1);
+		setId(idCounter++);
 	}
 	
 	public User(int id) {
 		super();
-		setIdCounter(id);
+		setId(id);
 	}
-	
 	// option to implement interface login functions
 	void CreateUser()
 	{
@@ -72,10 +80,6 @@ public class User implements Serializable {
 		return idCounter;
 	}
 
-
-	private static void setIdCounter(long idCounter) {
-		User.idCounter = idCounter;
-	}
 	
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -85,9 +89,15 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (idCounter != other.idCounter)
+		if (idCounter != other.id)
 			return false;
+		if(idCounter<other.id)
+			idCounter=id;
 		return true;
+	}
+	
+	public String toString() {
+		return "User [id=" + id + ", name=" + UserName + ", password=" + Password + "]";
 	}
 
 }
