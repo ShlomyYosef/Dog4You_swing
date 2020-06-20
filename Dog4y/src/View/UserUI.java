@@ -196,6 +196,7 @@ public class UserUI extends JFrame {
 		
 		JButton btnNewButton = new JButton("Search");
 		btnNewButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				DefaultListModel DLM=new DefaultListModel();
 				DLM.addElement("shlomy");

@@ -59,7 +59,7 @@ public class Login extends JFrame {
 	
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 453, 497);
+		setBounds(100, 100, 474, 499);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -99,7 +99,7 @@ public class Login extends JFrame {
 	    		//if its user open this ui 
 	    		new UserUI().setVisible(true);
                 //if its Admin open admin ui
-	    		new AdminUI().setVisible(true);
+	    		// new AdminUI().setVisible(true);
 	        	Exit();
 	    		
 	    	        }
@@ -110,24 +110,32 @@ public class Login extends JFrame {
 		btn_login.setBounds(85, 297, 91, 23);
 		contentPane.add(btn_login);
 		
-		JButton btn_sign_in = new JButton("Sign in");
+		JButton btn_sign_in = new JButton("Sign up");
 		btn_sign_in.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
+			
+	    		new SignUpUI().setVisible(true);
+	    		Exit();
 			}
 		});
 		btn_sign_in.setBounds(219, 297, 91, 23);
 		contentPane.add(btn_sign_in);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/dog-icon.png")));
-		lblNewLabel.setBounds(151, 11, 139, 110);
-		contentPane.add(lblNewLabel);
-		
-		JButton btn_guest = new JButton("Guest");
-		btn_guest.setBounds(158, 347, 89, 23);
+		JButton btn_guest = new JButton("Continue as a guest");
+		btn_guest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+	    		new UserUI().setVisible(true);
+			}
+		});
+		btn_guest.setBounds(116, 347, 174, 49);
 		contentPane.add(btn_guest);
+		
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/Welcome1.jpg")));
+		lblNewLabel.setBounds(10, 11, 450, 451);
+		contentPane.add(lblNewLabel);
 		
 		JTextPane txtpnForgotPassword = new JTextPane();
 		txtpnForgotPassword.setForeground(Color.BLUE);

@@ -29,7 +29,7 @@ import javax.swing.JToggleButton;
 import javax.swing.DefaultComboBoxModel;
 
 
-public class SignInUI extends JFrame {
+public class SignUpUI extends JFrame {
 
 	/**
 	 * 
@@ -51,7 +51,7 @@ public class SignInUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SignInUI frame = new SignInUI();
+					SignUpUI frame = new SignUpUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,7 +63,7 @@ public class SignInUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SignInUI() {
+	public SignUpUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 842, 550);
 		contentPane = new JPanel();
@@ -175,16 +175,16 @@ public class SignInUI extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(486, 402, 110, 49);
+		btnNewButton.setBounds(457, 320, 110, 49);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Guest");
+		JButton btnNewButton_1 = new JButton("Back");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_1.setBounds(486, 297, 110, 49);
+		btnNewButton_1.setBounds(457, 406, 110, 49);
 		contentPane.add(btnNewButton_1);
 		
 		
@@ -193,7 +193,7 @@ public class SignInUI extends JFrame {
 		lblDs.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDs.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDs.setBounds(-22, 11, 897, 531);
-		lblDs.setIcon(new ImageIcon(SignInUI.class.getResource("/Image/3232.jpg")));
+		lblDs.setIcon(new ImageIcon(SignUpUI.class.getResource("/Image/3232.jpg")));
 		contentPane.add(lblDs);
 		
 		
