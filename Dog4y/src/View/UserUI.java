@@ -124,7 +124,6 @@ public class UserUI extends JFrame {
 		JRadioButton rb_vaccine_yes = new JRadioButton("Yes");
 		rb_vaccine_yes.setBounds(86, 271, 57, 23);
 		contentPane.add(rb_vaccine_yes);
-		rb_vaccine_yes.setVisible(false);
 		
 		JRadioButton rb_vaccine_no = new JRadioButton("No");
 		rb_vaccine_no.setBounds(145, 271, 57, 23);

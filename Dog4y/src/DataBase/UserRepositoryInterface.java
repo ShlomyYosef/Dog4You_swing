@@ -9,12 +9,12 @@ public interface UserRepositoryInterface {
 
 	void add(User user) throws Exception;
 
-	void delete(int id) throws IOException;
-
-	User find(int id);
+	void delete(String userName) throws IOException;
 
 	Set<User> findAll();
 
 	User findByName(String name);
+
+	boolean isExist(String userName);
 	
 }

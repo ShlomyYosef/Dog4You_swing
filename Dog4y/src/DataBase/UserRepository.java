@@ -16,38 +16,15 @@ public class UserRepository implements UserRepositoryInterface {
 		this.users = this.fileManager.read();
 	}
 	
+
 	@Override
-	public void add(User user) throws Exception {
-		if (user == null) {
-			throw new Exception("must have a value");
-		}
+	public void delete(String userName) throws IOException {
+		this.users.remove(findByName(userName));
 		
-		if (this.users.contains(user)) {
-			throw new Exception("Already exists!");
-		}
-		
-		this.users.add(user);
 		this.fileManager.write(this.users);
 	}
 
-	@Override
-	public void delete(int id) throws IOException {
-		this.users.remove(new User(id));
-		this.fileManager.write(this.users);
-	}
 
-	@Override
-	public User find(int id) {
-		if (this.users.contains(new User(id))) {
-			for (User user : users) {
-				if (User.getIdCounter() == id) {
-					return user;
-				}
-			}
-		}
-		
-		return null;
-	}
 
 	@Override
 	public Set<User> findAll() {
@@ -64,6 +41,31 @@ public class UserRepository implements UserRepositoryInterface {
 		
 		return null;
 	}
-
+	
+	@Override
+	public boolean isExist(String userName) {
+		for (User user : users) {
+			if (userName.equals(user.getUserName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public void add(User user) throws Exception {
+		if (user == null) {
+			throw new Exception("must have a value");
+		}
+		
+		if (isExist(user.getUserName())) {
+			throw new Exception("UserName already exist ! ");
+		}
+		this.users.add(user);
+		this.fileManager.write(this.users);
+	}
 
 }
+	
+	
+
