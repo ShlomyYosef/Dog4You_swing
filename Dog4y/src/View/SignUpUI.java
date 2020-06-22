@@ -188,6 +188,16 @@ public class SignUpUI extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		
+
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnNewButton_2.setBounds(438, 161, 129, 81);
+		contentPane.add(btnNewButton_2);
+		
 		
 		JLabel lblDs = new JLabel("");
 		lblDs.setHorizontalAlignment(SwingConstants.CENTER);
@@ -198,5 +208,4 @@ public class SignUpUI extends JFrame {
 		
 		
 			}
-	
 }

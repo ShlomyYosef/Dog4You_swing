@@ -131,17 +131,24 @@ public class Login extends JFrame {
 		btn_guest.setBounds(116, 347, 174, 49);
 		contentPane.add(btn_guest);
 		
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/Welcome1.jpg")));
-		lblNewLabel.setBounds(10, 11, 450, 451);
-		contentPane.add(lblNewLabel);
-		
+
 		JTextPane txtpnForgotPassword = new JTextPane();
 		txtpnForgotPassword.setForeground(Color.BLUE);
 		txtpnForgotPassword.setEditable(false);
 		txtpnForgotPassword.setText("Forgot password?");
 		txtpnForgotPassword.setBounds(171, 225, 139, 20);
 		contentPane.add(txtpnForgotPassword);
-	}
+
+
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/Image/food commercial.jpg")));
+		lblNewLabel_1.setBounds(342, -11, 143, 101);
+		contentPane.add(lblNewLabel_1);
+	
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/Welcome1.jpg")));
+		lblNewLabel.setBounds(10, 11, 450, 451);
+		contentPane.add(lblNewLabel);
+			}
 }

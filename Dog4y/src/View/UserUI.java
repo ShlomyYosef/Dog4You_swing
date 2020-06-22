@@ -65,7 +65,7 @@ public class UserUI extends JFrame {
 		JTextPane txtpnSearch = new JTextPane();
 		txtpnSearch.setText("Search");
 		txtpnSearch.setEditable(false);
-		txtpnSearch.setBounds(10, 42, 102, 20);
+		txtpnSearch.setBounds(10, 42, 44, 20);
 		contentPane.add(txtpnSearch);
 		
 		JTextPane txtpnRace = new JTextPane();
