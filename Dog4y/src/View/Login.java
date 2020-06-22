@@ -107,7 +107,7 @@ public class Login extends JFrame {
 	 
 	    	    }); 
 		
-		btn_login.setBounds(85, 297, 91, 23);
+		btn_login.setBounds(65, 313, 91, 23);
 		contentPane.add(btn_login);
 		
 		JButton btn_sign_in = new JButton("Sign up");
@@ -118,7 +118,7 @@ public class Login extends JFrame {
 	    		Exit();
 			}
 		});
-		btn_sign_in.setBounds(219, 297, 91, 23);
+		btn_sign_in.setBounds(252, 313, 91, 23);
 		contentPane.add(btn_sign_in);
 		
 		JButton btn_guest = new JButton("Continue as a guest");
@@ -128,7 +128,7 @@ public class Login extends JFrame {
 	    		new UserUI().setVisible(true);
 			}
 		});
-		btn_guest.setBounds(116, 347, 174, 49);
+		btn_guest.setBounds(114, 366, 174, 49);
 		contentPane.add(btn_guest);
 		
 
@@ -139,16 +139,32 @@ public class Login extends JFrame {
 		txtpnForgotPassword.setBounds(171, 225, 139, 20);
 		contentPane.add(txtpnForgotPassword);
 
-
+		JLabel lblWantYourAds = new JLabel("want your ads here?");
+		lblWantYourAds.setBounds(356, 74, 104, 14);
+		contentPane.add(lblWantYourAds);
+	
+		JButton btnNewButton = new JButton("Contact us");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		
+    		new ContactUs().setVisible(true);
+    		Exit();
+			}
+		});
+		btnNewButton.setBounds(356, 95, 99, 23);
+		contentPane.add(btnNewButton);
+		
+		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/Image/food commercial.jpg")));
-		lblNewLabel_1.setBounds(342, -11, 143, 101);
+		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/Image/banner.jpg")));
+		lblNewLabel_1.setBounds(346, -11, 143, 101);
 		contentPane.add(lblNewLabel_1);
 	
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/Welcome1.jpg")));
-		lblNewLabel.setBounds(10, 11, 450, 451);
+		lblNewLabel.setBounds(-29, 11, 489, 451);
 		contentPane.add(lblNewLabel);
+		
 			}
 }

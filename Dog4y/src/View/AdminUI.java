@@ -83,6 +83,10 @@ public class AdminUI extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Add");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_3.setBounds(461, 313, 89, 23);
 		contentPane.add(btnNewButton_3);
 		

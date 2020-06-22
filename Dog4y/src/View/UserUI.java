@@ -43,7 +43,11 @@ public class UserUI extends JFrame {
 			}
 		});
 	}
-
+	private void Exit() {
+		// TODO Auto-generated method stub
+		this.dispose();
+	} 
+	
 	/**
 	 * Create the frame.
 	 */
@@ -209,5 +213,16 @@ public class UserUI extends JFrame {
 		});
 		btnNewButton.setBounds(175, 180, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Go back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Login().setVisible(true);
+				Exit();
+			
+			}
+		});
+		btnNewButton_1.setBounds(54, 464, 89, 23);
+		contentPane.add(btnNewButton_1);
 			}
 }

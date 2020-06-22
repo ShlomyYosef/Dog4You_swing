@@ -60,6 +60,11 @@ public class SignUpUI extends JFrame {
 		});
 	}
 
+	private void Exit() {
+		// TODO Auto-generated method stub
+		this.dispose();
+	} 
+	
 	/**
 	 * Create the frame.
 	 */
@@ -178,25 +183,17 @@ public class SignUpUI extends JFrame {
 		btnNewButton.setBounds(457, 320, 110, 49);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Back");
+		JButton btnNewButton_1 = new JButton("Go Back");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+	    		new Login().setVisible(true);
+				Exit();
 			}
+			
 		});
 		btnNewButton_1.setBounds(457, 406, 110, 49);
 		contentPane.add(btnNewButton_1);
-		
-		
-
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnNewButton_2.setBounds(438, 161, 129, 81);
-		contentPane.add(btnNewButton_2);
 		
 		
 		JLabel lblDs = new JLabel("");
