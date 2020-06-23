@@ -5,7 +5,7 @@ import java.util.Set;
 import model.User;
 
 
-public interface UserRepositoryInterface {
+public interface UserRepoInterface {
 
 	void add(User user) throws Exception;
 

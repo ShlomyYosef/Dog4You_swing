@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import DataBase.UserRepository;
-import DataBase.UserRepositoryInterface;
+import DataBase.UserRepoInterface;
 import model.User;
 
 
@@ -10,7 +10,7 @@ import model.User;
 public class MainActivity {
 
 	public static void main(String[] args) throws Exception {
-		UserRepositoryInterface userRepository = new UserRepository();
+		UserRepoInterface userRepository = new UserRepository();
 		try (Scanner scanner = new Scanner(System.in)) {
 			while (true) {
 				System.out.println("Welcome!");

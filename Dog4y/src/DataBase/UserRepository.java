@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Set;
 import model.User;
 
-public class UserRepository implements UserRepositoryInterface {
+public class UserRepository implements UserRepoInterface {
 
 	private final String FILENAME = "users";
 	private Set<User> users;
