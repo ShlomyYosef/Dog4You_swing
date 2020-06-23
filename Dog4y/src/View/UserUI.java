@@ -1,9 +1,11 @@
 package View;
 
+
 import java.awt.EventQueue;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -12,13 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.JTable;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.BevelBorder;
-import java.awt.Color;
+
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class UserUI extends JFrame {
@@ -162,10 +161,6 @@ public class UserUI extends JFrame {
 		contentPane.add(rb_furtille_no);
 		rb_furtille_no.setVisible(false);
 		
-		JButton btn_search = new JButton("Search");
-		btn_search.setBounds(180, 180, 89, 23);
-		contentPane.add(btn_search);
-		
 		JCheckBox cb_AdvancedOptions = new JCheckBox("Advanced options");
 		cb_AdvancedOptions.addItemListener(new ItemListener() {    
             public void itemStateChanged(ItemEvent e) {    
@@ -191,10 +186,26 @@ public class UserUI extends JFrame {
 		cb_AdvancedOptions.setBounds(10, 180, 141, 23);
 		contentPane.add(cb_AdvancedOptions);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setEditable(false);
-		textPane.setBackground(Color.PINK);
-		textPane.setBounds(368, 73, 433, 319);
-		contentPane.add(textPane);
-	}
+		
+
+		JList list = new JList();
+		list.setBounds(317, 104, 462, 362);
+		contentPane.add(list);
+
+		
+		JButton btnNewButton = new JButton("Search");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DefaultListModel DLM=new DefaultListModel();
+				DLM.addElement("shlomy");
+				DLM.addElement("dvir");
+				DLM.addElement("adir");
+				DLM.addElement("daniel");
+				list.setModel(DLM);
+			}
+			
+		});
+		btnNewButton.setBounds(175, 180, 89, 23);
+		contentPane.add(btnNewButton);
+			}
 }
