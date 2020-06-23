@@ -7,14 +7,14 @@ public class Dog {
 	private String Character;
 	private String FinalSize;
 	private String Location;
-	private int DogId;
+	private int dogAge;
 	private int KennelId;
 	private boolean Vaccsine;
 	private boolean Furtille;
 	private boolean Tamed;
 	
 
-	public Dog(String name, String race, String character, String finalSize, String location, int dogId, int kennelId,
+	public Dog(String name, String race, String character, String finalSize, String location, int age, int kennelId,
 			boolean vaccsine, boolean furtille, boolean tamed) {
 		
 	setName(name);
@@ -22,12 +22,11 @@ public class Dog {
 	setCharacter(character);
 	setFinalSize(finalSize);
 	setLocation(location);
-	setDogId(dogId);
+	setDogAge(age);
 	setKennelId(kennelId);
 	setVaccsine(vaccsine);
 	setFurtille(furtille);
-	setTamed(tamed);
-		
+	setTamed(tamed);	
 	}
 
 
@@ -56,8 +55,8 @@ public class Dog {
 	}
 
 
-	public int getDogId() {
-		return this.DogId;
+	public int getDogAge() {
+		return this.dogAge;
 	}
 
 
@@ -106,8 +105,8 @@ public class Dog {
 	}
 
 
-	public void setDogId(int dogId) {
-		this.DogId = dogId;
+	public void setDogAge(int dogId) {
+		this.dogAge = dogId;
 	}
 
 

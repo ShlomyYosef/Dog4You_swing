@@ -2,6 +2,8 @@ package model;
 
 public class Kennel extends User{
 	
+	
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String address;
 	private String phoneNumber;

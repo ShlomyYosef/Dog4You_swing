@@ -84,7 +84,7 @@ public class Login extends JFrame {
 		
 		JTextPane txtpnPassword = new JTextPane();
 		txtpnPassword.setText("Password");
-		txtpnPassword.setBounds(84, 194, 54, 20);
+		txtpnPassword.setBounds(84, 194, 59, 20);
 		txtpnPassword.setEditable(false);
 		contentPane.add(txtpnPassword);
 		
