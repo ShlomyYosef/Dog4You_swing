@@ -79,18 +79,19 @@ public class Login extends JFrame {
 		JTextPane txtpnUser = new JTextPane();
 		txtpnUser.setEditable(false);
 		txtpnUser.setText("User");
-		txtpnUser.setBounds(84, 163, 57, 20);
+		txtpnUser.setBounds(84, 163, 30, 20);
 		contentPane.add(txtpnUser);
 		
 		JTextPane txtpnPassword = new JTextPane();
 		txtpnPassword.setText("Password");
-		txtpnPassword.setBounds(84, 194, 66, 20);
+		txtpnPassword.setBounds(84, 194, 54, 20);
+		txtpnPassword.setEditable(false);
 		contentPane.add(txtpnPassword);
 		
 		JTextPane txtpnLogTitle = new JTextPane();
 		txtpnLogTitle.setEditable(false);
 		txtpnLogTitle.setText("Log in to your account");
-		txtpnLogTitle.setBounds(85, 132, 139, 20);
+		txtpnLogTitle.setBounds(85, 132, 124, 20);
 		contentPane.add(txtpnLogTitle);
 
 		JButton btn_login = new JButton("Log in");
@@ -166,5 +167,5 @@ public class Login extends JFrame {
 		lblNewLabel.setBounds(-29, 11, 489, 451);
 		contentPane.add(lblNewLabel);
 		
-			}
+		}
 }

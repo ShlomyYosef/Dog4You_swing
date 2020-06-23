@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -18,6 +19,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JCheckBoxMenuItem;
+import java.awt.Choice;
 
 
 public class UserUI extends JFrame {
@@ -108,7 +112,7 @@ public class UserUI extends JFrame {
 		JTextPane txtpnPersonality = new JTextPane();
 		txtpnPersonality.setEditable(false);
 		txtpnPersonality.setText("Personality:");
-		txtpnPersonality.setBounds(10, 228, 72, 20);
+		txtpnPersonality.setBounds(10, 228, 66, 20);
 		contentPane.add(txtpnPersonality);
 		txtpnPersonality.setVisible(false);
 		
@@ -121,6 +125,7 @@ public class UserUI extends JFrame {
 		txtpnVaccine.setEditable(false);
 		txtpnVaccine.setText("Vaccine:");
 		txtpnVaccine.setBounds(10, 271, 57, 20);
+		txtpnVaccine.setEditable(false);
 		contentPane.add(txtpnVaccine);
 		txtpnVaccine.setVisible(false);
 		
@@ -137,6 +142,7 @@ public class UserUI extends JFrame {
 		JTextPane txtpnTrained = new JTextPane();
 		txtpnTrained.setText("Trained:");
 		txtpnTrained.setBounds(10, 311, 44, 20);
+		txtpnTrained.setEditable(false);
 		contentPane.add(txtpnTrained);
 		txtpnTrained.setVisible(false);
 		
@@ -146,13 +152,14 @@ public class UserUI extends JFrame {
 		 rb_trained_yes.setVisible(false);
 		
 		JRadioButton rb_trained_no = new JRadioButton("No");
-		rb_trained_no.setBounds(145, 311, 44, 23);
+		rb_trained_no.setBounds(145, 308, 44, 23);
 		contentPane.add(rb_trained_no);
 		rb_trained_no.setVisible(false);
 		
 		JTextPane txtpnFurtille = new JTextPane();
 		txtpnFurtille.setText("Furtille:");
 		txtpnFurtille.setBounds(10, 347, 44, 20);
+		txtpnFurtille.setEditable(false);
 		contentPane.add(txtpnFurtille);
 		txtpnFurtille.setVisible(false);
 		
@@ -191,8 +198,20 @@ public class UserUI extends JFrame {
 		cb_AdvancedOptions.setBounds(10, 180, 141, 23);
 		contentPane.add(cb_AdvancedOptions);
 		
-		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rb_furtille_yes);
+		group.add(rb_furtille_no);
 
+		
+		ButtonGroup group2 = new ButtonGroup();
+		group2.add(rb_trained_yes);
+		group2.add(rb_trained_no);
+
+		ButtonGroup group3 = new ButtonGroup();
+		group3.add(rb_vaccine_yes);
+		group3.add(rb_vaccine_no);
+
+		
 		JList list = new JList();
 		list.setBounds(317, 104, 462, 362);
 		contentPane.add(list);
