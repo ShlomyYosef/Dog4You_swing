@@ -59,7 +59,7 @@ public class Login extends JFrame {
 	
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 453, 497);
+		setBounds(100, 100, 474, 499);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -79,18 +79,19 @@ public class Login extends JFrame {
 		JTextPane txtpnUser = new JTextPane();
 		txtpnUser.setEditable(false);
 		txtpnUser.setText("User");
-		txtpnUser.setBounds(84, 163, 57, 20);
+		txtpnUser.setBounds(84, 163, 30, 20);
 		contentPane.add(txtpnUser);
 		
 		JTextPane txtpnPassword = new JTextPane();
 		txtpnPassword.setText("Password");
-		txtpnPassword.setBounds(84, 194, 66, 20);
+		txtpnPassword.setBounds(84, 194, 59, 20);
+		txtpnPassword.setEditable(false);
 		contentPane.add(txtpnPassword);
 		
 		JTextPane txtpnLogTitle = new JTextPane();
 		txtpnLogTitle.setEditable(false);
 		txtpnLogTitle.setText("Log in to your account");
-		txtpnLogTitle.setBounds(85, 132, 139, 20);
+		txtpnLogTitle.setBounds(85, 132, 124, 20);
 		contentPane.add(txtpnLogTitle);
 
 		JButton btn_login = new JButton("Log in");
@@ -99,7 +100,7 @@ public class Login extends JFrame {
 	    		//if its user open this ui 
 	    		new UserUI().setVisible(true);
                 //if its Admin open admin ui
-	    		new AdminUI().setVisible(true);
+	    		// new AdminUI().setVisible(true);
 	        	Exit();
 	    		
 	    	        }
@@ -107,33 +108,64 @@ public class Login extends JFrame {
 	 
 	    	    }); 
 		
-		btn_login.setBounds(85, 297, 91, 23);
+		btn_login.setBounds(65, 313, 91, 23);
 		contentPane.add(btn_login);
 		
-		JButton btn_sign_in = new JButton("Sign in");
+		JButton btn_sign_in = new JButton("Sign up");
 		btn_sign_in.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
+			
+	    		new SignUpUI().setVisible(true);
+	    		Exit();
 			}
 		});
-		btn_sign_in.setBounds(219, 297, 91, 23);
+		btn_sign_in.setBounds(252, 313, 91, 23);
 		contentPane.add(btn_sign_in);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/dog-icon.png")));
-		lblNewLabel.setBounds(151, 11, 139, 110);
-		contentPane.add(lblNewLabel);
-		
-		JButton btn_guest = new JButton("Guest");
-		btn_guest.setBounds(158, 347, 89, 23);
+		JButton btn_guest = new JButton("Continue as a guest");
+		btn_guest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+	    		new UserUI().setVisible(true);
+			}
+		});
+		btn_guest.setBounds(114, 366, 174, 49);
 		contentPane.add(btn_guest);
 		
+
 		JTextPane txtpnForgotPassword = new JTextPane();
 		txtpnForgotPassword.setForeground(Color.BLUE);
 		txtpnForgotPassword.setEditable(false);
 		txtpnForgotPassword.setText("Forgot password?");
 		txtpnForgotPassword.setBounds(171, 225, 139, 20);
 		contentPane.add(txtpnForgotPassword);
-	}
+
+		JLabel lblWantYourAds = new JLabel("want your ads here?");
+		lblWantYourAds.setBounds(356, 74, 104, 14);
+		contentPane.add(lblWantYourAds);
+	
+		JButton btnNewButton = new JButton("Contact us");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		
+    		new ContactUs().setVisible(true);
+    		Exit();
+			}
+		});
+		btnNewButton.setBounds(356, 95, 99, 23);
+		contentPane.add(btnNewButton);
+		
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/Image/banner.jpg")));
+		lblNewLabel_1.setBounds(346, -11, 143, 101);
+		contentPane.add(lblNewLabel_1);
+	
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/Welcome1.jpg")));
+		lblNewLabel.setBounds(-29, 11, 489, 451);
+		contentPane.add(lblNewLabel);
+		
+		}
 }
