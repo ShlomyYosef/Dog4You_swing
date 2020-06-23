@@ -19,8 +19,8 @@ public class UserRepository implements UserRepoInterface {
 
 	@Override
 	public void delete(String userName) throws IOException {
-		this.users.remove(findByName(userName));
 		
+		this.users.remove(findByName(userName));
 		this.fileManager.write(this.users);
 	}
 

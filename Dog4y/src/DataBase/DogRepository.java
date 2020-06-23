@@ -5,10 +5,6 @@ import java.util.Set;
 
 import model.Dog;
 
-
-
-
-
 public class DogRepository implements DogRepoInterface {
 	
 	
