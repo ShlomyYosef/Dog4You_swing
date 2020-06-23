@@ -1,19 +1,25 @@
 package model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private String Email;
 	private String UserName;
 	private String Password;
-	private static long idCounter = 0;
+
 	
 	public User(String email, String userName, String password) {
 		Email = email;
 		UserName = userName;
 		Password = password;
-		setIdCounter(getIdCounter() + 1);
+	//	setId(idCounter++);
 	}
-
+	
+	public User(String userName) {
+		setUserName(userName);
+	}
 	
 	// option to implement interface login functions
 	void CreateUser()
@@ -61,13 +67,25 @@ public class User {
 	}
 
 
-	public static long getIdCounter() {
-		return idCounter;
+
+	
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (UserName != other.getUserName())
+			return false;
+		if(Email!=other.getEmail())
+			return false;
+		return true;
 	}
-
-
-	public static void setIdCounter(long idCounter) {
-		User.idCounter = idCounter;
+	
+	public String toString() {
+		return "User [Email=" + Email + ", UserName=" + UserName + ", password=" + Password + "]";
 	}
 
 }

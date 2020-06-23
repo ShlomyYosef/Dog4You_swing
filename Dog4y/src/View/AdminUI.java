@@ -13,6 +13,8 @@ import javax.swing.border.TitledBorder;
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AdminUI extends JFrame {
 
@@ -43,6 +45,13 @@ public class AdminUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+
+	private void Exit() {
+		// TODO Auto-generated method stub
+		this.dispose();
+	} 
+	
 	public AdminUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 828, 508);
@@ -74,6 +83,10 @@ public class AdminUI extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Add");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_3.setBounds(461, 313, 89, 23);
 		contentPane.add(btnNewButton_3);
 		
@@ -86,6 +99,14 @@ public class AdminUI extends JFrame {
 		contentPane.add(btnNewButton_5);
 		
 		JButton btn_logout = new JButton("Logout");
+		btn_logout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+	    		new Login().setVisible(true);
+	    		Exit();
+       	    		
+			}
+		});
 		btn_logout.setBounds(716, 438, 89, 23);
 		contentPane.add(btn_logout);
 	}

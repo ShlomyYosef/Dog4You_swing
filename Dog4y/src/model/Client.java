@@ -2,6 +2,8 @@ package model;
 
 public class Client extends User{
 	
+
+	private static final long serialVersionUID = 1L;
 	private String Name;
 	private String Address;
 	private int Age;
