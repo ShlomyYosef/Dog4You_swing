@@ -204,7 +204,14 @@ public class SignUpUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println(txt_FirstName.getText());
-				
+				System.out.println(txt_LastName.getText());
+				System.out.println(txt_Email.getText());
+				System.out.println(txt_Address.getText());
+				System.out.println(txt_PhoneNum.getText());
+				System.out.println(txt_UserName.getText());
+				System.out.println(passwordField.getText());
+				new Login().setVisible(true);
+				Exit();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
