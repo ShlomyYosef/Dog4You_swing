@@ -42,6 +42,7 @@ public class UserRepository implements UserRepoInterface {
 		return null;
 	}
 	
+	
 	@Override
 	public boolean isExist(String userName) {
 		for (User user : users) {
@@ -63,6 +64,22 @@ public class UserRepository implements UserRepoInterface {
 		}
 		this.users.add(user);
 		this.fileManager.write(this.users);
+	}
+	
+	// check login for user compare the name and password of user .
+	public boolean check_login(String userName,char[] password) {
+		User user;
+		
+		user = this.findByName(userName);
+		// if user not in the DB 
+		if(user==null)
+			return false;
+		
+		// if user in DB then compare password if all good return true 
+		if(user.getPassword().equals(password.toString()))
+		return true;
+		
+		return false;
 	}
 
 }

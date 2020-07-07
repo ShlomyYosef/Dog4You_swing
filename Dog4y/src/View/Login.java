@@ -17,6 +17,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -31,6 +33,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private JTextField txt_user_name;
+	private JButton btn_login;
 
 	/**
 	 * Launch the application.
@@ -94,7 +97,7 @@ public class Login extends JFrame {
 		txtpnLogTitle.setBounds(85, 132, 124, 20);
 		contentPane.add(txtpnLogTitle);
 
-		JButton btn_login = new JButton("Log in");
+		btn_login = new JButton("Log in");
 		btn_login.addActionListener(new ActionListener(){  
 	    	public void actionPerformed(ActionEvent e){  
 	    		//if its user open this ui 
@@ -179,6 +182,14 @@ public class Login extends JFrame {
 		return passwordField.getPassword();
 	}
 	
+	public void addLoginListener(ActionListener actionLoginListener) {
+		
+		btn_login.addActionListener(actionLoginListener);	
+	}
+	
+	public void displayErrorMessage(String errorMsg) {
+		JOptionPane.showMessageDialog(this,errorMsg);
+	}
 	
 	
 }
