@@ -187,11 +187,11 @@ public class SignUpUI extends JFrame {
 		contentPane.add(passwordField);
 	
 		
-		JComboBox cb_race = new JComboBox();
-		cb_race.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		cb_race.setModel(new DefaultComboBoxModel(new String[] {"0-User", "1-Keneel", "2-Admin"}));
-		cb_race.setBounds(229, 429, 158, 33);
-		contentPane.add(cb_race);
+		JComboBox cb_Permissions = new JComboBox();
+		cb_Permissions.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		cb_Permissions.setModel(new DefaultComboBoxModel(new String[] {"0-User", "1-Keneel", "2-Admin"}));
+		cb_Permissions.setBounds(229, 429, 158, 33);
+		contentPane.add(cb_Permissions);
 		
 		JTextPane txtpnPrem = new JTextPane();
 		txtpnPrem.setText("Permissions");
@@ -233,4 +233,39 @@ public class SignUpUI extends JFrame {
 		
 		
 			}
+	
+	
+	
+	// get string from textBox
+	
+	public String getFirstName() {
+		return txt_FirstName.getText();
+	}
+	
+	public String getLastName() {
+		return txt_LastName.getText();
+	}
+	
+	public String getEmail() {
+		return txt_Email.getText();
+	}
+	
+	public String getAddress(){
+		return txt_Address.getText();
+	}
+	
+	public String getPhone() {
+		return txt_PhoneNum.getText();
+	}
+	
+	public String getUserName() {
+		return txt_UserName.getText();
+	}
+	
+	public char[] getPassword(){
+		return passwordField.getPassword();
+	}
+	
+	
+	//----------------------------------
 }

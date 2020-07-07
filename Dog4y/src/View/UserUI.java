@@ -92,6 +92,7 @@ public class UserUI extends JFrame {
 		cb_age.setBounds(86, 104, 94, 20);
 		contentPane.add(cb_age);
 		
+		
 		JComboBox cb_race = new JComboBox();
 		cb_race.setBounds(86, 73, 94, 20);
 		contentPane.add(cb_race);
@@ -243,4 +244,7 @@ public class UserUI extends JFrame {
 		btnNewButton_1.setBounds(54, 464, 89, 23);
 		contentPane.add(btnNewButton_1);
 			}
+	
+	
+
 }

@@ -17,7 +17,6 @@ public class MainActivity {
 				System.out.println("1. Add new user");
 				System.out.println("2. Print all users");
 				System.out.println("Q. Exit");
-
 				String selectedOption = scanner.nextLine();
 				switch (selectedOption) {
 				case "1":

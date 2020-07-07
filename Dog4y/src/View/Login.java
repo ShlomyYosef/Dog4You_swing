@@ -164,8 +164,21 @@ public class Login extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/Welcome1.jpg")));
-		lblNewLabel.setBounds(-29, 11, 489, 451);
+		lblNewLabel.setBounds(21, 11, 401, 449);
 		contentPane.add(lblNewLabel);
 		
 		}
+	
+	
+	// get the user name from text box 
+	public String getUserName() {	
+		return txt_user_name.getText();
+	}
+	
+	public char[] getPassword() {
+		return passwordField.getPassword();
+	}
+	
+	
+	
 }
