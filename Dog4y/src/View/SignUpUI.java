@@ -46,7 +46,9 @@ public class SignUpUI extends JFrame {
 	private JTextField txt_Address;
 	private JTextField txt_UserName;
 	private JPasswordField passwordField;
+	private JComboBox cb_Permissions;
 
+	private String[] permission = { "User","Kennel","Admin"};
 	/**
 	 * Launch the application.
 	 */
@@ -185,20 +187,24 @@ public class SignUpUI extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(229, 362, 158, 33);
 		contentPane.add(passwordField);
-	
 		
-		JComboBox cb_Permissions = new JComboBox();
+		
+		
+		JComboBox cb_Permissions = new JComboBox(permission);
 		cb_Permissions.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		cb_Permissions.setModel(new DefaultComboBoxModel(new String[] {"0-User", "1-Keneel", "2-Admin"}));
 		cb_Permissions.setBounds(229, 429, 158, 33);
 		contentPane.add(cb_Permissions);
 		
-		JTextPane txtpnPrem = new JTextPane();
-		txtpnPrem.setText("Permissions");
-		txtpnPrem.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtpnPrem.setBounds(23, 429, 120, 33);
-		txtpnPrem.setEditable(false);
-		contentPane.add(txtpnPrem);
+	
+
+
+		
+		JTextPane txt_Permissions = new JTextPane();
+		txt_Permissions.setText("Permissions");
+		txt_Permissions.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txt_Permissions.setBounds(23, 429, 120, 33);
+		txt_Permissions.setEditable(false);
+		contentPane.add(txt_Permissions);
 		
 		JButton btnNewButton = new JButton("Sign up");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -223,14 +229,13 @@ public class SignUpUI extends JFrame {
 		btnNewButton_1.setBounds(457, 406, 110, 49);
 		contentPane.add(btnNewButton_1);
 		
-		
+		// setting background image
 		JLabel lblDs = new JLabel("");
 		lblDs.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDs.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblDs.setBounds(-22, 11, 897, 531);
+		lblDs.setBounds(-15, 11, 897, 531);
 		lblDs.setIcon(new ImageIcon(SignUpUI.class.getResource("/Image/3232.jpg")));
 		contentPane.add(lblDs);
-		
 		
 			}
 	
@@ -266,6 +271,8 @@ public class SignUpUI extends JFrame {
 		return passwordField.getPassword();
 	}
 	
+	public String getPermissons() {
+		return cb_Permissions.getSelectedItem().toString();
+}
 	
-	//----------------------------------
 }
