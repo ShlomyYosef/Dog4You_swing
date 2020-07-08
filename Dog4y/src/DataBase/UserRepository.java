@@ -74,10 +74,12 @@ public class UserRepository implements UserRepoInterface {
 		// if user not in the DB 
 		if(user==null)
 			return false;
-		
 		// if user in DB then compare password if all good return true 
-		if(user.getPassword().equals(password.toString()))
+		if(user.getPassword().equals(new String(password)))
 		return true;
+		
+		System.out.print(user.getPassword());
+		System.out.print(password);
 		
 		return false;
 	}

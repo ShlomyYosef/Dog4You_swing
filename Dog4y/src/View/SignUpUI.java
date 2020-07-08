@@ -47,8 +47,8 @@ public class SignUpUI extends JFrame {
 	private JTextField txt_UserName;
 	private JPasswordField passwordField;
 	private JComboBox cb_Permissions;
-
-	private String[] permission = { "User","Kennel","Admin"};
+    private String[] permission = { "User","Kennel","Admin"};
+    private JButton btn_signUp;
 	/**
 	 * Launch the application.
 	 */
@@ -141,6 +141,7 @@ public class SignUpUI extends JFrame {
 		contentPane.add(txt_PhoneNum);
 		
 		
+		
 		JTextPane txtpnPhonenumber = new JTextPane();
 		txtpnPhonenumber.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtpnPhonenumber.setText("Phone number:");
@@ -206,28 +207,22 @@ public class SignUpUI extends JFrame {
 		txt_Permissions.setEditable(false);
 		contentPane.add(txt_Permissions);
 		
-		JButton btnNewButton = new JButton("Sign up");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println(txt_FirstName.getText());
-				
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(457, 320, 110, 49);
-		contentPane.add(btnNewButton);
+		btn_signUp = new JButton("Sign up");
+		btn_signUp.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btn_signUp.setBounds(457, 320, 110, 49);
+		contentPane.add(btn_signUp);
 		
-		JButton btnNewButton_1 = new JButton("Go Back");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btn_goBack = new JButton("Go Back");
+		btn_goBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btn_goBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 	    		new Login().setVisible(true);
 				Exit();
 			}
 			
 		});
-		btnNewButton_1.setBounds(457, 406, 110, 49);
-		contentPane.add(btnNewButton_1);
+		btn_goBack.setBounds(457, 406, 110, 49);
+		contentPane.add(btn_goBack);
 		
 		// setting background image
 		JLabel lblDs = new JLabel("");
@@ -274,5 +269,8 @@ public class SignUpUI extends JFrame {
 	public String getPermissons() {
 		return cb_Permissions.getSelectedItem().toString();
 }
+	public void addSignUpListener(ActionListener signupListener) {
+		btn_signUp.addActionListener(signupListener);
+	}
 	
 }

@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -34,7 +33,8 @@ public class Login extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField txt_user_name;
 	private JButton btn_login;
-
+	private JButton btn_sign_in;
+	private JButton btn_guest;
 	/**
 	 * Launch the application.
 	 */
@@ -97,41 +97,15 @@ public class Login extends JFrame {
 		txtpnLogTitle.setBounds(85, 132, 124, 20);
 		contentPane.add(txtpnLogTitle);
 
-		btn_login = new JButton("Log in");
-		btn_login.addActionListener(new ActionListener(){  
-	    	public void actionPerformed(ActionEvent e){  
-	    		//if its user open this ui 
-	    		new UserUI().setVisible(true);
-                //if its Admin open admin ui
-	    		// new AdminUI().setVisible(true);
-	        	Exit();
-	    		
-	    	        }
-
-	 
-	    	    }); 
-		
+		btn_login = new JButton("Log in");	
 		btn_login.setBounds(65, 313, 91, 23);
 		contentPane.add(btn_login);
 		
-		JButton btn_sign_in = new JButton("Sign up");
-		btn_sign_in.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			
-	    		new SignUpUI().setVisible(true);
-	    		Exit();
-			}
-		});
+		btn_sign_in = new JButton("Sign up");
 		btn_sign_in.setBounds(252, 313, 91, 23);
 		contentPane.add(btn_sign_in);
 		
-		JButton btn_guest = new JButton("Continue as a guest");
-		btn_guest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-	    		new UserUI().setVisible(true);
-			}
-		});
+		btn_guest = new JButton("Continue as a guest");
 		btn_guest.setBounds(114, 366, 174, 49);
 		contentPane.add(btn_guest);
 		
@@ -187,9 +161,25 @@ public class Login extends JFrame {
 		btn_login.addActionListener(actionLoginListener);	
 	}
 	
+	
 	public void displayErrorMessage(String errorMsg) {
 		JOptionPane.showMessageDialog(this,errorMsg);
 	}
 	
+	public void loginSuccess() {
+		Exit();
+	}
+	
+	public void displaySuccessMessage(String msg) {
+		JOptionPane.showMessageDialog(this,msg);
+	}
+
+	public void addGuestListener(ActionListener guestListener) {
+		btn_guest.addActionListener(guestListener);	
+	}
+	
+	public void addSignUpListener(ActionListener signupListener) {
+		btn_sign_in.addActionListener(signupListener);
+	}
 	
 }
