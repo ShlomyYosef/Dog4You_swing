@@ -18,6 +18,8 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -191,7 +193,7 @@ public class SignUpUI extends JFrame {
 		
 		
 		
-		JComboBox cb_Permissions = new JComboBox(permission);
+		cb_Permissions = new JComboBox(permission);
 		cb_Permissions.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		cb_Permissions.setBounds(229, 429, 158, 33);
 		contentPane.add(cb_Permissions);
@@ -267,10 +269,22 @@ public class SignUpUI extends JFrame {
 	}
 	
 	public String getPermissons() {
+		System.out.print(cb_Permissions.getSelectedItem());
+		
 		return cb_Permissions.getSelectedItem().toString();
 }
+	
+	//listen to button press
 	public void addSignUpListener(ActionListener signupListener) {
 		btn_signUp.addActionListener(signupListener);
 	}
 	
+	//show error dialog
+	public void displayErrorMessage(String errorMsg) {
+		JOptionPane.showMessageDialog(this,errorMsg);
+	}
+	
+	public void displayPage() {
+		this.setVisible(true);
+	}
 }
