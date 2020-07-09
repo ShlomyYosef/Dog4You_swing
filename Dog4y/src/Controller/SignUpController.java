@@ -50,7 +50,7 @@ public class SignUpController {
 			 //************
 			 //needs to check why empty textbox dont get inside the if state!
 			 //************
-			 if(permissions==""|lastName==""|password.equals("")|phoneNumber==""|address==""|email==""|userName==""|firstName=="") { 
+			 if(lastName.equals("")||password.equals("")||phoneNumber.equals("")||address.equals("")||email.equals("")||userName.equals("")||firstName.equals("")) { 
 				 theView.displayErrorMessage("Please make sure to fill all details!");
 			 }
 			 else {
