@@ -51,6 +51,7 @@ public class SignUpUI extends JFrame {
 	private JComboBox cb_Permissions;
     private String[] permission = { "User","Kennel","Admin"};
     private JButton btn_signUp;
+    JButton btn_goBack;
 	/**
 	 * Launch the application.
 	 */
@@ -214,15 +215,8 @@ public class SignUpUI extends JFrame {
 		btn_signUp.setBounds(457, 320, 110, 49);
 		contentPane.add(btn_signUp);
 		
-		JButton btn_goBack = new JButton("Go Back");
+		btn_goBack = new JButton("Go Back");
 		btn_goBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn_goBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-	    		new Login().setVisible(true);
-				Exit();
-			}
-			
-		});
 		btn_goBack.setBounds(457, 406, 110, 49);
 		contentPane.add(btn_goBack);
 		
@@ -279,6 +273,9 @@ public class SignUpUI extends JFrame {
 		btn_signUp.addActionListener(signupListener);
 	}
 	
+	public void addGoBackListener(ActionListener goBackListener) {
+		 btn_goBack.addActionListener(goBackListener);
+	}
 	//show error dialog
 	public void displayErrorMessage(String errorMsg) {
 		JOptionPane.showMessageDialog(this,errorMsg);

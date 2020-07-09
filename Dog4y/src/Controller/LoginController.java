@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import DataBase.ClientRepository;
 import DataBase.DogRepository;
-import DataBase.UserRepository;
 import View.Login;
 import View.SignUpUI;
 import View.UserUI;

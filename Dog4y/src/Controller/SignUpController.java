@@ -2,13 +2,11 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import DataBase.ClientRepository;
-import DataBase.UserRepository;
 import View.Login;
 import View.SignUpUI;
 import model.Client;
-import model.User;
+
 
 public class SignUpController {
 
@@ -22,7 +20,7 @@ public class SignUpController {
 		
 		theView.displayPage();
 		theView.addSignUpListener(new SignUpListener());
-		
+		theView.addGoBackListener(new GoBackListener());
 	}
 	
 	//SignUpListener class handle the button press
@@ -86,7 +84,28 @@ public class SignUpController {
 		}
 		
 	}
-	
-	
+	// go back button listener
+	class GoBackListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+			Login log = new Login();
+			
+			ClientRepository model = new ClientRepository();
+			
+			
+			LoginController logController = new LoginController(log,model);		
+			
+			theView.exitPage();
+			}
+			 catch(Exception error) {
+				 theView.displayErrorMessage("Ops ! Something went wrong");
+			 }
+		}
+		
+		
+		
+	}
 	
 }
