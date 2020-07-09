@@ -3,16 +3,19 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import DataBase.ClientRepository;
 import DataBase.UserRepository;
+import View.Login;
 import View.SignUpUI;
+import model.Client;
 import model.User;
 
 public class SignUpController {
 
-	private UserRepository theModel;
+	private ClientRepository theModel;
 	private SignUpUI theView;
 	
-	public  SignUpController(SignUpUI theView,UserRepository theModel) {
+	public  SignUpController(SignUpUI theView,ClientRepository theModel) {
 		
 		this.theModel = theModel;
 		this.theView = theView;
@@ -55,12 +58,22 @@ public class SignUpController {
 			 }
 			 else {
 				 
-				 // adding user .
+				 // adding user and go back to login screen.
 				 if(!theModel.isExist(userName)) {
-					theModel.add(new User(email,userName,new String(password)));
+					theModel.add(new Client(email,userName,new String(password),firstName,lastName,address,phoneNumber,permissions));
+					
+					Login log = new Login();
+					
+					ClientRepository model = new ClientRepository();
+					
+					
+					LoginController logController = new LoginController(log,model);		
+					
+					theView.exitPage();
 				 }
 				 else // user already exists 
 				 theView.displayErrorMessage("This user name is taken!");
+				 theView.setFocusUserName();
 			 }
 			 
 			 

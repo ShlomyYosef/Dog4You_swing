@@ -166,7 +166,7 @@ public class Login extends JFrame {
 		JOptionPane.showMessageDialog(this,errorMsg);
 	}
 	
-	public void loginSuccess() {
+	public void exitPage() {
 		Exit();
 	}
 	
@@ -182,4 +182,7 @@ public class Login extends JFrame {
 		btn_sign_in.addActionListener(signupListener);
 	}
 	
+	public void displayPage() {
+		this.setVisible(true);
+	}
 }

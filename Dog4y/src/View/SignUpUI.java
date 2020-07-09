@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-
+import javax.swing.border.LineBorder;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
@@ -282,6 +282,15 @@ public class SignUpUI extends JFrame {
 	//show error dialog
 	public void displayErrorMessage(String errorMsg) {
 		JOptionPane.showMessageDialog(this,errorMsg);
+	}
+	
+	public void setFocusUserName() {
+		txt_UserName.requestFocus();
+		txt_UserName.setBorder(new LineBorder(Color.RED, 2));
+	}
+	
+	public void exitPage() {
+		Exit();
 	}
 	
 	public void displayPage() {

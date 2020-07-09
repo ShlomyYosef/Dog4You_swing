@@ -5,19 +5,20 @@ public class Client extends User{
 
 	private static final long serialVersionUID = 1L;
 	private String Name;
+	private String LastName;
 	private String Address;
-	private int Age;
+	private String Permission;
 	private String PhoneNumber;
-	private int idNumber;
 
-	public Client(String email, String userName, String password,String name, String address, int age, String phoneNumber, int idNumber) {
+
+	public Client(String email, String userName, String password,String name,String lastName, String address, String phoneNumber,String permission) {
 		
 		super(email, userName, password);
 		    setName(name);
+		    setLastName(lastName);
 			setAddress(address);
-			setAge(age);
+			setPermission(permission);
 			setPhoneNumber(phoneNumber);	
-			setIdNumber(idNumber);
 	}
 
     	
@@ -33,9 +34,7 @@ public class Client extends User{
 		this.PhoneNumber = phoneNumber;
 	}
 
-	public int getAge() {
-		return this.Age;
-	}
+	
 	public void setName(String name) {
 		this.Name = name;
 	}
@@ -43,16 +42,30 @@ public class Client extends User{
 	public void setAddress(String address) {
 		this.Address = address;
 	}
-	public void setIdNumber(int id) {
-		this.idNumber = id;
-	}
-	public void setAge(int age) {
-		this.Age = age;
-	}
 	public String getAddress() {
 		return this.Address;
 	}
-	public int getIdNumber() {
-		return this.idNumber;
+
+
+
+	public String getPermission() {
+		return this.Permission;
 	}
+
+
+	public void setPermission(String permission) {
+		this.Permission = permission;
+	}
+
+
+	public String getLastName() {
+		return LastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.LastName = lastName;
+	}
+
+
 }

@@ -3,6 +3,7 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import DataBase.ClientRepository;
 import DataBase.DogRepository;
 import DataBase.UserRepository;
 import View.Login;
@@ -12,13 +13,14 @@ import View.UserUI;
 public class LoginController {
 	
 	private Login theView;
-	private UserRepository theModel;
+	private ClientRepository theModel;
 	
-	public LoginController(Login theView,UserRepository theModel) {
+	public LoginController(Login theView,ClientRepository theModel) {
 		
 		this.theModel = theModel;
 		this.theView = theView;
 		
+	this.theView.setVisible(true);	
 	// listener for login button
 	this.theView.addLoginListener(new LoginListener());
 	// listener for login as guest button
@@ -51,7 +53,7 @@ public class LoginController {
 			
 			UserController controller = new UserController(view,dog,userName);
 			
-			theView.loginSuccess();
+			theView.exitPage();
 		}
 		else {
 			// put out an error msg 
@@ -82,7 +84,7 @@ public class LoginController {
 			
 			UserController controller = new UserController(view,dog,null);
 			
-			theView.loginSuccess();
+			theView.exitPage();
 
 		}
 		// needs to put a proper message .
@@ -104,11 +106,11 @@ public class LoginController {
 							
 				SignUpUI view = new SignUpUI();
 				
-				UserRepository dog = new UserRepository(); 
+				ClientRepository dog = new ClientRepository(); 
 				
 				SignUpController controller = new SignUpController(view,dog);
 				
-				theView.loginSuccess();
+				theView.exitPage();
 			}
 			// needs to put a proper message .
 			catch(Exception error) {
