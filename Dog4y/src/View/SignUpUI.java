@@ -16,8 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-
+import javax.swing.border.LineBorder;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -46,7 +48,10 @@ public class SignUpUI extends JFrame {
 	private JTextField txt_Address;
 	private JTextField txt_UserName;
 	private JPasswordField passwordField;
-
+	private JComboBox cb_Permissions;
+    private String[] permission = { "User","Kennel","Admin"};
+    private JButton btn_signUp;
+    JButton btn_goBack;
 	/**
 	 * Launch the application.
 	 */
@@ -139,6 +144,7 @@ public class SignUpUI extends JFrame {
 		contentPane.add(txt_PhoneNum);
 		
 		
+		
 		JTextPane txtpnPhonenumber = new JTextPane();
 		txtpnPhonenumber.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtpnPhonenumber.setText("Phone number:");
@@ -185,52 +191,106 @@ public class SignUpUI extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(229, 362, 158, 33);
 		contentPane.add(passwordField);
+		
+		
+		
+		cb_Permissions = new JComboBox(permission);
+		cb_Permissions.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		cb_Permissions.setBounds(229, 429, 158, 33);
+		contentPane.add(cb_Permissions);
+		
 	
+
+
 		
-		JComboBox cb_race = new JComboBox();
-		cb_race.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		cb_race.setModel(new DefaultComboBoxModel(new String[] {"0-User", "1-Keneel", "2-Admin"}));
-		cb_race.setBounds(229, 429, 158, 33);
-		contentPane.add(cb_race);
+		JTextPane txt_Permissions = new JTextPane();
+		txt_Permissions.setText("Permissions");
+		txt_Permissions.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txt_Permissions.setBounds(23, 429, 120, 33);
+		txt_Permissions.setEditable(false);
+		contentPane.add(txt_Permissions);
 		
-		JTextPane txtpnPrem = new JTextPane();
-		txtpnPrem.setText("Permissions");
-		txtpnPrem.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtpnPrem.setBounds(23, 429, 120, 33);
-		txtpnPrem.setEditable(false);
-		contentPane.add(txtpnPrem);
+		btn_signUp = new JButton("Sign up");
+		btn_signUp.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btn_signUp.setBounds(457, 320, 110, 49);
+		contentPane.add(btn_signUp);
 		
-		JButton btnNewButton = new JButton("Sign up");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println(txt_FirstName.getText());
-				
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(457, 320, 110, 49);
-		contentPane.add(btnNewButton);
+		btn_goBack = new JButton("Go Back");
+		btn_goBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btn_goBack.setBounds(457, 406, 110, 49);
+		contentPane.add(btn_goBack);
 		
-		JButton btnNewButton_1 = new JButton("Go Back");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-	    		new Login().setVisible(true);
-				Exit();
-			}
-			
-		});
-		btnNewButton_1.setBounds(457, 406, 110, 49);
-		contentPane.add(btnNewButton_1);
-		
-		
+		// setting background image
 		JLabel lblDs = new JLabel("");
 		lblDs.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDs.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblDs.setBounds(-22, 11, 897, 531);
+		lblDs.setBounds(-15, 11, 897, 531);
 		lblDs.setIcon(new ImageIcon(SignUpUI.class.getResource("/Image/3232.jpg")));
 		contentPane.add(lblDs);
 		
-		
 			}
+	
+	
+	
+	// get string from textBox
+	
+	public String getFirstName() {
+		return txt_FirstName.getText();
+	}
+	
+	public String getLastName() {
+		return txt_LastName.getText();
+	}
+	
+	public String getEmail() {
+		return txt_Email.getText();
+	}
+	
+	public String getAddress(){
+		return txt_Address.getText();
+	}
+	
+	public String getPhone() {
+		return txt_PhoneNum.getText();
+	}
+	
+	public String getUserName() {
+		return txt_UserName.getText();
+	}
+	
+	public char[] getPassword(){
+		return passwordField.getPassword();
+	}
+	
+	public String getPermissons() {
+		System.out.print(cb_Permissions.getSelectedItem());
+		
+		return cb_Permissions.getSelectedItem().toString();
+}
+	
+	//listen to button press
+	public void addSignUpListener(ActionListener signupListener) {
+		btn_signUp.addActionListener(signupListener);
+	}
+	
+	public void addGoBackListener(ActionListener goBackListener) {
+		 btn_goBack.addActionListener(goBackListener);
+	}
+	//show error dialog
+	public void displayErrorMessage(String errorMsg) {
+		JOptionPane.showMessageDialog(this,errorMsg);
+	}
+	
+	public void setFocusUserName() {
+		txt_UserName.requestFocus();
+		txt_UserName.setBorder(new LineBorder(Color.RED, 2));
+	}
+	
+	public void exitPage() {
+		Exit();
+	}
+	
+	public void displayPage() {
+		this.setVisible(true);
+	}
 }

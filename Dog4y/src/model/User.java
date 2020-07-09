@@ -21,29 +21,6 @@ public class User implements Serializable {
 		setUserName(userName);
 	}
 	
-	// option to implement interface login functions
-	void CreateUser()
-	{
-		
-	}
-	void Login()
-	{
-		
-	}
-	void ChangePassword()
-	{
-		
-	}
-	
-	void ForgotPassword()
-	{
-		
-	}
-	void Validation()
-	{
-		
-	}
-	
 	public String getUserName() {
 		return UserName;
 	}
@@ -66,9 +43,6 @@ public class User implements Serializable {
 		this.Password = password;
 	}
 
-
-
-	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -85,7 +59,7 @@ public class User implements Serializable {
 	}
 	
 	public String toString() {
-		return "User [Email=" + Email + ", UserName=" + UserName + ", password=" + Password + "]";
+		return "User [Email=" + Email + ", UserName=" + UserName + ", password=" + Password.toString() + "]";
 	}
 
 }

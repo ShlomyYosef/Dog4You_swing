@@ -19,9 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JCheckBoxMenuItem;
-import java.awt.Choice;
+
 
 
 public class UserUI extends JFrame {
@@ -31,7 +29,7 @@ public class UserUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	private JTextPane txtpn_dear_user;
 	/**
 	 * Launch the application.
 	 */
@@ -63,10 +61,8 @@ public class UserUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextPane txtpn_dear_user = new JTextPane();
+		txtpn_dear_user = new JTextPane();
 		txtpn_dear_user.setEditable(false);
-		txtpn_dear_user.setEnabled(false);
-		txtpn_dear_user.setText("Dear");
 		txtpn_dear_user.setBounds(10, 11, 66, 20);
 		contentPane.add(txtpn_dear_user);
 		
@@ -91,6 +87,7 @@ public class UserUI extends JFrame {
 		JComboBox cb_age = new JComboBox();
 		cb_age.setBounds(86, 104, 94, 20);
 		contentPane.add(cb_age);
+		
 		
 		JComboBox cb_race = new JComboBox();
 		cb_race.setBounds(86, 73, 94, 20);
@@ -244,4 +241,17 @@ public class UserUI extends JFrame {
 		btnNewButton_1.setBounds(54, 464, 89, 23);
 		contentPane.add(btnNewButton_1);
 			}
+	
+	//making the page visible and setting up the user name on top left
+	public void displayPage(String userName) {
+		setDearUserName(userName);
+		this.setVisible(true);	
+	}
+	
+	// set the user name on top left corner
+	public void setDearUserName(String userName) {
+		if(userName!=null)
+		txtpn_dear_user.setText("Dear "+userName+",");
+	}
+
 }

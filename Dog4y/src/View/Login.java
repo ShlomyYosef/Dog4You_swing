@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -17,6 +16,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -31,7 +32,9 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private JTextField txt_user_name;
-
+	private JButton btn_login;
+	private JButton btn_sign_in;
+	private JButton btn_guest;
 	/**
 	 * Launch the application.
 	 */
@@ -94,41 +97,15 @@ public class Login extends JFrame {
 		txtpnLogTitle.setBounds(85, 132, 124, 20);
 		contentPane.add(txtpnLogTitle);
 
-		JButton btn_login = new JButton("Log in");
-		btn_login.addActionListener(new ActionListener(){  
-	    	public void actionPerformed(ActionEvent e){  
-	    		//if its user open this ui 
-	    		new UserUI().setVisible(true);
-                //if its Admin open admin ui
-	    		// new AdminUI().setVisible(true);
-	        	Exit();
-	    		
-	    	        }
-
-	 
-	    	    }); 
-		
+		btn_login = new JButton("Log in");	
 		btn_login.setBounds(65, 313, 91, 23);
 		contentPane.add(btn_login);
 		
-		JButton btn_sign_in = new JButton("Sign up");
-		btn_sign_in.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			
-	    		new SignUpUI().setVisible(true);
-	    		Exit();
-			}
-		});
+		btn_sign_in = new JButton("Sign up");
 		btn_sign_in.setBounds(252, 313, 91, 23);
 		contentPane.add(btn_sign_in);
 		
-		JButton btn_guest = new JButton("Continue as a guest");
-		btn_guest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-	    		new UserUI().setVisible(true);
-			}
-		});
+		btn_guest = new JButton("Continue as a guest");
 		btn_guest.setBounds(114, 366, 174, 49);
 		contentPane.add(btn_guest);
 		
@@ -164,8 +141,48 @@ public class Login extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/Image/Welcome1.jpg")));
-		lblNewLabel.setBounds(-29, 11, 489, 451);
+		lblNewLabel.setBounds(21, 11, 401, 449);
 		contentPane.add(lblNewLabel);
 		
 		}
+	
+	
+	// get the user name from text box 
+	public String getUserName() {	
+		return txt_user_name.getText();
+	}
+	
+	public char[] getPassword() {
+		return passwordField.getPassword();
+	}
+	
+	public void addLoginListener(ActionListener actionLoginListener) {
+		
+		btn_login.addActionListener(actionLoginListener);	
+	}
+	
+	
+	public void displayErrorMessage(String errorMsg) {
+		JOptionPane.showMessageDialog(this,errorMsg);
+	}
+	
+	public void exitPage() {
+		Exit();
+	}
+	
+	public void displaySuccessMessage(String msg) {
+		JOptionPane.showMessageDialog(this,msg);
+	}
+
+	public void addGuestListener(ActionListener guestListener) {
+		btn_guest.addActionListener(guestListener);	
+	}
+	
+	public void addSignUpListener(ActionListener signupListener) {
+		btn_sign_in.addActionListener(signupListener);
+	}
+	
+	public void displayPage() {
+		this.setVisible(true);
+	}
 }
