@@ -6,7 +6,7 @@ import DataBase.ClientRepository;
 import View.Login;
 import View.SignUpUI;
 import model.Client;
-
+import model.User;
 
 public class SignUpController {
 
@@ -54,6 +54,16 @@ public class SignUpController {
 			 if(lastName.equals("")||password.equals("")||phoneNumber.equals("")||address.equals("")||email.equals("")||userName.equals("")||firstName.equals("")) { 
 				 theView.displayErrorMessage("Please make sure to fill all details!");
 			 }
+			 else if (model.User.isNotOnlyLetters(firstName)||model.User.isNotOnlyLetters(lastName)){
+				 theView.displayErrorMessage("Error! name must contain only letters!");
+				 }
+			 else if (!model.User.isValidEmail(email)) {
+				 theView.displayErrorMessage("Error! Invalid Email!");
+			 }
+			 else if (!model.User.isValidPhone(phoneNumber)) {
+				 theView.displayErrorMessage("Error! Invalid phone number!");
+			 }
+			 
 			 else {
 				 
 				 // adding user and go back to login screen.
@@ -66,12 +76,13 @@ public class SignUpController {
 					
 					
 					LoginController logController = new LoginController(log,model);		
-					
+					theView.displayErrorMessage("user created successfully");
 					theView.exitPage();
 				 }
-				 else // user already exists 
+				 else {// user already exists 
 				 theView.displayErrorMessage("This user name is taken!");
 				 theView.setFocusUserName();
+			 }
 			 }
 			 
 			 

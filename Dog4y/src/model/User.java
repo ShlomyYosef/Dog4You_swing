@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 public class User implements Serializable {
 	
@@ -61,6 +62,54 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [Email=" + Email + ", UserName=" + UserName + ", password=" + Password.toString() + "]";
 	}
+	
+	public static boolean isNotOnlyLetters(String str) {
+        char[] strCharArray = str.toCharArray();
 
+		 for (char charInArray : strCharArray)
+	        {
+		         if (!(Character.isLetter(charInArray)))
+		        	 return true;
+	        }
+		 return false;
+	}
+	/*public static boolean isValidEmail(String str) {
+		char[] EmailInArray = str.toCharArray();
+		boolean isValid=true;
+		if (EmailInArray[0]=='@'|| !(str.contains("@"))) {
+			isValid=false;
+		}
+		else {
+			for (int i = 0; i<EmailInArray.length; i++) {
+		}
+		}
+	*/
+    public static boolean isValidEmail(String email) 
+    { 
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        return pat.matcher(email).matches(); 
+    } 
+
+    public static boolean isValidPhone (String number) {
+    	char [] phoneNumberInArray= number.toCharArray();
+    	boolean isValid=true;
+    	if (phoneNumberInArray.length<9) {
+    		isValid=false;
+    	}
+    	else {
+    	}
+    		for(int i=0; i<phoneNumberInArray.length; i++) {
+    			if (!Character.isDigit(phoneNumberInArray[i])) {
+    				isValid =false;
+    				break;
+    		}
+    	}
+    	
+    	return isValid;
+    }
 }
 

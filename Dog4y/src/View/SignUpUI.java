@@ -235,7 +235,24 @@ public class SignUpUI extends JFrame {
 	// get string from textBox
 	
 	public String getFirstName() {
-		return txt_FirstName.getText();
+		 return txt_FirstName.getText();
+
+	/*	 String firstName =null;
+		 boolean isValidName = false;
+		 
+		//while(!isValidName) {
+		    isValidName = true;
+			firstName = txt_FirstName.getText();
+	        char[] firstNameCharArray = firstName.toCharArray();
+	        for (char charInArray : firstNameCharArray)
+	        {
+		         if (!(Character.isLetter(charInArray))) {
+			     displayErrorMessage("Error! First name should contain only letters!");
+			     isValidName = false;
+			     break;
+		    }
+    	 }
+	   */
 	}
 	
 	public String getLastName() {
@@ -293,4 +310,15 @@ public class SignUpUI extends JFrame {
 	public void displayPage() {
 		this.setVisible(true);
 	}
+	
+	/*public boolean isNotOnlyLetters(String str) {
+        char[] strCharArray = str.toCharArray();
+
+		 for (char charInArray : strCharArray)
+	        {
+		         if (!(Character.isLetter(charInArray)))
+		        	 return true;
+	        }
+		 return false;
+	}*/
 }
