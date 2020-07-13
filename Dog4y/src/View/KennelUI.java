@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
+
+import model.Dog;
+
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
@@ -30,8 +33,10 @@ public class KennelUI extends JFrame {
 	private JTextPane txtpn_dear_user;
 	private JButton btn_goBack;
 	private JButton btn_search;
+	private JButton btnAddDog;
+	private JButton btnEditDog;
+	private JButton btnRemoveDog;
 	private JTextField txtNameDog;
-	private JTextField txtKeneelName;
 	private JTextPane txtpnPersonality;
 	private JTextPane txtpnFurtille;
 	private JTextPane txtpnTrained;
@@ -133,12 +138,6 @@ public class KennelUI extends JFrame {
 		txtpnLocation.setBounds(10, 211, 83, 20);
 		contentPane.add(txtpnLocation);
 		
-		JTextPane txtpnKennelName = new JTextPane();
-		txtpnKennelName.setEditable(false);
-		txtpnKennelName.setText("Kennel Name:");
-		txtpnKennelName.setBounds(10, 275, 83, 20);
-		contentPane.add(txtpnKennelName);
-		
 		txtNameDog = new JTextField();
 		txtNameDog.setColumns(10);
 		txtNameDog.setBounds(123, 56, 96, 20);
@@ -146,32 +145,26 @@ public class KennelUI extends JFrame {
 
 	
 		txtpnGender = new JTextPane();
-		txtpnGender.setText("Gander:");
+		txtpnGender.setText("Gender:");
 		txtpnGender.setEditable(false);
 		txtpnGender.setBounds(10, 244, 83, 20);
 		contentPane.add(txtpnGender);
-		
-		
-		txtKeneelName = new JTextField();
-		txtKeneelName.setColumns(10);
-		txtKeneelName.setBounds(123, 275, 96, 20);
-		contentPane.add(txtKeneelName);
 		txtpnVaccine = new JTextPane();
 		txtpnVaccine.setEditable(false);
 		txtpnVaccine.setText("Vaccine:");
-		txtpnVaccine.setBounds(10, 372, 57, 20);
+		txtpnVaccine.setBounds(10, 290, 57, 20);
 		txtpnVaccine.setEditable(false);
 		contentPane.add(txtpnVaccine);
 		txtpnVaccine.setVisible(false);
 		
 		rb_vaccine_yes = new JRadioButton("Yes");
-		rb_vaccine_yes.setBounds(73, 372, 57, 23);
+		rb_vaccine_yes.setBounds(123, 290, 57, 23);
 		rb_vaccine_yes.setActionCommand("Yes");
 		contentPane.add(rb_vaccine_yes);
 		rb_vaccine_yes.setVisible(false);
 		
 		rb_vaccine_no = new JRadioButton("No");
-		rb_vaccine_no.setBounds(123, 372, 57, 23);
+		rb_vaccine_no.setBounds(192, 290, 57, 23);
 		rb_vaccine_no.setActionCommand("No");
 		contentPane.add(rb_vaccine_no);
 		rb_vaccine_no.setVisible(false);
@@ -179,18 +172,18 @@ public class KennelUI extends JFrame {
 		txtpnTrained = new JTextPane();
 		txtpnTrained.setEditable(false);
 		txtpnTrained.setText("Trained:");
-		txtpnTrained.setBounds(10, 413, 44, 20);
+		txtpnTrained.setBounds(10, 335, 44, 20);
 		contentPane.add(txtpnTrained);
 		txtpnTrained.setVisible(false);
 		
 		rb_trained_yes = new JRadioButton("Yes");
-		rb_trained_yes.setBounds(73, 410, 57, 23);
+		rb_trained_yes.setBounds(123, 332, 57, 23);
 		rb_trained_yes.setActionCommand("Yes");
 		contentPane.add(rb_trained_yes);
 		rb_trained_yes.setVisible(false);
 		
 		rb_trained_no = new JRadioButton("No");
-		rb_trained_no.setBounds(123, 410, 44, 23);
+		rb_trained_no.setBounds(192, 332, 44, 23);
 		rb_trained_no.setActionCommand("No");
 		contentPane.add(rb_trained_no);
 		rb_trained_no.setVisible(false);
@@ -198,17 +191,17 @@ public class KennelUI extends JFrame {
 		txtpnFurtille = new JTextPane();
 		txtpnFurtille.setEditable(false);
 		txtpnFurtille.setText("Furtille:");
-		txtpnFurtille.setBounds(10, 455, 44, 20);
+		txtpnFurtille.setBounds(10, 374, 44, 20);
 		contentPane.add(txtpnFurtille);
 		
 		rb_furtille_yes = new JRadioButton("Yes");
-		rb_furtille_yes.setBounds(73, 452, 57, 23);
+		rb_furtille_yes.setBounds(123, 371, 57, 23);
 		rb_furtille_yes.setActionCommand("Yes");
 		contentPane.add(rb_furtille_yes);
 		rb_furtille_yes.setVisible(false);
 		
 		rb_furtille_no = new JRadioButton("No");
-		rb_furtille_no.setBounds(123, 455, 109, 23);
+		rb_furtille_no.setBounds(192, 371, 109, 23);
 		rb_furtille_no.setActionCommand("No");
 		contentPane.add(rb_furtille_no);
 		rb_furtille_no.setVisible(false);
@@ -254,10 +247,57 @@ public class KennelUI extends JFrame {
 		
 		 
 		btn_goBack = new JButton("Go back");
-		btn_goBack.setBounds(218, 351, 89, 23);
+		btn_goBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btn_goBack.setBounds(10, 486, 89, 23);
 		contentPane.add(btn_goBack);
 		
+		btnAddDog = new JButton("Add Dog");
+		btnAddDog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAddDog.setBounds(212, 418, 89, 23);
+		contentPane.add(btnAddDog);
 		
+		btnEditDog = new JButton("Edit Dog");
+		btnEditDog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnEditDog.setBounds(106, 418, 89, 23);
+		contentPane.add(btnEditDog);
+		
+		btnRemoveDog = new JButton("Remove Dog");
+		btnRemoveDog.setBounds(0, 418, 96, 23);
+		contentPane.add(btnRemoveDog);
+		
+		JList list = new JList();
+		list.setBounds(302, 35, 363, 373);
+		contentPane.add(list);
+		
+//		JList list = new JList();
+//		list.setBounds(317, 104, 462, 362);
+//		contentPane.add(list);
+//		
+//		 btn_search = new JButton("Search");
+//		 btn_search.addActionListener(new ActionListener() {
+//			 public void actionPerformed(ActionEvent e) {
+//					DefaultListModel DLM=new DefaultListModel();
+//					DLM.addElement();
+//					DLM.addElement("dvir");
+//					DLM.addElement("adir");
+//					DLM.addElement("daniel");
+//					list.setModel(DLM);
+//			 }
+//			 });
+//		 btn_search.setBounds(90, 401, 89, 23);
+//		 contentPane.add(btn_search);
+//
+//
+//		
 			}
 	
 	//making the page visible and setting up the user name on top left
@@ -342,8 +382,6 @@ public class KennelUI extends JFrame {
 	public void exitPage() {
 		Exit();
 	}
-	
-	
 }
 	
 	

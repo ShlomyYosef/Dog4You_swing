@@ -2,6 +2,7 @@ package View;
 
 
 import java.awt.EventQueue;
+import java.awt.List;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -224,19 +225,20 @@ public class UserUI extends JFrame {
 
 		
 		 btn_search = new JButton("Search");
+		 btn_search.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+					DefaultListModel DLM=new DefaultListModel();
+					DLM.addElement("shlomy");
+					DLM.addElement("dvir");
+					DLM.addElement("adir");
+					DLM.addElement("daniel");
+					list.setModel(DLM);
+			 }
+		 });
 		 btn_search.setBounds(175, 180, 89, 23);
 		 contentPane.add(btn_search);
-			
-//			public void actionPerformed(ActionEvent e) {
-//				DefaultListModel DLM=new DefaultListModel();
-//				DLM.addElement("shlomy");
-//				DLM.addElement("dvir");
-//				DLM.addElement("adir");
-//				DLM.addElement("daniel");
-//				list.setModel(DLM);
-//			}
-//			
-//		});
+					
+	
 
 		
 		btn_goBack = new JButton("Go back");
