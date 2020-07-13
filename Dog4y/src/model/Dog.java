@@ -129,4 +129,10 @@ public class Dog {
 	}
 
 
+	@Override
+	public String toString() {
+		return " Name:" + Name + ", Breed:" + Breed + ", Character:" + Character + ", FinalSize:" + FinalSize;
+	}
+
+
 }

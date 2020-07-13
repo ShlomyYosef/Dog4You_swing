@@ -83,4 +83,25 @@ public class DogRepository implements DogRepoInterface {
 		return false;
 	}
 
+	// if user search by all fields 
+	public Set<Dog>findAdvanced(String breed,String age,String location,String personality,boolean vaccine,boolean tamed,boolean furtille){
+		//clear last results
+		result.clear();
+		
+		for(Dog dog:dogs) {
+			if(breed.equals(dog.getBreed()) && 
+			age.equals(dog.getDogAge()) &&
+			location.equals(dog.getLocation()) &&
+			personality.equals(dog.getCharacter())&&
+			tamed==dog.isTamed()&&
+			furtille==dog.isFurtille()&&
+			vaccine==dog.isVaccsine()){
+				
+				result.add(dog);	
+			}
+			return result;
+		}
+		return result;
+	}
+
 }
