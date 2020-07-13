@@ -54,7 +54,7 @@ public class DogRepository implements DogRepoInterface {
 		// TODO Auto-generated method stub
         result.clear();
 		for (Dog dog: dogs) {
-			if(race.equals(dog.getRace())) {
+			if(race.equals(dog.getBreed())) {
 				result.add(dog);
 			}
 		}
@@ -62,10 +62,10 @@ public class DogRepository implements DogRepoInterface {
 	}
 
 	@Override
-	public Set<Dog> findByAge(int age) {
+	public Set<Dog> findByAge(String age) {
         result.clear();
 		for (Dog dog: dogs) {
-			if(age==dog.getDogAge()) {
+			if(age.equals(dog.getDogAge())) {
 				result.add(dog);
 			}
 		}
