@@ -209,7 +209,7 @@ public class SignUpUI extends JFrame {
 				System.out.println(txt_Address.getText());
 				System.out.println(txt_PhoneNum.getText());
 				System.out.println(txt_UserName.getText());
-				System.out.println(passwordField.getText());
+				System.out.println(passwordField.getPassword());
 				new Login().setVisible(true);
 				Exit();
 			}
