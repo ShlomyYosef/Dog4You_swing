@@ -173,7 +173,7 @@ public class UserUI extends JFrame {
 		rb_trained_yes.setBounds(86, 308, 57, 23);
 		rb_trained_yes.setActionCommand("Yes");
 		contentPane.add(rb_trained_yes);
-		 rb_trained_yes.setVisible(false);
+		rb_trained_yes.setVisible(false);
 		
 		rb_trained_no = new JRadioButton("No");
 		rb_trained_no.setBounds(145, 308, 44, 23);
