@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import DataBase.ClientRepository;
 import DataBase.DogRepository;
+import View.AdminUI;
+import View.KennelUI;
 import View.Login;
 import View.SignUpUI;
 import View.UserUI;
@@ -35,7 +37,7 @@ public class LoginController {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		String userName;
+		String userName ,permission;
 		char[] password;
 		try {
 			
@@ -44,14 +46,32 @@ public class LoginController {
 		
 		// if true go to new screen 
 		if(theModel.check_login(userName, password)) {
-			
+			permission = theModel.getClientPremission(userName);
 			theView.displaySuccessMessage("Login was successful!");
 			
+			if(permission.equals("User")) {
 			UserUI view = new UserUI();
 			
-			DogRepository dog = new DogRepository(); 
+			DogRepository model = new DogRepository(); 
 			
-			UserController controller = new UserController(view,dog,userName);
+			UserController controller = new UserController(view,model,userName);
+			}
+			else if(permission.equals("Kennel")) {
+				KennelUI view = new KennelUI();
+				
+				DogRepository model = new DogRepository(); 
+				
+				KennelController controller = new KennelController(view,model,userName);
+			}
+			else if(permission.equals("Admin")) {
+				AdminUI view = new AdminUI();
+				
+				ClientRepository model = new ClientRepository(); 
+				
+			//	AdminController controller = new AdminController(view,model);    // need to build
+			}
+			
+
 			
 			theView.exitPage();
 		}

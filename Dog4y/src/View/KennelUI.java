@@ -277,26 +277,6 @@ public class KennelUI extends JFrame {
 		list.setBounds(302, 35, 363, 373);
 		contentPane.add(list);
 		
-////		JList list = new JList();
-//		list.setBounds(317, 104, 462, 362);
-//		contentPane.add(list);
-//		
-//		 btn_search = new JButton("Search");
-//		 btn_search.addActionListener(new ActionListener() {
-//			 public void actionPerformed(ActionEvent e) {
-//					DefaultListModel DLM=new DefaultListModel();
-//					DLM.addElement();
-//					DLM.addElement("dvir");
-//					DLM.addElement("adir");
-//					DLM.addElement("daniel");
-//					list.setModel(DLM);
-//			 }
-//			 });
-//		 btn_search.setBounds(90, 401, 89, 23);
-//		 contentPane.add(btn_search);
-//
-//
-//		
 			}
 	
 	
@@ -304,6 +284,19 @@ public class KennelUI extends JFrame {
 	public void addGoBackListener(ActionListener goBack) {
 		btn_goBack.addActionListener(goBack);
 	}
+	
+	public void addAddDogListener(ActionListener add) {
+		btnAddDog.addActionListener(add);
+	}
+	
+	public void addRemoveDogListener(ActionListener remove) {
+		btnRemoveDog.addActionListener(remove);
+	}
+	
+//	public void addEditDogListener(ActionListener goBack) {
+//		btn_goBack.addActionListener(goBack);
+//	}
+//	
 	
 	public void addSearchListener(ActionListener search) {
 		btn_search.addActionListener(search);
@@ -313,10 +306,11 @@ public class KennelUI extends JFrame {
 		JOptionPane.showMessageDialog(this,errorMsg);
 	}
 	
+	public String getDogName() {
+	return txtNameDog.getText();
+	}
 	
-	public String getBreed() {
-
-			
+	public String getBreed() {	
 		return cb_breed.getSelectedItem().toString();
 }
 	
@@ -328,11 +322,19 @@ public class KennelUI extends JFrame {
 	public String getDogLocation() {
 		return cb_location.getSelectedItem().toString();
 	}
-
+	public String getDogGender() {
+		return cb_Gender.getSelectedItem().toString();
+	}
+	
+	public String getDogFinalSize() {
+		return cb_FinalSize.getSelectedItem().toString();
+	}
+	
 	public String getPersonality() {
 		
 		return cb_Personality.getSelectedItem().toString();
 }
+	
 	// get the button value
 	public String getFurtille() {
 		return groupFurtille.getSelection().getActionCommand();
