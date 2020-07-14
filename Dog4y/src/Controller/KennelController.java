@@ -16,6 +16,5 @@ public class KennelController {
 		this.theView = theView;
 		
 	this.theView.setVisible(true);	
-	
 	}
 }
