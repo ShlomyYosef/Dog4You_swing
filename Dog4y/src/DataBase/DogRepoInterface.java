@@ -15,7 +15,7 @@ public interface DogRepoInterface {
 
 	Set<Dog> findByRace(String race);
 	
-	Set<Dog> findByAge(String age);
+	Set<Dog> findByKennel(String kennel);
 
 	boolean isExist(Dog check);
 }

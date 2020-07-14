@@ -51,7 +51,8 @@ public class KennelUI extends JFrame {
 	private JComboBox cb_age;
 	private JComboBox cb_FinalSize;	
 	private JComboBox cb_Gender;
-	
+	private JList list;
+	private DefaultListModel DLM_result;
 
 	
 	private JRadioButton rb_vaccine_yes;
@@ -89,7 +90,8 @@ public class KennelUI extends JFrame {
 	 * Create the frame.
 	 */
 	public KennelUI() {
-		DogDetails details = new DogDetails();
+		DogDetails details = new DogDetails(); // adding dog details
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 703, 553);
 		contentPane = new JPanel();
@@ -273,10 +275,11 @@ public class KennelUI extends JFrame {
 		btnRemoveDog.setBounds(0, 418, 111, 23);
 		contentPane.add(btnRemoveDog);
 		
-		JList list = new JList();
+		list = new JList();
 		list.setBounds(302, 35, 363, 373);
 		contentPane.add(list);
-		
+	
+		DLM_result=new DefaultListModel();
 			}
 	
 	
@@ -293,10 +296,10 @@ public class KennelUI extends JFrame {
 		btnRemoveDog.addActionListener(remove);
 	}
 	
-//	public void addEditDogListener(ActionListener goBack) {
-//		btn_goBack.addActionListener(goBack);
-//	}
-//	
+	public void addEditDogListener(ActionListener goBack) {
+		btnEditDog.addActionListener(goBack);
+	}
+	
 	
 	public void addSearchListener(ActionListener search) {
 		btn_search.addActionListener(search);
@@ -326,6 +329,7 @@ public class KennelUI extends JFrame {
 	public String getDogLocation() {
 		return cb_location.getSelectedItem().toString();
 	}
+	
 	public String getDogGender() {
 		return cb_Gender.getSelectedItem().toString();
 	}
@@ -365,8 +369,43 @@ public class KennelUI extends JFrame {
 		txtNameDog.setText("");
 	}
 	
+	public void setListResult() {
+		list.setModel(DLM_result);
+	}
+	
+	public Dog getSelectedItem() {
+		return (Dog)list.getSelectedValue();
+	}
+	public int getSelectedIndex() {
+		return list.getSelectedIndex();
+	}
+	
+	public void addItemElementToList(Dog element) {
+		DLM_result.addElement(element);
+	}
+	public void setDetailsForEdit(Dog dog) {
+		
+		txtNameDog.setText(dog.getName());
+		cb_FinalSize.setSelectedItem(dog.getFinalSize());
+		cb_Personality.setSelectedItem(dog.getCharacter());
+		cb_Gender.setSelectedItem(dog.getGender());
+		cb_location.setSelectedItem(dog.getLocation());
+		cb_age.setSelectedItem(dog.getDogAge());
+		
+		rb_furtille_no.setSelected(dog.isFurtille());
+		rb_furtille_yes.setSelected(dog.isFurtille());
+		
+		rb_trained_yes.setSelected(dog.isTamed());
+		rb_trained_no.setSelected(dog.isTamed());
+		
+		rb_vaccine_no.setSelected(dog.isVaccsine());
+		rb_vaccine_yes.setSelected(dog.isVaccsine());
+	}
 	public void exitPage() {
 		Exit();
+	}
+	public void removeItemFromList(int index) {
+			DLM_result.remove(index);
 	}
 }
 	

@@ -148,7 +148,7 @@ public class Dog implements Serializable {
 
 	@Override
 	public String toString() {
-		return " Name:" + Name + ", Breed:" + Breed + ", Character:" + Character + ", FinalSize:" + FinalSize;
+		return " Name: " + Name + "     Breed: " + Breed + "     Character: " + Character + "     FinalSize: " + FinalSize;
 	}
 
 

@@ -117,6 +117,7 @@ public class UserController {
 				
 				
 			}
+			theView.clearText();
 			}
 			catch(Exception err) {
 				theView.displayErrorMessage("Ops! somthing went wrong!");

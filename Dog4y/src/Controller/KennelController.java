@@ -2,6 +2,7 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Set;
 
 import DataBase.ClientRepository;
 import DataBase.DogRepository;
@@ -23,6 +24,8 @@ public class KennelController {
 		this.theView = theView;
 		this.kennelUserName=userName;
 		
+		loadAllDogs(kennelUserName); // loads all the dogs that this kennel added
+		
 	this.theView.setVisible(true);	
 	
 	theView.addGoBackListener(new GoBackListener());
@@ -31,6 +34,7 @@ public class KennelController {
 	
 	theView.addRemoveDogListener(new RemoveDogListener());
 
+	theView.addEditDogListener(new EditDogListener());
 	}
 	
 	
@@ -56,6 +60,29 @@ public class KennelController {
 			}	
 	}
 		
+	class EditDogListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		
+			try {
+				Dog dog = theView.getSelectedItem();
+				
+				theView.setDetailsForEdit(dog);
+				theModel.delete(dog);
+				int index = theView.getSelectedIndex();
+				theView.removeItemFromList(index);
+			}catch(Exception error) {
+				theView.displayErrorMessage("Ops! something went wrong!");
+				
+				
+			}	
+			
+		}
+		
+	}
+	
 	class AddDogListener implements ActionListener{
 
 		@Override
@@ -86,8 +113,11 @@ public class KennelController {
 				
 				
 				
+				
 				if(!dogName.equals("")||!breed.equals("")||!character.equals("")||!finalSize.equals("")||!location.equals("")||!age.equals("")) {
-					theModel.add(new Dog(dogName,breed,character,finalSize,location,age,kennelUserName,gender,vaccine.equals("Yes"),furtille.equals("Yes"),tamed.equals("Yes")));		
+					Dog temp = new Dog(dogName,breed,character,finalSize,location,age,kennelUserName,gender,vaccine.equals("Yes"),furtille.equals("Yes"),tamed.equals("Yes"));
+					theModel.add(temp);	//add dog to db
+					theView.addItemElementToList(temp);// add new dog to list
 					theView.clearText();
 					theView.displayMessage("Dog had been added!");		
 				}
@@ -106,7 +136,18 @@ public class KennelController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			try {
+				Dog dog = theView.getSelectedItem();
+				theModel.delete(dog);
+				int index = theView.getSelectedIndex();
+				theView.removeItemFromList(index);
 			
+				
+			}catch(Exception error) {
+				theView.displayErrorMessage("Ops! something went wrong!");
+				
+				
+			}	
 			
 			
 			
@@ -115,4 +156,21 @@ public class KennelController {
 		
 		
 	}
+
+	public void loadAllDogs(String userName) {
+	Set<Dog> results;
+	
+	results=theModel.findByKennel(userName);
+	if(!results.isEmpty()) {
+		for(Dog dog:results) {
+			if(userName.equals(dog.getKennelUserName())) {
+				theView.addItemElementToList(dog);
+			}
+		}
+		theView.setListResult();
+	}
+	return;
 }
+
+}
+

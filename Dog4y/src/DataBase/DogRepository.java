@@ -67,12 +67,12 @@ public class DogRepository implements DogRepoInterface {
 	}
 
 	@Override
-	public Set<Dog> findByAge(String age) {
+	public Set<Dog> findByKennel(String kennel) {
 		if(!result.isEmpty())
         result.clear();
 		
 		for (Dog dog: dogs) {
-			if(age.equals(dog.getDogAge())) {
+			if(kennel.equals(dog.getKennelUserName())) {
 				result.add(dog);
 			}
 		}

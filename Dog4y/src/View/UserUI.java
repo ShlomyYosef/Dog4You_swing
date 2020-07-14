@@ -18,6 +18,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import model.Dog;
+import model.DogDetails;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -83,6 +84,7 @@ public class UserUI extends JFrame {
 	 * Create the frame.
 	 */
 	public UserUI() {
+		DogDetails details = new DogDetails(); // adding dog details
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 851, 550);
 		contentPane = new JPanel();
@@ -112,13 +114,13 @@ public class UserUI extends JFrame {
 		txtpnAge.setText("Age:");
 		txtpnAge.setBounds(10, 104, 44, 20);
 		contentPane.add(txtpnAge);
-		String[] age1 = {"","0-1","1-2","3-4"};
-		cb_age = new JComboBox(age1);
+		
+		cb_age = new JComboBox(details.getAge());
 		cb_age.setBounds(86, 104, 94, 20);
 		contentPane.add(cb_age);
 		
-		 String[] bre1 = {"","8","9","10"};
-		cb_breed = new JComboBox(bre1);
+		
+		cb_breed = new JComboBox(details.getBreed());
 		cb_breed.setBounds(86, 73, 94, 20);
 		contentPane.add(cb_breed);
 		
@@ -129,8 +131,8 @@ public class UserUI extends JFrame {
 		txtpnLocation.setBounds(10, 137, 57, 20);
 		contentPane.add(txtpnLocation);
 		
-		 String[] loc1 = {"","4","5","6"};
-		cb_location = new JComboBox(loc1);
+		
+		cb_location = new JComboBox(details.getLocation());
 		cb_location.setBounds(86, 135, 94, 20);
 		contentPane.add(cb_location);
 		
@@ -141,8 +143,8 @@ public class UserUI extends JFrame {
 		contentPane.add(txtpnPersonality);
 		txtpnPersonality.setVisible(false);
 		
-		 String[] person = {"","1","2","3"};
-		cb_Presonality = new JComboBox(person);
+		
+		cb_Presonality = new JComboBox(details.getPersonality());
 		cb_Presonality.setBounds(86, 228, 94, 20);
 		contentPane.add(cb_Presonality);
 		cb_Presonality.setVisible(false);
@@ -224,9 +226,9 @@ public class UserUI extends JFrame {
 
 		
 		list = new JList();
-		list.setBounds(317, 104, 462, 362);
+		list.setBounds(274, 22, 530, 444);
 		contentPane.add(list);
-
+		DLM_result=new DefaultListModel();
 		
 		 btn_search = new JButton("Search");
 		 btn_search.setBounds(175, 180, 89, 23);
@@ -236,6 +238,7 @@ public class UserUI extends JFrame {
 		btn_goBack = new JButton("Go back");
 		btn_goBack.setBounds(54, 464, 89, 23);
 		contentPane.add(btn_goBack);
+	
 			}
 	
 	//making the page visible and setting up the user name on top left
@@ -330,6 +333,18 @@ public class UserUI extends JFrame {
 	}
 	
 	public void setListElement(Dog element) {
+		
 		DLM_result.addElement(element);
 	}
+	
+	public void clearText() {
+		groupFurtille.clearSelection();
+		groupTrained.clearSelection();
+		groupVaccine.clearSelection();
+		cb_location.setSelectedIndex(0);
+		cb_Presonality.setSelectedIndex(0);
+		cb_age.setSelectedIndex(0);
+		cb_breed.setSelectedIndex(0);
+	}
+	
 }
