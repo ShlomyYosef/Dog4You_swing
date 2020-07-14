@@ -4,17 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Set;
 
 import Controller.SignUpController.GoBackListener;
 import DataBase.ClientRepository;
 import DataBase.DogRepository;
 import View.Login;
 import View.UserUI;
+import model.Dog;
 
 public class UserController {
 	private UserUI theView;
 	private DogRepository theModel;
-	
+	private boolean advancedOptionFlag=false;
 	
 	
 	public UserController(UserUI theView,DogRepository theModel,String userName) {
@@ -32,7 +34,7 @@ public class UserController {
 		
 	}
 	
-	//goback to login screen 
+	//go back to login screen 
 	class GoBackListener implements ActionListener {
 	
 			@Override
@@ -64,28 +66,57 @@ public class UserController {
 		
 			String 
 			 breed,character,location,age,
-			 vaccsine,furtille,trained;
+			 vaccine,furtille,trained;
+			Set<Dog> result;
 			
 			try {
 			breed = theView.getBreed();
-			character=theView.getPersonality();
 			location=theView.getDogLocation();
 			age=theView.getAge();
-			vaccsine=theView.getVaccine();
-			furtille=theView.getFurtille();
-			trained=theView.getTrained();
+
 			
+			//clear last result .
+			theView.clearList();
 			
-			
-			// check 
-			System.out.println(breed);
-			System.out.println(character);
-			System.out.println(location);
-			System.out.println(age);
-			System.out.println(vaccsine);
-			System.out.println(furtille);
-			System.out.println(trained);
-			
+			if(advancedOptionFlag) { // use advanced search. 
+				vaccine=theView.getVaccine();
+				furtille=theView.getFurtille();
+				trained=theView.getTrained();
+				character=theView.getPersonality();
+				if(breed.equals("")||character.equals("")||location.equals("")||age.equals("")||vaccine.equals("")||furtille.equals("")||trained.equals("")) {
+					theView.displayErrorMessage("Make sure to fill and search fields!");
+				}else {
+					
+				result = theModel.findAdvanced(breed, age, location, character, vaccine.equals("Yes"), trained.equals("Yes"), furtille.equals("Yes"));
+				if(!result.isEmpty()) {
+				for(Dog dog:result) {
+					theView.setListElement(dog); // check if use dog or dog.toString() method
+				}
+				theView.setListResult();
+				}
+				theView.displayErrorMessage("Dog not found!");
+				}		
+			}
+			else {  // not advanced search
+				if(breed.equals("")||age.equals("")||location.equals("")) {
+					theView.displayErrorMessage("Please make sure to chose breed, age and location!");
+				}
+				else {
+					result=theModel.findDogByBreedAgeLocation(breed, age, location);
+					if(!result.isEmpty()) {
+						for(Dog dog:result) {
+							theView.setListElement(dog); // check if use dog or dog.toString() method
+						}
+						theView.setListResult();
+						}
+					else {
+						theView.displayErrorMessage("Dog Not found!");
+					}
+				}
+					
+				
+				
+			}
 			}
 			catch(Exception err) {
 				theView.displayErrorMessage("Ops! somthing went wrong!");
@@ -102,11 +133,13 @@ public class UserController {
 
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-        	boolean flag = false;
+			advancedOptionFlag = false;
          if(e.getStateChange()==1) 
-        	 flag = true;	
+        	 advancedOptionFlag = true;	
 		
-         theView.setAdvancedVisible(flag);
+         theView.setAdvancedVisible(advancedOptionFlag);
 		}
 	}
+	
+	
 }

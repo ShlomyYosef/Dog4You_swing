@@ -20,6 +20,7 @@ public class LoginController {
 		this.theView = theView;
 		
 	this.theView.setVisible(true);	
+	
 	// listener for login button
 	this.theView.addLoginListener(new LoginListener());
 	// listener for login as guest button

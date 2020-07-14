@@ -17,6 +17,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import model.Dog;
+
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
@@ -55,6 +57,8 @@ public class UserUI extends JFrame {
 	private ButtonGroup groupFurtille;
 	private ButtonGroup groupTrained;
 	private ButtonGroup groupVaccine;
+	private DefaultListModel DLM_result;
+	private JList list;
 	/**
 	 * Launch the application.
 	 */
@@ -219,26 +223,14 @@ public class UserUI extends JFrame {
 		groupVaccine.add(rb_vaccine_no);
 
 		
-		JList list = new JList();
+		list = new JList();
 		list.setBounds(317, 104, 462, 362);
 		contentPane.add(list);
 
 		
 		 btn_search = new JButton("Search");
-		 btn_search.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent e) {
-					DefaultListModel DLM=new DefaultListModel();
-					DLM.addElement("shlomy");
-					DLM.addElement("dvir");
-					DLM.addElement("adir");
-					DLM.addElement("daniel");
-					list.setModel(DLM);
-			 }
-		 });
 		 btn_search.setBounds(175, 180, 89, 23);
 		 contentPane.add(btn_search);
-					
-	
 
 		
 		btn_goBack = new JButton("Go back");
@@ -327,5 +319,17 @@ public class UserUI extends JFrame {
 	
 	public void exitPage() {
 		Exit();
+	}
+	
+	public void clearList() {
+		list.removeAll();
+	}
+	
+	public void setListResult() {
+		list.setModel(DLM_result);
+	}
+	
+	public void setListElement(Dog element) {
+		DLM_result.addElement(element);
 	}
 }

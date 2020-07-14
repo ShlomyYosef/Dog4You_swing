@@ -1,6 +1,7 @@
 package DataBase;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 import model.Dog;
@@ -18,6 +19,8 @@ public class DogRepository implements DogRepoInterface {
 		this.fileManager = new FileManager<Dog>(FILENAME);
 		
 		this.dogs = this.fileManager.read();
+		this.result = new HashSet<Dog>();
+		
 	}
 	
 	
@@ -52,7 +55,9 @@ public class DogRepository implements DogRepoInterface {
 	@Override
 	public Set<Dog> findByRace(String race) {
 		// TODO Auto-generated method stub
+		if(!result.isEmpty())
         result.clear();
+		
 		for (Dog dog: dogs) {
 			if(race.equals(dog.getBreed())) {
 				result.add(dog);
@@ -63,7 +68,9 @@ public class DogRepository implements DogRepoInterface {
 
 	@Override
 	public Set<Dog> findByAge(String age) {
+		if(!result.isEmpty())
         result.clear();
+		
 		for (Dog dog: dogs) {
 			if(age.equals(dog.getDogAge())) {
 				result.add(dog);
@@ -81,6 +88,44 @@ public class DogRepository implements DogRepoInterface {
 			}
 		}
 		return false;
+	}
+
+	public Set<Dog> findDogByBreedAgeLocation(String breed,String age,String location){
+		//clear last results
+		if(!result.isEmpty())
+		result.clear();
+		
+	
+		for(Dog dog:dogs) {
+			if(breed.equals(dog.getBreed()) && age.equals(dog.getDogAge()) && location.equals(dog.getLocation())){		
+				result.add(dog);	
+			}
+			}
+		
+			return result;
+	}
+	
+	// if user search by all fields 
+	public Set<Dog>findAdvanced(String breed,String age,String location,String personality,boolean vaccine,boolean tamed,boolean furtille){
+		
+		//clear last results
+		if(!result.isEmpty())
+		result.clear();
+		
+		for(Dog dog:dogs) {
+			if(breed.equals(dog.getBreed()) && 
+			age.equals(dog.getDogAge()) &&
+			location.equals(dog.getLocation()) &&
+			personality.equals(dog.getCharacter())&&
+			tamed==dog.isTamed()&&
+			furtille==dog.isFurtille()&&
+			vaccine==dog.isVaccsine()){
+				
+				result.add(dog);	
+			}
+			
+		}
+		return result;
 	}
 
 }
