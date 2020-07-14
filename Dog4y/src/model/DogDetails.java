@@ -3,7 +3,7 @@ package model;
 public class DogDetails {
 
 	
-	
+	//va
 	private String[] Age = {"","Puppy", "Young","Adult","Senior"};
 	private String[] Personality = {"","Confident", "Shy/Timid","Independent","Friendly","Adaptable"};
 	private String[] Location = {"","South", "Center","North"};

@@ -277,7 +277,7 @@ public class KennelUI extends JFrame {
 		list.setBounds(302, 35, 363, 373);
 		contentPane.add(list);
 		
-//		JList list = new JList();
+////		JList list = new JList();
 //		list.setBounds(317, 104, 462, 362);
 //		contentPane.add(list);
 //		
