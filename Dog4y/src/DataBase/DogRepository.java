@@ -9,7 +9,7 @@ import model.Dog;
 public class DogRepository implements DogRepoInterface {
 	
 	
-	private final String FILENAME = "dogs";
+	private final String FILENAME = "dogsDB";
 	private Set<Dog> dogs;
 	private FileManager<Dog> fileManager;
 	private Set<Dog> result;

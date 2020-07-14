@@ -1,7 +1,13 @@
 package model;
 
-public class Dog {
+import java.io.Serializable;
+
+public class Dog implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String Name;
     private String Breed;
 	private String Character;
@@ -12,9 +18,9 @@ public class Dog {
 	private boolean Vaccsine;
 	private boolean Furtille;
 	private boolean Tamed;
-	
+	private String gender;
 
-	public Dog(String name, String breed, String character, String finalSize, String location, String age, String KennelUserName,
+	public Dog(String name, String breed, String character, String finalSize, String location, String age, String KennelUserName,String gender,
 			boolean vaccsine, boolean furtille, boolean tamed) {
 		
 	setName(name);
@@ -27,6 +33,17 @@ public class Dog {
 	setVaccsine(vaccsine);
 	setFurtille(furtille);
 	setTamed(tamed);	
+	setGender(gender);
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 

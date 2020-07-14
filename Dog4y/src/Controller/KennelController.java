@@ -7,6 +7,7 @@ import DataBase.ClientRepository;
 import DataBase.DogRepository;
 import View.KennelUI;
 import View.Login;
+import model.Dog;
 
 public class KennelController {
 
@@ -21,6 +22,7 @@ public class KennelController {
 		this.theModel = theModel;
 		this.theView = theView;
 		this.kennelUserName=userName;
+		
 	this.theView.setVisible(true);	
 	
 	theView.addGoBackListener(new GoBackListener());
@@ -63,7 +65,13 @@ public class KennelController {
 			String character=null;
 			String finalSize=null;
 			String location=null;
-			String age=null;	
+			String age=null;
+		
+			String vaccine=null;
+			String furtille=null;
+			String tamed=null;
+			String gender=null;
+			
 			try {
 				dogName =theView.getDogName();
 				breed = theView.getBreed();
@@ -71,21 +79,25 @@ public class KennelController {
 				finalSize = theView.getDogFinalSize();
 				location = theView.getDogLocation();
 				age = theView.getAge();
+				gender = theView.getDogGender();
+				vaccine =theView.getVaccine();
+				furtille = theView.getFurtille();
+				tamed = theView.getTrained();
 				
-				if(dogName.equals("")) {
-					
+				
+				
+				if(!dogName.equals("")||!breed.equals("")||!character.equals("")||!finalSize.equals("")||!location.equals("")||!age.equals("")) {
+					theModel.add(new Dog(dogName,breed,character,finalSize,location,age,kennelUserName,gender,vaccine.equals("Yes"),furtille.equals("Yes"),tamed.equals("Yes")));		
+					theView.clearText();
+					theView.displayMessage("Dog had been added!");		
 				}
-				
-			
-				
-				
-			}catch(Exception error) {
-					 theView.displayErrorMessage("Ops ! Something went wrong");
-				 }
-		//	if(dogName.equals("")||)
-			
-			
-			
+				else {
+					theView.displayErrorMessage("Please make sure to fill all fields!");	
+				}
+									
+		}catch(Exception error) {
+				theView.displayErrorMessage("Please make sure to fill all fields!");
+				 }	
 		}
 		
 	}
@@ -94,6 +106,7 @@ public class KennelController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			
 			
 			
 			

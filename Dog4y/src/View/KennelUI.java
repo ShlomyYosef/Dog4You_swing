@@ -306,6 +306,10 @@ public class KennelUI extends JFrame {
 		JOptionPane.showMessageDialog(this,errorMsg);
 	}
 	
+	public void displayMessage(String msg) {
+		JOptionPane.showMessageDialog(this,msg);
+	}
+	
 	public String getDogName() {
 	return txtNameDog.getText();
 	}
@@ -346,6 +350,19 @@ public class KennelUI extends JFrame {
 	
 	public String getTrained() {
 		return groupTrained.getSelection().getActionCommand();
+	}
+	
+	public void clearText() {
+		groupFurtille.clearSelection();
+		groupTrained.clearSelection();
+		groupVaccine.clearSelection();
+		cb_location.setSelectedIndex(0);
+		cb_Personality.setSelectedIndex(0);
+		cb_FinalSize.setSelectedIndex(0);
+		cb_Gender.setSelectedIndex(0);
+		cb_age.setSelectedIndex(0);
+		cb_breed.setSelectedIndex(0);
+		txtNameDog.setText("");
 	}
 	
 	public void exitPage() {
