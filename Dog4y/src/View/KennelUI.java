@@ -268,18 +268,14 @@ public class KennelUI extends JFrame {
 		contentPane.add(btnEditDog);
 		
 		btnRemoveDog = new JButton("Remove Dog");
-		btnRemoveDog.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnRemoveDog.setBounds(0, 418, 111, 23);
 		contentPane.add(btnRemoveDog);
 		
 		list = new JList();
 		list.setBounds(302, 35, 363, 373);
 		contentPane.add(list);
-	
 		DLM_result=new DefaultListModel();
+		
 			}
 	
 	
@@ -383,6 +379,7 @@ public class KennelUI extends JFrame {
 	public void addItemElementToList(Dog element) {
 		DLM_result.addElement(element);
 	}
+	
 	public void setDetailsForEdit(Dog dog) {
 		
 		txtNameDog.setText(dog.getName());

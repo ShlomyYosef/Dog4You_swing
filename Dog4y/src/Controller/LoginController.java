@@ -68,11 +68,10 @@ public class LoginController {
 				
 				ClientRepository model = new ClientRepository(); 
 				
+				AdminController controller = new AdminController(view,model);
+				
 			//	AdminController controller = new AdminController(view,model);    // need to build
-			}
-			
-
-			
+			}		
 			theView.exitPage();
 		}
 		else {

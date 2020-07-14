@@ -46,6 +46,21 @@ public class DogRepository implements DogRepoInterface {
 		this.fileManager.write(this.dogs);
 			
 	}
+	
+	@Override
+	public void deleteAllDogsKennel(String kennelUserName) throws IOException {
+		// TODO Auto-generated method stub
+		if(kennelUserName!=null) {
+			for(Dog dog:dogs) {
+				if(dog.getKennelUserName().equals(kennelUserName)) {
+					dogs.remove(dog);
+				}
+			}
+		}	
+		//save new list to file 
+		this.fileManager.write(this.dogs);
+			
+	}
 
 	@Override
 	public Set<Dog> findAll() {	

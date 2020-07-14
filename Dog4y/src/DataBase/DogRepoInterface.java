@@ -18,4 +18,6 @@ public interface DogRepoInterface {
 	Set<Dog> findByKennel(String kennel);
 
 	boolean isExist(Dog check);
+	
+	public void deleteAllDogsKennel(String kennelUserName) throws IOException;
 }

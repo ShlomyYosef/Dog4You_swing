@@ -1,20 +1,25 @@
 package View;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextPane;
-import javax.swing.JTable;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.TitledBorder;
-import java.awt.Color;
-import javax.swing.UIManager;
-import javax.swing.JButton;
+
+import model.Client;
+import model.Dog;
+
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+
+
 
 public class AdminUI extends JFrame {
 
@@ -22,10 +27,13 @@ public class AdminUI extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private DefaultListModel DLM_result;
+	private JList list;
 	private JPanel contentPane;
-	private JTable table_kennel;
-	private JTable table_user;
-
+	private JButton btn_logout;
+	private JButton btn_remove;
+	private JButton btn_edit;
+	private JButton btn_add;
 	/**
 	 * Launch the application.
 	 */
@@ -33,7 +41,7 @@ public class AdminUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminUI frame = new AdminUI();
+					UserUI frame = new UserUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,73 +49,93 @@ public class AdminUI extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
-	
-
 	private void Exit() {
 		// TODO Auto-generated method stub
 		this.dispose();
 	} 
 	
+	/**
+	 * Create the frame.
+	 */
 	public AdminUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 828, 508);
+		setBounds(100, 100, 447, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		table_kennel = new JTable();
-		table_kennel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Kennels", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		table_kennel.setBounds(10, 22, 344, 280);
-		contentPane.add(table_kennel);
-		
-		table_user = new JTable();
-		table_user.setBorder(new TitledBorder(null, "Users", TitledBorder.CENTER, TitledBorder.TOP, null, Color.BLACK));
-		table_user.setBounds(461, 22, 344, 280);
-		contentPane.add(table_user);
-		
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setBounds(10, 313, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Remove");
-		btnNewButton_1.setBounds(136, 313, 89, 23);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Edit");
-		btnNewButton_2.setBounds(265, 313, 89, 23);
-		contentPane.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("Add");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_3.setBounds(461, 313, 89, 23);
-		contentPane.add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("Remove");
-		btnNewButton_4.setBounds(592, 313, 89, 23);
-		contentPane.add(btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("Edit");
-		btnNewButton_5.setBounds(716, 313, 89, 23);
-		contentPane.add(btnNewButton_5);
-		
-		JButton btn_logout = new JButton("Logout");
-		btn_logout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
 
-	    		new Login().setVisible(true);
-	    		Exit();
-       	    		
-			}
-		});
-		btn_logout.setBounds(716, 438, 89, 23);
+		
+		list = new JList();
+		list.setBounds(10, 0, 401, 356);
+		contentPane.add(list);
+		
+		btn_add = new JButton("Add");
+		btn_add.setBounds(10, 395, 89, 23);
+		contentPane.add(btn_add);
+		
+		btn_edit = new JButton("Edit");
+		btn_edit.setBounds(165, 395, 89, 23);
+		contentPane.add(btn_edit);
+		
+		btn_remove = new JButton("Remove");
+		btn_remove.setBounds(322, 395, 89, 23);
+		contentPane.add(btn_remove);
+		
+		btn_logout = new JButton("logout");
+		btn_logout.setBounds(165, 477, 89, 23);
 		contentPane.add(btn_logout);
+		DLM_result=new DefaultListModel();
+
+
+			}
+	
+	//making the page visible and setting up the user name on top left
+	public void displayPage() {
+		this.setVisible(true);	
+	}
+	
+	public void addGoBackListener(ActionListener goBack) {
+		
+		btn_logout.addActionListener(goBack);
+	}
+	
+	public void addClientListener(ActionListener addUser) {
+		btn_add.addActionListener(addUser);
+	}
+	
+	public void addDeleteListener(ActionListener removeUser) {
+		btn_remove.addActionListener(removeUser);
+	}
+	
+	public void displayErrorMessage(String errorMsg) {
+		JOptionPane.showMessageDialog(this,errorMsg);
+	}
+	
+	public void exitPage() {
+		Exit();
+	}
+	
+	public void clearList() {
+		list.removeAll();
+	}
+	
+	public void setListResult() {
+		list.setModel(DLM_result);
+	}
+	
+	public void addClientToListElement(Client element) {
+		DLM_result.addElement(element);
+	}
+	
+	public void removeItemFromList(int index) {
+		DLM_result.remove(index);
+}
+	public Client getSelectedItem() {
+		return (Client)list.getSelectedValue();
+	}
+	public int getSelectedIndex() {
+		return list.getSelectedIndex();
 	}
 }
