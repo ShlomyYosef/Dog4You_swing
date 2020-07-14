@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
 import model.Dog;
+import model.DogDetails;
 
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
@@ -26,11 +27,11 @@ import javax.swing.JToggleButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class KennelUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextPane txtpn_dear_user;
 	private JButton btn_goBack;
 	private JButton btn_search;
 	private JButton btnAddDog;
@@ -41,7 +42,6 @@ public class KennelUI extends JFrame {
 	private JTextPane txtpnFurtille;
 	private JTextPane txtpnTrained;
 	private JTextPane txtpnVaccine;
-	private JCheckBox cb_AdvancedOptions;
 	private JTextPane txtpnGender;
 
 	
@@ -89,6 +89,7 @@ public class KennelUI extends JFrame {
 	 * Create the frame.
 	 */
 	public KennelUI() {
+		DogDetails details = new DogDetails();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 703, 553);
 		contentPane = new JPanel();
@@ -155,38 +156,34 @@ public class KennelUI extends JFrame {
 		txtpnVaccine.setBounds(10, 290, 57, 20);
 		txtpnVaccine.setEditable(false);
 		contentPane.add(txtpnVaccine);
-		txtpnVaccine.setVisible(false);
 		
 		rb_vaccine_yes = new JRadioButton("Yes");
 		rb_vaccine_yes.setBounds(123, 290, 57, 23);
 		rb_vaccine_yes.setActionCommand("Yes");
 		contentPane.add(rb_vaccine_yes);
-		rb_vaccine_yes.setVisible(false);
+		
 		
 		rb_vaccine_no = new JRadioButton("No");
 		rb_vaccine_no.setBounds(192, 290, 57, 23);
 		rb_vaccine_no.setActionCommand("No");
 		contentPane.add(rb_vaccine_no);
-		rb_vaccine_no.setVisible(false);
+	
 		
 		txtpnTrained = new JTextPane();
 		txtpnTrained.setEditable(false);
 		txtpnTrained.setText("Trained:");
 		txtpnTrained.setBounds(10, 335, 44, 20);
 		contentPane.add(txtpnTrained);
-		txtpnTrained.setVisible(false);
 		
 		rb_trained_yes = new JRadioButton("Yes");
 		rb_trained_yes.setBounds(123, 332, 57, 23);
 		rb_trained_yes.setActionCommand("Yes");
 		contentPane.add(rb_trained_yes);
-		rb_trained_yes.setVisible(false);
 		
 		rb_trained_no = new JRadioButton("No");
 		rb_trained_no.setBounds(192, 332, 44, 23);
 		rb_trained_no.setActionCommand("No");
 		contentPane.add(rb_trained_no);
-		rb_trained_no.setVisible(false);
 		
 		txtpnFurtille = new JTextPane();
 		txtpnFurtille.setEditable(false);
@@ -198,13 +195,11 @@ public class KennelUI extends JFrame {
 		rb_furtille_yes.setBounds(123, 371, 57, 23);
 		rb_furtille_yes.setActionCommand("Yes");
 		contentPane.add(rb_furtille_yes);
-		rb_furtille_yes.setVisible(false);
 		
 		rb_furtille_no = new JRadioButton("No");
 		rb_furtille_no.setBounds(192, 371, 109, 23);
 		rb_furtille_no.setActionCommand("No");
 		contentPane.add(rb_furtille_no);
-		rb_furtille_no.setVisible(false);
 		
 
 		groupFurtille = new ButtonGroup();
@@ -221,27 +216,27 @@ public class KennelUI extends JFrame {
 		groupVaccine.add(rb_vaccine_no);
 
 		
-		cb_location = new JComboBox();
+		cb_location = new JComboBox(details.getLocation());
 		cb_location.setBounds(123, 211, 96, 22);
 		contentPane.add(cb_location);
 		
-		cb_Personality = new JComboBox();
+		cb_Personality = new JComboBox(details.getPersonality());
 		cb_Personality.setBounds(123, 118, 96, 22);
 		contentPane.add(cb_Personality);
 		
-		cb_age = new JComboBox();
+		cb_age = new JComboBox(details.getAge());
 		cb_age.setBounds(123, 149, 96, 22);
 		contentPane.add(cb_age);
 		
-		cb_FinalSize = new JComboBox();
+		cb_FinalSize = new JComboBox(details.getFinalSize());
 		cb_FinalSize.setBounds(123, 178, 96, 22);
 		contentPane.add(cb_FinalSize);
 		
-		cb_breed = new JComboBox();
+		cb_breed = new JComboBox(details.getBreed());
 		cb_breed.setBounds(123, 85, 96, 22);
 		contentPane.add(cb_breed);
 
-		cb_Gender = new JComboBox();
+		cb_Gender = new JComboBox(details.getGender());
 		cb_Gender.setBounds(123, 244, 96, 22);
 		contentPane.add(cb_Gender);
 		
@@ -259,7 +254,7 @@ public class KennelUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAddDog.setBounds(212, 418, 89, 23);
+		btnAddDog.setBounds(218, 418, 89, 23);
 		contentPane.add(btnAddDog);
 		
 		btnEditDog = new JButton("Edit Dog");
@@ -267,11 +262,15 @@ public class KennelUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnEditDog.setBounds(106, 418, 89, 23);
+		btnEditDog.setBounds(123, 418, 89, 23);
 		contentPane.add(btnEditDog);
 		
 		btnRemoveDog = new JButton("Remove Dog");
-		btnRemoveDog.setBounds(0, 418, 96, 23);
+		btnRemoveDog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRemoveDog.setBounds(0, 418, 111, 23);
 		contentPane.add(btnRemoveDog);
 		
 		JList list = new JList();
@@ -300,23 +299,7 @@ public class KennelUI extends JFrame {
 //		
 			}
 	
-	//making the page visible and setting up the user name on top left
-	public void displayPage(String userName) {
-		setDearUserName(userName);
-		this.setVisible(true);	
-	}
 	
-	// set the user name on top left corner
-	public void setDearUserName(String userName) {
-		if(userName!=null)
-		txtpn_dear_user.setText("Dear "+userName+",");
-	}
-	
-	
-	public void addAdvancedListener(ItemListener press) {
-		cb_AdvancedOptions.addItemListener(press);
-	}
-
 
 	public void addGoBackListener(ActionListener goBack) {
 		btn_goBack.addActionListener(goBack);
@@ -330,23 +313,7 @@ public class KennelUI extends JFrame {
 		JOptionPane.showMessageDialog(this,errorMsg);
 	}
 	
-	public void setAdvancedVisible(boolean flag) {
 	
-    	txtpnPersonality.setVisible(flag);
-    	txtpnFurtille.setVisible(flag);
-    	txtpnTrained.setVisible(flag);
-    	txtpnVaccine.setVisible(flag);
-    	
-    	cb_Personality.setVisible(flag);
-    	rb_vaccine_yes.setVisible(flag);
-    	rb_vaccine_no.setVisible(flag);
-    	rb_furtille_yes.setVisible(flag);
-    	rb_furtille_no.setVisible(flag);
-       	rb_trained_yes.setVisible(flag);
-    	rb_trained_no.setVisible(flag);
-	}
-	
-
 	public String getBreed() {
 
 			
