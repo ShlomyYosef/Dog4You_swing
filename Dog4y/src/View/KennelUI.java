@@ -391,14 +391,16 @@ public class KennelUI extends JFrame {
 		cb_Gender.setSelectedItem(dog.getGender());
 		cb_location.setSelectedItem(dog.getLocation());
 		cb_age.setSelectedItem(dog.getDogAge());
+		cb_breed.setSelectedItem(dog.getBreed());
 		
-		rb_furtille_no.setSelected(dog.isFurtille());
+		
+		rb_furtille_no.setSelected(!dog.isFurtille());
 		rb_furtille_yes.setSelected(dog.isFurtille());
 		
 		rb_trained_yes.setSelected(dog.isTamed());
-		rb_trained_no.setSelected(dog.isTamed());
+		rb_trained_no.setSelected(!dog.isTamed());
 		
-		rb_vaccine_no.setSelected(dog.isVaccsine());
+		rb_vaccine_no.setSelected(!dog.isVaccsine());
 		rb_vaccine_yes.setSelected(dog.isVaccsine());
 	}
 	public void exitPage() {

@@ -59,23 +59,22 @@ public class KennelController {
 				 }
 			}	
 	}
-		
+	
+	//handles the edit button
 	class EditDogListener implements ActionListener{
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 		
 			try {
+				theView.displayMessage("Make sure to add the dog after edit,\nOR else the dog will get deleted!");
 				Dog dog = theView.getSelectedItem();
-				
-				theView.setDetailsForEdit(dog);
+				theView.setDetailsForEdit(dog); // setting all the dog details in the text fields 
 				theModel.delete(dog);
-				int index = theView.getSelectedIndex();
-				theView.removeItemFromList(index);
+				int index = theView.getSelectedIndex(); //get selected index
+				theView.removeItemFromList(index); // delete the selected value 
 			}catch(Exception error) {
 				theView.displayErrorMessage("Ops! something went wrong!");
-				
 				
 			}	
 			
