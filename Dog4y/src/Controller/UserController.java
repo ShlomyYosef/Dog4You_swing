@@ -71,30 +71,52 @@ public class UserController {
 			
 			try {
 			breed = theView.getBreed();
-			character=theView.getPersonality();
 			location=theView.getDogLocation();
 			age=theView.getAge();
-			vaccine=theView.getVaccine();
-			furtille=theView.getFurtille();
-			trained=theView.getTrained();
+
+			
 			//clear last result .
 			theView.clearList();
 			
 			if(advancedOptionFlag) { // use advanced search. 
-				if(breed.equals("")&&character.equals("")&&location.equals("")&&age.equals("")&&vaccine.equals("")&&furtille.equals("")&&trained.equals("")) {
+				vaccine=theView.getVaccine();
+				furtille=theView.getFurtille();
+				trained=theView.getTrained();
+				character=theView.getPersonality();
+				if(breed.equals("")||character.equals("")||location.equals("")||age.equals("")||vaccine.equals("")||furtille.equals("")||trained.equals("")) {
 					theView.displayErrorMessage("Make sure to fill and search fields!");
 				}else {
 					
 				result = theModel.findAdvanced(breed, age, location, character, vaccine.equals("Yes"), trained.equals("Yes"), furtille.equals("Yes"));
-				if(result!=null) {
+				if(!result.isEmpty()) {
 				for(Dog dog:result) {
-					theView.setListElement(dog.toString());
+					theView.setListElement(dog); // check if use dog or dog.toString() method
 				}
 				theView.setListResult();
 				}
 				theView.displayErrorMessage("Dog not found!");
 				}		
-			}	
+			}
+			else {  // not advanced search
+				if(breed.equals("")||age.equals("")||location.equals("")) {
+					theView.displayErrorMessage("Please make sure to chose breed, age and location!");
+				}
+				else {
+					result=theModel.findDogByBreedAgeLocation(breed, age, location);
+					if(!result.isEmpty()) {
+						for(Dog dog:result) {
+							theView.setListElement(dog); // check if use dog or dog.toString() method
+						}
+						theView.setListResult();
+						}
+					else {
+						theView.displayErrorMessage("Dog Not found!");
+					}
+				}
+					
+				
+				
+			}
 			}
 			catch(Exception err) {
 				theView.displayErrorMessage("Ops! somthing went wrong!");

@@ -16,6 +16,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import model.Dog;
+
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
@@ -327,8 +329,7 @@ public class UserUI extends JFrame {
 		list.setModel(DLM_result);
 	}
 	
-	public void setListElement(String element) {
+	public void setListElement(Dog element) {
 		DLM_result.addElement(element);
 	}
-
 }
