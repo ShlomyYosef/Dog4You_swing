@@ -32,7 +32,6 @@ public class AdminUI extends JFrame {
 	private JPanel contentPane;
 	private JButton btn_logout;
 	private JButton btn_remove;
-	private JButton btn_edit;
 	private JButton btn_add;
 	/**
 	 * Launch the application.
@@ -74,10 +73,6 @@ public class AdminUI extends JFrame {
 		btn_add = new JButton("Add");
 		btn_add.setBounds(10, 395, 89, 23);
 		contentPane.add(btn_add);
-		
-		btn_edit = new JButton("Edit");
-		btn_edit.setBounds(165, 395, 89, 23);
-		contentPane.add(btn_edit);
 		
 		btn_remove = new JButton("Remove");
 		btn_remove.setBounds(322, 395, 89, 23);

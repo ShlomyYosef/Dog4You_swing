@@ -100,7 +100,7 @@ public class AdminController {
 		
 	}
 	
-	
+	// show all users in the list 
 	public void showAllUsers() {
 		Set<Client> results;
 		
