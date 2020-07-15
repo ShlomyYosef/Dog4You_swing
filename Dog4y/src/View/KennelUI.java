@@ -16,6 +16,7 @@ import model.SingletonDogDetails;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
@@ -365,9 +366,14 @@ public class KennelUI extends JFrame {
 		cb_breed.setSelectedIndex(0);
 		txtNameDog.setText("");
 	}
-	
+	public void AddMouseListener(MouseListener mouseClick) {
+		list.addMouseListener(mouseClick);
+	}
 	public void setListResult() {
 		list.setModel(DLM_result);
+	}
+	public int getListElementSize() {
+		return DLM_result.getSize();
 	}
 	
 	public Dog getSelectedItem() {

@@ -344,8 +344,10 @@ public class UserUI extends JFrame {
 	}
 	
 	public void setListElement(Dog element) {
-		
 		DLM_result.addElement(element);
+	}
+	public int getListElementSize() {
+		return DLM_result.getSize();
 	}
 	
 	public void clearText() {

@@ -2,8 +2,11 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Set;
 
+import Controller.UserController.MouseClick;
 import DataBase.ClientRepository;
 import DataBase.DogRepository;
 import View.KennelUI;
@@ -17,6 +20,7 @@ public class KennelController {
 	private KennelUI theView;
 	private DogRepository theModel;
 	private String kennelUserName;
+	private boolean isDisplay= false;
 	
 	public KennelController(KennelUI theView,DogRepository theModel,String userName) {
 		
@@ -35,6 +39,8 @@ public class KennelController {
 	theView.addRemoveDogListener(new RemoveDogListener());
 
 	theView.addEditDogListener(new EditDogListener());
+	
+	theView.AddMouseListener(new MouseClick());
 	}
 	
 	
@@ -65,10 +71,21 @@ public class KennelController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-		
+		if(theView.getListElementSize()>0) //check if list is empty
 			try {
+				Dog dog;
+				try {
+				dog = theView.getSelectedItem();
+				if(dog==null) {
+					theView.displayErrorMessage("Make Sure to chose a dog!");	
+					return;
+				}
+				}
+				catch(Exception error) {
+				theView.displayErrorMessage("Make Sure to chose a dog!");	
+				return;
+			}	
 				theView.displayMessage("Make sure to add the dog after edit,\nOR else the dog will get deleted!");
-				Dog dog = theView.getSelectedItem();
 				theView.setDetailsForEdit(dog); // setting all the dog details in the text fields 
 				theModel.delete(dog);
 				int index = theView.getSelectedIndex(); //get selected index
@@ -119,6 +136,7 @@ public class KennelController {
 					theView.addItemElementToList(temp);// add new dog to list
 					theView.clearText();
 					theView.displayMessage("Dog had been added!");		
+					isDisplay=true;
 				}
 				else {
 					theView.displayErrorMessage("Please make sure to fill all fields!");	
@@ -131,25 +149,86 @@ public class KennelController {
 		
 	}
 	
+	class MouseClick implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			try {
+			if(isDisplay)
+			if(arg0.getClickCount()==2) {
+				Dog dog = theView.getSelectedItem();
+				
+				theView.displayMessage("Dog Information:\n\n\n"
+				+"Name:  "+dog.getName()
+				+"\n\n"+"Breed:  "+dog.getBreed()
+				+"\n\n"+"Character:  "+dog.getCharacter()
+				+"\n\n"+"Final size:  "+dog.getFinalSize()
+				+"\n\n"+"Location:  "+dog.getLocation()
+				+"\n\n"+"Age:  "+dog.getDogAge()
+				+"\n\n"+"Gender:  "+dog.getFinalSize()
+				+"\n\n"+"Vaccsine:  "+dog.isVaccsine()
+				+"\n\n"+"Furtille:  "+dog.isFurtille()
+				+"\n\n"+"Tamed:  "+dog.isTamed());
+			}
+			}
+			catch(Exception er) {
+				
+			}
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
 	class RemoveDogListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if(theView.getListElementSize()>0) //check if list is empty
 			try {
-				Dog dog = theView.getSelectedItem();
+				Dog dog;
+				try {
+				dog = theView.getSelectedItem();
+				if(dog==null) {
+				theView.displayErrorMessage("Make Sure to chose a dog!");	
+				return;
+				}
+				}
+				catch(Exception error) {
+				theView.displayErrorMessage("Make Sure to chose a dog!");	
+				return;
+			}	
 				theModel.delete(dog);
 				int index = theView.getSelectedIndex();
 				theView.removeItemFromList(index);
 			
 				
 			}catch(Exception error) {
-				theView.displayErrorMessage("Ops! something went wrong!");
-				
-				
+				theView.displayErrorMessage("Ops! something went wrong!");	
 			}	
-			
-			
-			
 		}
 		
 		
@@ -161,13 +240,14 @@ public class KennelController {
 	
 	results=theModel.findByKennel(userName);
 	if(!results.isEmpty()) {
+		isDisplay=true;
 		for(Dog dog:results) {
 			if(userName.equals(dog.getKennelUserName())) {
 				theView.addItemElementToList(dog);
 			}
-		}
-		theView.setListResult();
+		}		
 	}
+	theView.setListResult();
 	return;
 }
 

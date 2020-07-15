@@ -43,6 +43,7 @@ public class UserController {
 
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
+			try {
 			if(isDisplay)
 			if(arg0.getClickCount()==2) {
 				Dog dog = theView.getSelectedItem();
@@ -58,6 +59,10 @@ public class UserController {
 				+"\n\n"+"Vaccsine:  "+dog.isVaccsine()
 				+"\n\n"+"Furtille:  "+dog.isFurtille()
 				+"\n\n"+"Tamed:  "+dog.isTamed());
+			}
+			}
+			catch(Exception er) {
+				
 			}
 			
 		}
