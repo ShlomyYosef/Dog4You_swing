@@ -19,5 +19,27 @@ public interface ClientRepositoryInterface {
 		
 		boolean check_login(String userName,char[] password);
 
-
+		boolean isValidEmail(String email);
+		
+		Client findByEmail (String email);
+		
+		boolean isUserNameExist(String userName);
+		
+		boolean isEmailExist(String email);
+		
+		 boolean isValidName(String str);
+		 
+		 boolean isValidPhone (String number);
+		 
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
+

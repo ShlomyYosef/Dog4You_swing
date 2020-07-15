@@ -56,14 +56,25 @@ public class LoginController {
 		}
 		else {
 			// put out an error msg 
-			theView.displayErrorMessage("Please check your username or password is currect");
+			if(userName ==""||password.length == 0) {
+				theView.displayErrorMessage("user/password can not be empty");
+			}
+			else {
+				
+			
+				if (theModel.isExist(userName)) {
+					theView.displayErrorMessage("Invalid password! please try again");
+				}
+				else {
+					theView.displayErrorMessage("User does not exist");
+				}
+		    }
 		}
-		
 		}
 		// needs to put a proper message .
 		catch(Exception error) {
 			
-			theView.displayErrorMessage("Ops ! Something went wrong");
+			theView.displayErrorMessage("Ops! Something went wrong");
 		}
 			
 			
@@ -105,7 +116,7 @@ public class LoginController {
 							
 				SignUpUI view = new SignUpUI();
 				
-				ClientRepository dog = new ClientRepository(); 
+				ClientRepository dog = new ClientRepository("clients"); 
 				
 				SignUpController controller = new SignUpController(view,dog);
 				

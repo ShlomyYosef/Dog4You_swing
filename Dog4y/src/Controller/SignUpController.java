@@ -54,27 +54,40 @@ public class SignUpController {
 			 if(lastName.equals("")||password.equals("")||phoneNumber.equals("")||address.equals("")||email.equals("")||userName.equals("")||firstName.equals("")) { 
 				 theView.displayErrorMessage("Please make sure to fill all details!");
 			 }
+			 else if (!theModel.isValidName(firstName)||!theModel.isValidName(lastName)){
+				 theView.displayErrorMessage("Error! name must contain only letters!");
+				 }
+			 else if (!theModel.isValidEmail(email)) {
+				 theView.displayErrorMessage("Error! Invalid Email!");
+			 }
+			 else if (!theModel.isValidPhone(phoneNumber)) {
+				 theView.displayErrorMessage("Error! Invalid phone number!");
+			 }
+			 else if(theModel.isEmailExist(email)){
+				 theView.displayErrorMessage("Error! This email already taken!");
+
+			 }
+			 
 			 else {
 				 
 				 // adding user and go back to login screen.
-				 if(!theModel.isExist(userName)) {
+				 if(!theModel.isUserNameExist(userName)) {
 					theModel.add(new Client(email,userName,new String(password),firstName,lastName,address,phoneNumber,permissions));
 					
 					Login log = new Login();
 					
-					ClientRepository model = new ClientRepository();
+					ClientRepository model = new ClientRepository("clients");
 					
 					
 					LoginController logController = new LoginController(log,model);		
-					
+					theView.displayErrorMessage("user created successfully");
 					theView.exitPage();
 				 }
-				 else // user already exists 
+				 else {// user already exists 
 				 theView.displayErrorMessage("This user name is taken!");
 				 theView.setFocusUserName();
 			 }
-			 
-			 
+			 }
 			 
 			 
 			 }
@@ -92,7 +105,7 @@ public class SignUpController {
 			try {
 			Login log = new Login();
 			
-			ClientRepository model = new ClientRepository();
+			ClientRepository model = new ClientRepository("clients");
 			
 			
 			LoginController logController = new LoginController(log,model);		

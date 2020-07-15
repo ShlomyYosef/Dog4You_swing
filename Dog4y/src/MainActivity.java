@@ -14,7 +14,7 @@ public class MainActivity {
 		try{
 			Login log = new Login();
 			
-			ClientRepository model = new ClientRepository();
+			ClientRepository model = new ClientRepository("clients");
 					
 			LoginController logController = new LoginController(log,model);
 		}
