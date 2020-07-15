@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Set;
 
 import Controller.SignUpController.GoBackListener;
@@ -17,6 +19,7 @@ public class UserController {
 	private UserUI theView;
 	private DogRepository theModel;
 	private boolean advancedOptionFlag=false;
+	private boolean isDisplay =false;
 	
 	
 	public UserController(UserUI theView,DogRepository theModel,String userName) {
@@ -32,8 +35,58 @@ public class UserController {
 		
 		theView.addAdvancedListener(new AdvancedListener());
 		
+		theView.AddMouseListener(new MouseClick());
 	}
 	
+	
+	class MouseClick implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			if(isDisplay)
+			if(arg0.getClickCount()==2) {
+				Dog dog = theView.getSelectedItem();
+				
+				theView.displayMessage("Dog Information:\n\n\n"
+				+"Name:  "+dog.getName()
+				+"\n\n"+"Breed:  "+dog.getBreed()
+				+"\n\n"+"Character:  "+dog.getCharacter()
+				+"\n\n"+"Final size:  "+dog.getFinalSize()
+				+"\n\n"+"Location:  "+dog.getLocation()
+				+"\n\n"+"Age:  "+dog.getDogAge()
+				+"\n\n"+"Gender:  "+dog.getFinalSize()
+				+"\n\n"+"Vaccsine:  "+dog.isVaccsine()
+				+"\n\n"+"Furtille:  "+dog.isFurtille()
+				+"\n\n"+"Tamed:  "+dog.isTamed());
+			}
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
 	//go back to login screen 
 	class GoBackListener implements ActionListener {
 	
@@ -79,16 +132,23 @@ public class UserController {
 			theView.clearList();
 			
 			if(advancedOptionFlag) { // use advanced search. 
+				try {
 				vaccine=theView.getVaccine();
 				furtille=theView.getFurtille();
 				trained=theView.getTrained();
 				character=theView.getPersonality();
+				}catch(Exception errr) {
+					theView.displayErrorMessage("Please make sure to fill all fields!");
+					return;
+				}
+
 				if(breed.equals("")||character.equals("")||location.equals("")||age.equals("")||vaccine.equals("")||furtille.equals("")||trained.equals("")) {
 					theView.displayErrorMessage("Make sure to fill and search fields!");
 				}else {
 					
 				result = theModel.findAdvanced(breed, age, location, character, vaccine.equals("Yes"), trained.equals("Yes"), furtille.equals("Yes"));
 				if(!result.isEmpty()) {
+					isDisplay=true;
 				for(Dog dog:result) {
 					theView.setListElement(dog); // check if use dog or dog.toString() method
 				}
@@ -104,6 +164,7 @@ public class UserController {
 				else {
 					result=theModel.findDogByBreedAgeLocation(breed, age, location);
 					if(!result.isEmpty()) {
+						isDisplay=true;
 						for(Dog dog:result) {
 							theView.setListElement(dog); // check if use dog or dog.toString() method
 						}
@@ -111,12 +172,11 @@ public class UserController {
 						}
 					else {
 						theView.displayErrorMessage("Dog Not found!");
+						
 					}
-				}
-					
-				
-				
+				}	
 			}
+			
 			theView.clearText();
 			}
 			catch(Exception err) {

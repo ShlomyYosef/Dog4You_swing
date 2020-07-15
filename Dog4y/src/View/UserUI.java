@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.List;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -259,6 +260,9 @@ public class UserUI extends JFrame {
 		cb_AdvancedOptions.addItemListener(press);
 	}
 
+	public void AddMouseListener(MouseListener mouseClick) {
+		list.addMouseListener(mouseClick);
+	}
 
 	public void addGoBackListener(ActionListener goBack) {
 		btn_goBack.addActionListener(goBack);
@@ -272,6 +276,9 @@ public class UserUI extends JFrame {
 		JOptionPane.showMessageDialog(this,errorMsg);
 	}
 	
+	public void displayMessage(String errorMsg) {
+		JOptionPane.showMessageDialog(this,errorMsg);
+	}
 	public void setAdvancedVisible(boolean flag) {
 	
     	txtpnPersonality.setVisible(flag);
@@ -321,12 +328,15 @@ public class UserUI extends JFrame {
 		return groupTrained.getSelection().getActionCommand();
 	}
 	
+	public Dog getSelectedItem() {
+		return (Dog)list.getSelectedValue();
+	}
 	public void exitPage() {
 		Exit();
 	}
 	
 	public void clearList() {
-		list.removeAll();
+		DLM_result.removeAllElements();
 	}
 	
 	public void setListResult() {
