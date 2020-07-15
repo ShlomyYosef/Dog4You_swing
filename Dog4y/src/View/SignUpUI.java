@@ -233,7 +233,6 @@ public class SignUpUI extends JFrame {
 	
 	
 	// get string from textBox
-	
 	public String getFirstName() {
 		return txt_FirstName.getText();
 	}

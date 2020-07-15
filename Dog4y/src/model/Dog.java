@@ -1,32 +1,54 @@
 package model;
 
-public class Dog {
+import java.io.Serializable;
+
+public class Dog implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String Name;
-    private String Race;
+    private String Breed;
 	private String Character;
 	private String FinalSize;
 	private String Location;
-	private int dogAge;
-	private int KennelId;
+	private String dogAge;
+	private String KennelUserName;
 	private boolean Vaccsine;
 	private boolean Furtille;
 	private boolean Tamed;
-	
+	private String gender;
 
-	public Dog(String name, String race, String character, String finalSize, String location, int age, int kennelId,
+	public Dog(String name, String breed, String character, String finalSize, String location, String age, String KennelUserName,String gender,
 			boolean vaccsine, boolean furtille, boolean tamed) {
 		
 	setName(name);
-	setRace(race);
+	setBreed(breed);
 	setCharacter(character);
 	setFinalSize(finalSize);
 	setLocation(location);
 	setDogAge(age);
-	setKennelId(kennelId);
+	setKennelUserName(KennelUserName);
 	setVaccsine(vaccsine);
 	setFurtille(furtille);
 	setTamed(tamed);	
+	setGender(gender);
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+	private void setDogAge(String age) {
+		this.dogAge = age;	
 	}
 
 
@@ -35,8 +57,8 @@ public class Dog {
 	}
 
 
-	public String getRace() {
-		return this.Race;
+	public String getBreed() {
+		return this.Breed;
 	}
 
 
@@ -55,13 +77,8 @@ public class Dog {
 	}
 
 
-	public int getDogAge() {
+	public String getDogAge() {
 		return this.dogAge;
-	}
-
-
-	public int getKennelId() {
-		return this.KennelId;
 	}
 
 
@@ -85,8 +102,8 @@ public class Dog {
 	}
 
 
-	public void setRace(String race) {
-		this.Race = race;
+	public void setBreed(String breed) {
+		this.Breed = breed;
 	}
 
 
@@ -104,17 +121,6 @@ public class Dog {
 		this.Location = location;
 	}
 
-
-	public void setDogAge(int dogId) {
-		this.dogAge = dogId;
-	}
-
-
-	public void setKennelId(int kennelId) {
-		this.KennelId = kennelId;
-	}
-
-
 	public void setVaccsine(boolean vaccsine) {
 		this.Vaccsine = vaccsine;
 	}
@@ -127,6 +133,22 @@ public class Dog {
 
 	public void setTamed(boolean tamed) {
 		this.Tamed = tamed;
+	}
+
+
+	public String getKennelUserName() {
+		return this.KennelUserName;
+	}
+
+
+	public void setKennelUserName(String kennelUserName) {
+		this.KennelUserName = kennelUserName;
+	}
+
+
+	@Override
+	public String toString() {
+		return " Name: " + Name + "     Breed: " + Breed + "     Character: " + Character + "     FinalSize: " + FinalSize;
 	}
 
 

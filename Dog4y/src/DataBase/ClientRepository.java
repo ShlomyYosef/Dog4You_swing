@@ -57,6 +57,13 @@ public class ClientRepository implements ClientRepositoryInterface{
 		}
 		return null;
 	}
+	//get the user premissions
+	public String getClientPremission(String name) {
+		Client temp;
+		temp = this.findByName(name);
+		
+		return temp.getPermission();
+	}
 
 	@Override
 	public boolean isExist(String userName) {

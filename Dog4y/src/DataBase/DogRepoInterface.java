@@ -15,7 +15,9 @@ public interface DogRepoInterface {
 
 	Set<Dog> findByRace(String race);
 	
-	Set<Dog> findByAge(int age);
+	Set<Dog> findByKennel(String kennel);
 
 	boolean isExist(Dog check);
+	
+	public void deleteAllDogsKennel(String kennelUserName) throws IOException;
 }

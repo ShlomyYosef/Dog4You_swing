@@ -3,6 +3,7 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import DataBase.ClientRepository;
+import View.AdminUI;
 import View.Login;
 import View.SignUpUI;
 import model.Client;
@@ -12,7 +13,7 @@ public class SignUpController {
 
 	private ClientRepository theModel;
 	private SignUpUI theView;
-	
+	private boolean permisson=false;
 	public  SignUpController(SignUpUI theView,ClientRepository theModel) {
 		
 		this.theModel = theModel;
@@ -23,6 +24,17 @@ public class SignUpController {
 		theView.addGoBackListener(new GoBackListener());
 	}
 	
+	public SignUpController(SignUpUI theView,ClientRepository theModel,boolean permisson) {
+		
+		this.theModel = theModel;
+		this.theView = theView;
+		
+		theView.displayPage();
+		theView.addSignUpListener(new SignUpListener());
+		theView.addGoBackListener(new GoBackListener());
+		this.permisson=permisson;
+		
+	}
 	//SignUpListener class handle the button press
 	class SignUpListener implements ActionListener{
 
@@ -58,15 +70,22 @@ public class SignUpController {
 				 
 				 // adding user and go back to login screen.
 				 if(!theModel.isExist(userName)) {
+					 
 					theModel.add(new Client(email,userName,new String(password),firstName,lastName,address,phoneNumber,permissions));
-					
+					if(permisson) {
+						AdminUI view = new AdminUI();
+						
+						ClientRepository model = new ClientRepository(); 
+						
+						AdminController controller = new AdminController(view,model);
+					}else {
 					Login log = new Login();
 					
 					ClientRepository model = new ClientRepository();
 					
 					
 					LoginController logController = new LoginController(log,model);		
-					
+					}
 					theView.exitPage();
 				 }
 				 else // user already exists 
