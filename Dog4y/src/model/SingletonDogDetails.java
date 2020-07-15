@@ -1,9 +1,8 @@
 package model;
 
-public class DogDetails {
+public class SingletonDogDetails {
 
-	
-	//va
+	private static SingletonDogDetails firstInstance=null;
 	private String[] Age = {"","Puppy", "Young","Adult","Senior"};
 	private String[] Personality = {"","Confident", "Shy/Timid","Independent","Friendly","Adaptable"};
 	private String[] Location = {"","South", "Center","North"};
@@ -11,6 +10,16 @@ public class DogDetails {
 	private String[] FinalSize = {"","Small","Medium","Large"};
 	private String[] Gender = {"","male", "female"};
 	
+	
+	private  SingletonDogDetails() {}
+	
+	public static SingletonDogDetails getInstance() {
+		if(firstInstance==null) {
+			firstInstance = new SingletonDogDetails();
+		}
+		return firstInstance;
+	}
+
 
 	
 	

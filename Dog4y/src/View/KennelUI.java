@@ -11,7 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
 import model.Dog;
-import model.DogDetails;
+import model.SingletonDogDetails;
 
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
@@ -90,7 +90,8 @@ public class KennelUI extends JFrame {
 	 * Create the frame.
 	 */
 	public KennelUI() {
-		DogDetails details = new DogDetails(); // adding dog details
+		
+		SingletonDogDetails details = SingletonDogDetails.getInstance();// adding dog details
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 703, 553);

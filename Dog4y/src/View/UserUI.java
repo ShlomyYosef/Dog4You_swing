@@ -18,7 +18,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import model.Dog;
-import model.DogDetails;
+import model.SingletonDogDetails;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -84,7 +84,8 @@ public class UserUI extends JFrame {
 	 * Create the frame.
 	 */
 	public UserUI() {
-		DogDetails details = new DogDetails(); // adding dog details
+		SingletonDogDetails details = SingletonDogDetails.getInstance();// adding dog details
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 851, 550);
 		contentPane = new JPanel();
