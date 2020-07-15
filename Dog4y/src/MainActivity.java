@@ -12,6 +12,7 @@ public class MainActivity {
 	public static void main(String[] args) throws Exception {
 	
 		try{
+			//main
 			Login view = new Login();
 			
 			ClientRepository model = new ClientRepository();
