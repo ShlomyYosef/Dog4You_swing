@@ -24,7 +24,7 @@ public class DogRepository implements DogRepoInterface {
 		
 	}
 	
-	
+	// add one dog
 	@Override
 	public void add(Dog dog) throws Exception {
 		// TODO Auto-generated method stub
@@ -35,7 +35,7 @@ public class DogRepository implements DogRepoInterface {
 		//save new list to file 
 		this.fileManager.write(this.dogs);
 	}
-
+//delete one dog
 	@Override
 	public void delete(Dog dog) throws IOException {
 		// TODO Auto-generated method stub
@@ -47,6 +47,7 @@ public class DogRepository implements DogRepoInterface {
 			
 	}
 	
+	// this function deletes all dogs from the same kennel 
 	@Override
 	public void deleteAllDogsKennel(String kennelUserName) throws IOException {
 		// TODO Auto-generated method stub
