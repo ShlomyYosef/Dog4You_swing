@@ -33,7 +33,7 @@ public class AdminController {
 		
 		theView.addDeleteListener(new DeleteClientListener());
 	}
-	
+	//update 
 	class DeleteClientListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -49,8 +49,7 @@ public class AdminController {
 				theView.removeItemFromList(index);	
 			}catch(Exception error) {
 				theView.displayErrorMessage("Ops! something went wrong!");	
-			}
-			
+			}		
 		}			
 	}
 	
