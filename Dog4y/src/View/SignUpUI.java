@@ -225,7 +225,7 @@ public class SignUpUI extends JFrame {
 		lblDs.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDs.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDs.setBounds(-15, 11, 897, 531);
-		lblDs.setIcon(new ImageIcon(SignUpUI.class.getResource("/Image/3232.jpg")));
+		lblDs.setIcon(new ImageIcon(SignUpUI.class.getResource("/Image/signup.jpg")));
 		contentPane.add(lblDs);
 		
 			}

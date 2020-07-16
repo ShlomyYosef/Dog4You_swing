@@ -2,6 +2,7 @@ package View;
 
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.List;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -9,13 +10,16 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import model.Dog;
@@ -26,6 +30,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
 
 
 
@@ -61,6 +68,7 @@ public class UserUI extends JFrame {
 	private ButtonGroup groupVaccine;
 	private DefaultListModel DLM_result;
 	private JList list;
+	private JLabel lblNewLabel;
 	/**
 	 * Launch the application.
 	 */
@@ -226,9 +234,11 @@ public class UserUI extends JFrame {
 		groupVaccine.add(rb_vaccine_yes);
 		groupVaccine.add(rb_vaccine_no);
 
-		
+				
 		list = new JList();
-		list.setBounds(274, 22, 530, 444);
+		list.setValueIsAdjusting(true);
+		list.setBackground(SystemColor.info);
+		list.setBounds(298, 0, 529, 513);
 		contentPane.add(list);
 		DLM_result=new DefaultListModel();
 		
@@ -238,9 +248,22 @@ public class UserUI extends JFrame {
 
 		
 		btn_goBack = new JButton("Go back");
+		btn_goBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btn_goBack.setBounds(54, 464, 89, 23);
 		contentPane.add(btn_goBack);
-	
+		
+		
+		JLabel lblDs = new JLabel("");
+		lblDs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDs.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDs.setBounds(155, 341, 133, 146);
+		lblDs.setIcon(new ImageIcon(SignUpUI.class.getResource("/Image/dog-icon.png")));
+		contentPane.add(lblDs);
+		
+		
 			}
 	
 	//making the page visible and setting up the user name on top left
