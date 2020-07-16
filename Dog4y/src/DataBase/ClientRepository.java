@@ -2,22 +2,27 @@ package DataBase;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import model.Client;
 
 
-
-
-
 public class ClientRepository implements ClientRepositoryInterface{
 	
-	private final String FILENAME = "clients";
+	private String FILENAME;
 	private Set<Client> users;
 	private FileManager<Client> fileManager;
 	
 	public ClientRepository() throws IOException, ClassNotFoundException {
-		this.fileManager = new FileManager<Client>(FILENAME);
-		
+		this.fileManager = new FileManager<Client>("clients");
+		this.FILENAME="clients";
+
+		this.users = this.fileManager.read();
+	}
+	
+	public ClientRepository(String fileName) throws IOException, ClassNotFoundException {
+		this.fileManager = new FileManager<Client>(fileName);
+		this.FILENAME=fileName;
 		this.users = this.fileManager.read();
 	}
 	
@@ -89,6 +94,78 @@ public class ClientRepository implements ClientRepositoryInterface{
 		System.out.print(password);
 		
 		return false;
+	}
+	
+	@Override
+	public Client findByEmail (String email) {
+		for (Client user : users) {
+			if (email.equals(user.getEmail())) {
+				return user;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean isUserNameExist(String userName) {
+		if(findByName(userName)==null)
+			return false;
+		else 
+			return true;
+	}
+	
+	@Override
+	public boolean isEmailExist(String email) {
+		if(findByEmail(email)==null)
+			return false;
+		return true;
+	}
+
+
+@Override
+	public boolean isValidName(String str) {
+        char[] strCharArray = str.toCharArray();
+
+		 for (char charInArray : strCharArray)
+	        {
+		         if (!(Character.isLetter(charInArray)))
+		        	 return false;
+	        }
+		 return true;
+	}
+	
+	@Override
+    public boolean isValidEmail(String email) 
+    { 
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        return pat.matcher(email).matches(); 
+    } 
+    
+	@Override
+    public boolean isValidPhone (String number) {
+    	char [] phoneNumberInArray= number.toCharArray();
+    	boolean isValid=true;
+    	if (phoneNumberInArray.length<9) {
+    		isValid=false;
+    	}
+    	else {
+    	}
+    		for(int i=0; i<phoneNumberInArray.length; i++) {
+    			if (!Character.isDigit(phoneNumberInArray[i])) {
+    				isValid =false;
+    				break;
+    		}
+    	}
+    	
+    	return isValid;
+    }
+
+	public Set<Client> getUsers() {
+		return users;
 	}
 
 }

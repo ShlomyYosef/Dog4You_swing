@@ -8,6 +8,11 @@ public class Dog implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 	private String Name;
     private String Breed;
 	private String Character;
