@@ -2,6 +2,7 @@ package DataBase;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import model.Dog;
@@ -29,8 +30,7 @@ public class DogRepository implements DogRepoInterface {
 		// TODO Auto-generated method stub
 		if(dog==null) {
 			throw new Exception("must have a value");
-		}
-			
+		}	
 		dogs.add(dog);
 		//save new list to file 
 		this.fileManager.write(this.dogs);
@@ -51,15 +51,22 @@ public class DogRepository implements DogRepoInterface {
 	public void deleteAllDogsKennel(String kennelUserName) throws IOException {
 		// TODO Auto-generated method stub
 		if(kennelUserName!=null) {
-			for(Dog dog:dogs) {
-				if(dog.getKennelUserName().equals(kennelUserName)) {
-					dogs.remove(dog);
+			System.out.println(dogs.size());
+			try {
+				Iterator<Dog> iter;
+				for(iter = dogs.iterator(); iter.hasNext(); ) {
+					Dog dog = iter.next();
+				    if(kennelUserName.equals(dog.getKennelUserName())){
+				        iter.remove();
+				    } 
 				}
+			}
+			catch(Exception err) {
+				System.out.println(err);
 			}
 		}	
 		//save new list to file 
-		this.fileManager.write(this.dogs);
-			
+		this.fileManager.write(this.dogs);		
 	}
 
 	@Override

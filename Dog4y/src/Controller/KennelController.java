@@ -41,6 +41,7 @@ public class KennelController {
 	theView.addEditDogListener(new EditDogListener());
 	
 	theView.AddMouseListener(new MouseClick());
+	
 	}
 	
 	
