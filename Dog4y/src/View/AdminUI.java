@@ -17,6 +17,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -58,7 +59,7 @@ public class AdminUI extends JFrame {
 	 */
 	public AdminUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 447, 550);
+		setBounds(100, 100, 587, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,7 +68,7 @@ public class AdminUI extends JFrame {
 
 		
 		list = new JList();
-		list.setBounds(10, 0, 401, 356);
+		list.setBounds(10, 0, 524, 356);
 		contentPane.add(list);
 		
 		btn_add = new JButton("Add");
@@ -75,11 +76,11 @@ public class AdminUI extends JFrame {
 		contentPane.add(btn_add);
 		
 		btn_remove = new JButton("Remove");
-		btn_remove.setBounds(322, 395, 89, 23);
+		btn_remove.setBounds(445, 395, 89, 23);
 		contentPane.add(btn_remove);
 		
 		btn_logout = new JButton("logout");
-		btn_logout.setBounds(165, 477, 89, 23);
+		btn_logout.setBounds(249, 477, 89, 23);
 		contentPane.add(btn_logout);
 		DLM_result=new DefaultListModel();
 

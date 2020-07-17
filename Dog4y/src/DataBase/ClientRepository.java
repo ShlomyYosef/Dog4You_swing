@@ -19,6 +19,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 		this.fileManager = new FileManager<Client>(FILENAME);
 		
 		this.users = this.fileManager.read();
+		createAdmin();
 	}
 	
 	
@@ -101,4 +102,14 @@ public class ClientRepository implements ClientRepositoryInterface{
 		return false;
 	}
 
+	private void createAdmin() {
+		if(users.size()==0) {		
+			try {
+			users.add(new Client("Dog4you@gmail.com","Admin","Admin","Admin","","","","Admin"));
+			}
+			catch(Exception error) {
+				System.out.println("Error! something went wrong while creating admin");
+			}
+		}
+	}
 }

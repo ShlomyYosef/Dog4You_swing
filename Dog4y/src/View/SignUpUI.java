@@ -49,7 +49,7 @@ public class SignUpUI extends JFrame {
 	private JTextField txt_UserName;
 	private JPasswordField passwordField;
 	private JComboBox cb_Permissions;
-    private String[] permission = { "User","Kennel","Admin"};
+    private String[] permission = { "User","Kennel"};
     private JButton btn_signUp;
     JButton btn_goBack;
 	/**
