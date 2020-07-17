@@ -90,7 +90,7 @@ public class Login extends JFrame {
 		txt_user_name.setColumns(10);
 
 		btn_login = new JButton("Log in");	
-		btn_login.setBounds(59, 376, 91, 23);
+		btn_login.setBounds(67, 344, 85, 23);
 		contentPane.add(btn_login);
 		
 		btn_sign_in = new JButton("Sign up");
@@ -98,7 +98,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btn_sign_in.setBounds(299, 376, 91, 23);
+		btn_sign_in.setBounds(296, 344, 85, 23);
 		contentPane.add(btn_sign_in);
 		
 		btn_guest = new JButton("Continue as a guest");
@@ -106,7 +106,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btn_guest.setBounds(149, 420, 149, 53);
+		btn_guest.setBounds(148, 390, 149, 53);
 		contentPane.add(btn_guest);
 		
 		btn_contact  = new JButton("Contact us");		
@@ -118,11 +118,7 @@ public class Login extends JFrame {
 		contentPane.add(lblWantYourAds);
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/Image/banner.jpg")));
-		lblNewLabel_1.setBounds(332, 27, 99, 53);
-		contentPane.add(lblNewLabel_1);
-	
+
 		
 		lblNewLabel_2 = new JLabel("Welcome to Dog4y");
 		lblNewLabel_2.setForeground(SystemColor.activeCaption);
@@ -135,7 +131,11 @@ public class Login extends JFrame {
 		lblNewLabel_3.setFont(new Font("Georgia", Font.BOLD, 18));
 		lblNewLabel_3.setBounds(138, 45, 160, 35);
 		contentPane.add(lblNewLabel_3);
-		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/Image/banner.jpg")));
+		lblNewLabel_1.setBounds(332, 27, 99, 53);
+		contentPane.add(lblNewLabel_1);
+	
 		lblNewLabel_4 = new JLabel("Username:");
 		lblNewLabel_4.setForeground(SystemColor.activeCaptionText);
 		lblNewLabel_4.setFont(new Font("Georgia", Font.BOLD, 22));

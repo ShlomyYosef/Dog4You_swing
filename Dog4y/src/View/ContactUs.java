@@ -74,7 +74,7 @@ public class ContactUs extends JFrame {
 	 
 		btn_goBack = new JButton("Go back");
 		btn_goBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn_goBack.setBounds(10, 209, 672, 51);
+		btn_goBack.setBounds(-20, 209, 739, 51);
 		contentPane.add(btn_goBack);
 		
 		
