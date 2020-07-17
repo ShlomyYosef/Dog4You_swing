@@ -37,8 +37,7 @@ public class SignUpController {
 		theView.addGoBackListener(new GoBackListener());
 		
 		this.permisson=permisson;
-		this.help = new Helper();
-		
+		this.help = new Helper();	
 	}
 	
 	

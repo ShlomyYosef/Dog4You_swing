@@ -59,7 +59,8 @@ public class UserController {
 				+"\n\n"+"Vaccsine:  "+dog.isVaccsine()
 				+"\n\n"+"Furtille:  "+dog.isFurtille()
 				+"\n\n"+"Tamed:  "+dog.isTamed()
-				+"\n\n"+"Contact us:  "+dog.getKennelPhone());
+				+"\n\n"+"Contact us:  "+dog.getKennelPhone()
+				+"\n");
 			}
 			}
 			catch(Exception er) {
