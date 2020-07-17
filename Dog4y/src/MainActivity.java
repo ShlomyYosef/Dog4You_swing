@@ -12,7 +12,8 @@ public class MainActivity {
 	public static void main(String[] args) throws Exception {
 	
 		try{
-			//main
+			
+			//lunch login screen and start the program 
 			Login view = new Login();
 			
 			ClientRepository model = new ClientRepository();

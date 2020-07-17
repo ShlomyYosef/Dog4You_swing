@@ -18,10 +18,13 @@ public ContactUSController(ContactUs theView){
 		this.theView = theView;
 		
 		
-		theView.displayPage();		
-		theView.addGoBackListener(new contactUsListener());
+		theView.displayPage();	
+		
+		theView.addGoBackListener(new GoBackListener());
 	}
-class contactUsListener implements ActionListener{
+
+// going back to login screen
+class GoBackListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

@@ -12,7 +12,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 	private String FILENAME;
 	private Set<Client> users;
 	private FileManager<Client> fileManager;
-	
+	//clients db
 	public ClientRepository() throws IOException, ClassNotFoundException {
 		
 		this.FILENAME= "clients";
@@ -20,7 +20,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 		this.users = this.fileManager.read();
 		createAdmin();
 	}
-	
+	// test file this way the main DB not effected 
 	public ClientRepository(String fileName) throws IOException, ClassNotFoundException {
 		this.FILENAME=fileName;
 		this.fileManager = new FileManager<Client>(fileName);
@@ -49,12 +49,13 @@ public class ClientRepository implements ClientRepositoryInterface{
 		this.fileManager.write(this.users);
 	}
 
+	//return all users in file 
 	@Override
 	public Set<Client> findAll() {
 		
 		return this.users;
 	}
-
+//find user by username 
 	@Override
 	public Client findByName(String name) {
 		for (Client user : users) {
@@ -71,7 +72,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 		
 		return temp.getPermission();
 	}
-
+//check if user name is taken
 	@Override
 	public boolean isExist(String userName) {
 		if(findByName(userName)==null)
@@ -79,7 +80,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 		else 
 			return true;
 	}
-	
+	//get the user phonenumber
 	public String getUserNamePhoneNumber (String name) {
 		Client temp;
 		temp =this.findByName(name);
@@ -107,7 +108,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 		
 		return false;
 	}
-	
+	//find by email 
 	@Override
 	public Client findByEmail (String email) {
 		for (Client user : users) {
@@ -117,7 +118,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 		}
 		return null;
 	}
-
+//check if valid email 
 	@Override
 	public boolean isEmailExist(String email) {
 		if(findByEmail(email)==null)

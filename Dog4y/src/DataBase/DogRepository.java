@@ -18,13 +18,13 @@ public class DogRepository implements DogRepoInterface {
 
 	
 	public DogRepository() throws IOException, ClassNotFoundException {
-		this.fileManager = new FileManager<Dog>("dogsDB");
 		this.FILENAME = "dogsDB";
+		this.fileManager = new FileManager<Dog>(FILENAME);
 		this.dogs = this.fileManager.read();
 		this.result = new HashSet<Dog>();
 		
 	}
-	
+	//this db is for tests
 	public DogRepository(String fileName) throws IOException, ClassNotFoundException {
 		this.fileManager = new FileManager<Dog>(fileName);
 		this.FILENAME = fileName;

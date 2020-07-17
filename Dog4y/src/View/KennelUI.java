@@ -413,6 +413,10 @@ public class KennelUI extends JFrame {
 	public void removeItemFromList(int index) {
 			DLM_result.remove(index);
 	}
+	
+	public void displayPage() {
+		this.setVisible(true);	
+	}
 }
 	
 	

@@ -33,7 +33,8 @@ public class KennelController {
 		this.phone = phone;
 		loadAllDogs(kennelUserName); // loads all the dogs that this kennel added
 		help = new Helper();
-	this.theView.setVisible(true);	
+		
+	this.theView.displayPage();
 	
 	theView.addGoBackListener(new GoBackListener());
 	
@@ -48,7 +49,7 @@ public class KennelController {
 	}
 	
 	
-	
+	//goback to login screen
 	class GoBackListener implements ActionListener{
 
 			@Override
@@ -79,7 +80,7 @@ public class KennelController {
 			try {
 				Dog dog;
 				try {
-				dog = theView.getSelectedItem();
+				dog = theView.getSelectedItem(); //get the chosen dog
 				if(dog==null) {
 					theView.displayErrorMessage("Make Sure to chose a dog!");	
 					return;
@@ -103,6 +104,7 @@ public class KennelController {
 		
 	}
 	
+	//adding dog to the data base 
 	class AddDogListener implements ActionListener{
 
 		@Override
@@ -119,6 +121,7 @@ public class KennelController {
 			String tamed=null;
 			String gender=null;
 			try {
+				//getting all text fields
 				dogName =theView.getDogName();
 				breed = theView.getBreed();
 				character = theView.getPersonality();
@@ -129,17 +132,17 @@ public class KennelController {
 				vaccine =theView.getVaccine();
 				furtille = theView.getFurtille();
 				tamed = theView.getTrained();
-				
+				//check if name is valid
 				if(!help.isValidName(dogName)) {
 					 theView.displayErrorMessage("Dog name cant contain numbers!");
 					 return;
 				}
-					
+					//check if fields are empty
 				if(!dogName.equals("")||!breed.equals("")||!character.equals("")||!finalSize.equals("")||!location.equals("")||!age.equals("")) {
 					Dog temp = new Dog(dogName,breed,character,finalSize,location,age,kennelUserName,phone,gender,vaccine.equals("Yes"),furtille.equals("Yes"),tamed.equals("Yes"));
 					theModel.add(temp);	//add dog to db
 					theView.addItemElementToList(temp);// add new dog to list
-					theView.clearText();
+					theView.clearText(); // clear all fields
 					theView.displayMessage("Dog had been added!");		
 					isDisplay=true;
 				}
@@ -154,6 +157,7 @@ public class KennelController {
 		
 	}
 	
+	// show more information when double mouse click heppens on the list 
 	class MouseClick implements MouseListener{
 
 		@Override
@@ -183,6 +187,8 @@ public class KennelController {
 			
 		}
 
+		
+		// no need to use those cases
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
 			// TODO Auto-generated method stub
@@ -203,12 +209,12 @@ public class KennelController {
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
+	
 		}
 		
+		
 	}
-	
+	// remove dog from database 
 	class RemoveDogListener implements ActionListener{
 
 		@Override
@@ -217,7 +223,7 @@ public class KennelController {
 			try {
 				Dog dog;
 				try {
-				dog = theView.getSelectedItem();
+				dog = theView.getSelectedItem(); // find the chose dog
 				if(dog==null) {
 				theView.displayErrorMessage("Make Sure to chose a dog!");	
 				return;
@@ -227,7 +233,7 @@ public class KennelController {
 				theView.displayErrorMessage("Make Sure to chose a dog!");	
 				return;
 			}	
-				theModel.delete(dog);
+				theModel.delete(dog); //delete the dog 
 				int index = theView.getSelectedIndex();
 				theView.removeItemFromList(index);
 			
@@ -241,6 +247,7 @@ public class KennelController {
 		
 	}
 
+	//showing all dogs from the same kennel
 	public void loadAllDogs(String userName) {
 	Set<Dog> results;
 	

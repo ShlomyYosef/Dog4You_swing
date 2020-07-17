@@ -38,7 +38,7 @@ public class UserController {
 		theView.AddMouseListener(new MouseClick());
 	}
 	
-	
+	// show information when double click on the list 
 	class MouseClick implements MouseListener{
 
 		@Override
@@ -148,11 +148,11 @@ public class UserController {
 					theView.displayErrorMessage("Please make sure to fill all fields!");
 					return;
 				}
-
+//check if fields empty
 				if(breed.equals("")||character.equals("")||location.equals("")||age.equals("")||vaccine.equals("")||furtille.equals("")||trained.equals("")||gender.equals("")) {
 					theView.displayErrorMessage("Make sure to fill and search fields!");
 				}else {
-					
+					//search in advanced option
 				result = theModel.findAdvanced(breed, age, location, character, vaccine.equals("Yes"), trained.equals("Yes"), furtille.equals("Yes"));
 				if(!result.isEmpty()) {
 					isDisplay=true;

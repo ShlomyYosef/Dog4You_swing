@@ -18,7 +18,8 @@ public class AdminController {
 	private ClientRepository theModel;
 	private AdminUI theView;
 	
-	public AdminController(AdminUI view,ClientRepository model){
+	
+public AdminController(AdminUI view,ClientRepository model){
 		
 		this.theView = view;
 		this.theModel = model;
@@ -33,7 +34,8 @@ public class AdminController {
 		
 		theView.addDeleteListener(new DeleteClientListener());
 	}
-	//update 
+
+	//delet the client from data base and list 
 	class DeleteClientListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -75,6 +77,7 @@ public class AdminController {
 		
 	}
 	
+	// adding user to data base
 	class AddClientListener implements ActionListener{
 
 		@Override

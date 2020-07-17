@@ -51,18 +51,18 @@ public class LoginController {
 		
 		// if true go to new screen 
 		if(theModel.check_login(userName, password)) {
-			permission = theModel.getClientPremission(userName);
+			permission = theModel.getClientPremission(userName); //get the client permisson
 			
 			theView.displaySuccessMessage("Login was successful!");
 			
-			if(permission.equals("User")) {
+			if(permission.equals("User")) { // if user so open the user UI
 			UserUI view = new UserUI();
 			
 			DogRepository model = new DogRepository(); 
 			
 			UserController controller = new UserController(view,model,userName);
 			}
-			else if(permission.equals("Kennel")) {
+			else if(permission.equals("Kennel")) { //if kennel the open kennel ui
 				phone = theModel.getUserNamePhoneNumber(userName);
 				KennelUI view = new KennelUI();
 				
@@ -70,7 +70,7 @@ public class LoginController {
 				
 				KennelController controller = new KennelController(view,model,userName,phone);
 			}
-			else if(permission.equals("Admin")) {
+			else if(permission.equals("Admin")) {//if admin open admin UI
 				AdminUI view = new AdminUI();
 				
 				ClientRepository model = new ClientRepository(); 
@@ -148,6 +148,7 @@ public class LoginController {
 				
 	}
 	
+	//go to contact us page
 	class ContactUsListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {

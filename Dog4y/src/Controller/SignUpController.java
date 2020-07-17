@@ -26,7 +26,7 @@ public class SignUpController {
 		theView.addGoBackListener(new GoBackListener());
 		this.help = new Helper();
 	}
-	
+	//handles the admin signing up users and return it to admin page 
 	public SignUpController(SignUpUI theView,ClientRepository theModel,boolean permisson) {
 		
 		this.theModel = theModel;
@@ -67,40 +67,45 @@ public class SignUpController {
 			 phoneNumber= theView.getPhone();
 			 password= theView.getPassword();
 			 permissions= theView.getPermissons();
-			 
+			 //check valid phone
 			 if(!help.isValidPhone(phoneNumber)) {
 				 theView.displayErrorMessage("Please enter valid phone number");
 				 return;
 			 }
+			 //check valid email
 			 if(!help.isValidEmail(email)) {
 				 theView.displayErrorMessage("Please enter valid email");
 				 return;
 			 }
-			 
+			 //check valid last and first name 
 			 if(!help.isValidName(firstName)||!help.isValidName(lastName)) {
 				 theView.displayErrorMessage("First/Last name cant contain numbers!");
 				 return;
 			 }
-			 //************
-			 //needs to check why empty textbox dont get inside the if state!
-			 //************
-			 
+
+			 //check if fields are empty
 			 if(lastName.equals("")||password.equals("")||phoneNumber.equals("")||address.equals("")||email.equals("")||userName.equals("")||firstName.equals("")) { 
 				 theView.displayErrorMessage("Please make sure to fill all details!");
+				 return;
 			 }
 			 else {
 				 
+				 //check if email valid
+				 if(theModel.isEmailExist(email)) {
+					 theView.displayErrorMessage("This email is taken!");
+					 return;
+				 }	 
 				 // adding user and go back to login screen.
 				 if(!theModel.isExist(userName)) {
-					 
+					 //adding new client
 					theModel.add(new Client(email,userName,new String(password),firstName,lastName,address,phoneNumber,permissions));
-					if(permisson) {
+					if(permisson) { // if admin adds go back to admin ui
 						AdminUI view = new AdminUI();
 						
 						ClientRepository model = new ClientRepository(); 
 						
 						AdminController controller = new AdminController(view,model);
-					}else {
+					}else { // else go back to login screen
 					Login log = new Login();
 					
 					ClientRepository model = new ClientRepository();
