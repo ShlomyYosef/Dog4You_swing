@@ -12,6 +12,7 @@ import DataBase.DogRepository;
 import View.KennelUI;
 import View.Login;
 import model.Dog;
+import model.Helper;
 
 public class KennelController {
 
@@ -22,6 +23,7 @@ public class KennelController {
 	private String kennelUserName;
 	private boolean isDisplay= false;
 	private String phone;
+	private Helper help;
 	
 	public KennelController(KennelUI theView,DogRepository theModel,String userName,String phone) {
 		
@@ -30,7 +32,7 @@ public class KennelController {
 		this.kennelUserName=userName;
 		this.phone = phone;
 		loadAllDogs(kennelUserName); // loads all the dogs that this kennel added
-		
+		help = new Helper();
 	this.theView.setVisible(true);	
 	
 	theView.addGoBackListener(new GoBackListener());
@@ -128,6 +130,10 @@ public class KennelController {
 				furtille = theView.getFurtille();
 				tamed = theView.getTrained();
 				
+				if(!help.isValidName(dogName)) {
+					 theView.displayErrorMessage("Dog name cant contain numbers!");
+					 return;
+				}
 					
 				if(!dogName.equals("")||!breed.equals("")||!character.equals("")||!finalSize.equals("")||!location.equals("")||!age.equals("")) {
 					Dog temp = new Dog(dogName,breed,character,finalSize,location,age,kennelUserName,phone,gender,vaccine.equals("Yes"),furtille.equals("Yes"),tamed.equals("Yes"));

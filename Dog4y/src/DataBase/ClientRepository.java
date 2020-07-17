@@ -2,22 +2,28 @@ package DataBase;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import model.Client;
 
 
-
-
-
 public class ClientRepository implements ClientRepositoryInterface{
 	
-	private final String FILENAME = "clients";
+	private String FILENAME;
 	private Set<Client> users;
 	private FileManager<Client> fileManager;
 	
 	public ClientRepository() throws IOException, ClassNotFoundException {
-		this.fileManager = new FileManager<Client>(FILENAME);
 		
+		this.FILENAME= "clients";
+		this.fileManager = new FileManager<Client>(FILENAME);
+		this.users = this.fileManager.read();
+		createAdmin();
+	}
+	
+	public ClientRepository(String fileName) throws IOException, ClassNotFoundException {
+		this.FILENAME=fileName;
+		this.fileManager = new FileManager<Client>(fileName);
 		this.users = this.fileManager.read();
 		createAdmin();
 	}
@@ -100,6 +106,27 @@ public class ClientRepository implements ClientRepositoryInterface{
 		System.out.print(password);
 		
 		return false;
+	}
+	
+	@Override
+	public Client findByEmail (String email) {
+		for (Client user : users) {
+			if (email.equals(user.getEmail())) {
+				return user;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean isEmailExist(String email) {
+		if(findByEmail(email)==null)
+			return false;
+		return true;
+	}
+
+	public Set<Client> getUsers() {
+		return users;
 	}
 
 	private void createAdmin() {

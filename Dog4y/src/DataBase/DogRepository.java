@@ -5,20 +5,29 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import model.Client;
 import model.Dog;
 
 public class DogRepository implements DogRepoInterface {
 	
 	
-	private final String FILENAME = "dogsDB";
+	private String FILENAME;
 	private Set<Dog> dogs;
 	private FileManager<Dog> fileManager;
 	private Set<Dog> result;
 
 	
 	public DogRepository() throws IOException, ClassNotFoundException {
-		this.fileManager = new FileManager<Dog>(FILENAME);
+		this.fileManager = new FileManager<Dog>("dogsDB");
+		this.FILENAME = "dogsDB";
+		this.dogs = this.fileManager.read();
+		this.result = new HashSet<Dog>();
 		
+	}
+	
+	public DogRepository(String fileName) throws IOException, ClassNotFoundException {
+		this.fileManager = new FileManager<Dog>(fileName);
+		this.FILENAME = fileName;
 		this.dogs = this.fileManager.read();
 		this.result = new HashSet<Dog>();
 		
@@ -37,18 +46,23 @@ public class DogRepository implements DogRepoInterface {
 	}
 //delete one dog
 	@Override
-	public void delete(Dog dog) throws IOException {
+	public void delete(Dog dog) {
 		// TODO Auto-generated method stub
-		if(dog!=null)
-		dogs.remove(dog);
+		if(dog!=null) {
+		
+		this.dogs.remove(dog);
 		
 		//save new list to file 
-		this.fileManager.write(this.dogs);
-			
+		try {
+			this.fileManager.write(this.dogs);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 	}
 	
 	// this function deletes all dogs from the same kennel 
-	@Override
 	public void deleteAllDogsKennel(String kennelUserName) throws IOException {
 		// TODO Auto-generated method stub
 		if(kennelUserName!=null) {
@@ -149,6 +163,14 @@ public class DogRepository implements DogRepoInterface {
 			
 		}
 		return result;
+	}
+
+	public int getDogsSize() {
+		return this.dogs.size();
+	}
+	
+	public void removeAllDogs() {
+		this.dogs.removeAll(dogs);
 	}
 
 }

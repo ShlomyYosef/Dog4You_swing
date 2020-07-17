@@ -32,6 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JToggleButton;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyEvent;
 
 
 public class SignUpUI extends JFrame {
@@ -230,7 +231,9 @@ public class SignUpUI extends JFrame {
 		
 			}
 	
-	
+	public void addPhoneNumberKeyListener(KeyAdapter key){
+		txt_PhoneNum.addKeyListener(key);
+	}
 	
 	// get string from textBox
 	public String getFirstName() {

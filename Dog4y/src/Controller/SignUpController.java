@@ -7,6 +7,7 @@ import View.AdminUI;
 import View.Login;
 import View.SignUpUI;
 import model.Client;
+import model.Helper;
 
 
 public class SignUpController {
@@ -14,14 +15,16 @@ public class SignUpController {
 	private ClientRepository theModel;
 	private SignUpUI theView;
 	private boolean permisson=false;
+	private Helper help;
+	
 	public  SignUpController(SignUpUI theView,ClientRepository theModel) {
 		
 		this.theModel = theModel;
 		this.theView = theView;
-		
 		theView.displayPage();
 		theView.addSignUpListener(new SignUpListener());
 		theView.addGoBackListener(new GoBackListener());
+		this.help = new Helper();
 	}
 	
 	public SignUpController(SignUpUI theView,ClientRepository theModel,boolean permisson) {
@@ -32,9 +35,15 @@ public class SignUpController {
 		theView.displayPage();
 		theView.addSignUpListener(new SignUpListener());
 		theView.addGoBackListener(new GoBackListener());
+		
 		this.permisson=permisson;
+		this.help = new Helper();
 		
 	}
+	
+	
+
+	
 	//SignUpListener class handle the button press
 	class SignUpListener implements ActionListener{
 
@@ -60,9 +69,23 @@ public class SignUpController {
 			 password= theView.getPassword();
 			 permissions= theView.getPermissons();
 			 
+			 if(!help.isValidPhone(phoneNumber)) {
+				 theView.displayErrorMessage("Please enter valid phone number");
+				 return;
+			 }
+			 if(!help.isValidEmail(email)) {
+				 theView.displayErrorMessage("Please enter valid email");
+				 return;
+			 }
+			 
+			 if(!help.isValidName(firstName)||!help.isValidName(lastName)) {
+				 theView.displayErrorMessage("First/Last name cant contain numbers!");
+				 return;
+			 }
 			 //************
 			 //needs to check why empty textbox dont get inside the if state!
 			 //************
+			 
 			 if(lastName.equals("")||password.equals("")||phoneNumber.equals("")||address.equals("")||email.equals("")||userName.equals("")||firstName.equals("")) { 
 				 theView.displayErrorMessage("Please make sure to fill all details!");
 			 }
@@ -89,13 +112,9 @@ public class SignUpController {
 					theView.exitPage();
 				 }
 				 else // user already exists 
-				 theView.displayErrorMessage("This user name is taken!");
+				 theView.displayErrorMessage("This user name or email is taken!");
 				 theView.setFocusUserName();
-			 }
-			 
-			 
-			 
-			 
+			 }	 
 			 }
 			 catch(Exception error) {
 				 theView.displayErrorMessage("Ops ! Something went wrong");
