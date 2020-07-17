@@ -38,6 +38,7 @@ public class LoginController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 		String userName ,permission;
+		String phone;
 		char[] password;
 		try {
 			
@@ -47,6 +48,7 @@ public class LoginController {
 		// if true go to new screen 
 		if(theModel.check_login(userName, password)) {
 			permission = theModel.getClientPremission(userName);
+			
 			theView.displaySuccessMessage("Login was successful!");
 			
 			if(permission.equals("User")) {
@@ -57,11 +59,12 @@ public class LoginController {
 			UserController controller = new UserController(view,model,userName);
 			}
 			else if(permission.equals("Kennel")) {
+				phone = theModel.getUserNamePhoneNumber(userName);
 				KennelUI view = new KennelUI();
 				
 				DogRepository model = new DogRepository(); 
 				
-				KennelController controller = new KennelController(view,model,userName);
+				KennelController controller = new KennelController(view,model,userName,phone);
 			}
 			else if(permission.equals("Admin")) {
 				AdminUI view = new AdminUI();

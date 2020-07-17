@@ -19,10 +19,11 @@ public class Dog implements Serializable {
 	private boolean Furtille;
 	private boolean Tamed;
 	private String gender;
+	private String kennelPhone;
 
-	public Dog(String name, String breed, String character, String finalSize, String location, String age, String KennelUserName,String gender,
-			boolean vaccsine, boolean furtille, boolean tamed) {
-		
+	public Dog(String name, String breed, String character, String finalSize, String location, String age, 
+			String KennelUserName,String kennelPhone,String gender,
+			boolean vaccsine, boolean furtille, boolean tamed) {	
 	setName(name);
 	setBreed(breed);
 	setCharacter(character);
@@ -34,6 +35,7 @@ public class Dog implements Serializable {
 	setFurtille(furtille);
 	setTamed(tamed);	
 	setGender(gender);
+	setKennelPhone(kennelPhone);
 	}
 
 
@@ -143,6 +145,16 @@ public class Dog implements Serializable {
 
 	public void setKennelUserName(String kennelUserName) {
 		this.KennelUserName = kennelUserName;
+	}
+
+
+	public String getKennelPhone() {
+		return kennelPhone;
+	}
+
+
+	public void setKennelPhone(String kennelPhone) {
+		this.kennelPhone = kennelPhone;
 	}
 
 

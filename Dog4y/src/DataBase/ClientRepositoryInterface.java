@@ -19,5 +19,5 @@ public interface ClientRepositoryInterface {
 		
 		boolean check_login(String userName,char[] password);
 
-
+		public String getUserNamePhoneNumber (String name);
 }

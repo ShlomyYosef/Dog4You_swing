@@ -55,10 +55,11 @@ public class UserController {
 				+"\n\n"+"Final size:  "+dog.getFinalSize()
 				+"\n\n"+"Location:  "+dog.getLocation()
 				+"\n\n"+"Age:  "+dog.getDogAge()
-				+"\n\n"+"Gender:  "+dog.getFinalSize()
+				+"\n\n"+"Gender:  "+dog.getGender()
 				+"\n\n"+"Vaccsine:  "+dog.isVaccsine()
 				+"\n\n"+"Furtille:  "+dog.isFurtille()
-				+"\n\n"+"Tamed:  "+dog.isTamed());
+				+"\n\n"+"Tamed:  "+dog.isTamed()
+				+"\n\n"+"Contact us:  "+dog.getKennelPhone());
 			}
 			}
 			catch(Exception er) {

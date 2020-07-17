@@ -73,6 +73,16 @@ public class ClientRepository implements ClientRepositoryInterface{
 			return true;
 	}
 	
+	public String getUserNamePhoneNumber (String name) {
+		Client temp;
+		temp =this.findByName(name);
+		
+		if(temp!=null)
+		return temp.getPhoneNumber();
+		else
+			return null;
+	}
+	
 	// check login for user compare the name and password of user .
 	public boolean check_login(String userName,char[] password) {
 		Client user;

@@ -21,13 +21,14 @@ public class KennelController {
 	private DogRepository theModel;
 	private String kennelUserName;
 	private boolean isDisplay= false;
+	private String phone;
 	
-	public KennelController(KennelUI theView,DogRepository theModel,String userName) {
+	public KennelController(KennelUI theView,DogRepository theModel,String userName,String phone) {
 		
 		this.theModel = theModel;
 		this.theView = theView;
 		this.kennelUserName=userName;
-		
+		this.phone = phone;
 		loadAllDogs(kennelUserName); // loads all the dogs that this kennel added
 		
 	this.theView.setVisible(true);	
@@ -115,7 +116,6 @@ public class KennelController {
 			String furtille=null;
 			String tamed=null;
 			String gender=null;
-			
 			try {
 				dogName =theView.getDogName();
 				breed = theView.getBreed();
@@ -128,11 +128,9 @@ public class KennelController {
 				furtille = theView.getFurtille();
 				tamed = theView.getTrained();
 				
-				
-				
-				
+					
 				if(!dogName.equals("")||!breed.equals("")||!character.equals("")||!finalSize.equals("")||!location.equals("")||!age.equals("")) {
-					Dog temp = new Dog(dogName,breed,character,finalSize,location,age,kennelUserName,gender,vaccine.equals("Yes"),furtille.equals("Yes"),tamed.equals("Yes"));
+					Dog temp = new Dog(dogName,breed,character,finalSize,location,age,kennelUserName,phone,gender,vaccine.equals("Yes"),furtille.equals("Yes"),tamed.equals("Yes"));
 					theModel.add(temp);	//add dog to db
 					theView.addItemElementToList(temp);// add new dog to list
 					theView.clearText();
@@ -166,10 +164,12 @@ public class KennelController {
 				+"\n\n"+"Final size:  "+dog.getFinalSize()
 				+"\n\n"+"Location:  "+dog.getLocation()
 				+"\n\n"+"Age:  "+dog.getDogAge()
-				+"\n\n"+"Gender:  "+dog.getFinalSize()
+				+"\n\n"+"Gender:  "+dog.getGender()
 				+"\n\n"+"Vaccsine:  "+dog.isVaccsine()
 				+"\n\n"+"Furtille:  "+dog.isFurtille()
-				+"\n\n"+"Tamed:  "+dog.isTamed());
+				+"\n\n"+"Tamed:  "+dog.isTamed()
+				+"\n\n"+"Contact us:  "+dog.getKennelPhone()
+						);
 			}
 			}
 			catch(Exception er) {
