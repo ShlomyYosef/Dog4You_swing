@@ -22,7 +22,7 @@ public class ClientRepository implements ClientRepositoryInterface{
 		createAdmin();
 	}
 	
-	
+	// adding user 
 	@Override
 	public void add(Client user) throws Exception {
 	
