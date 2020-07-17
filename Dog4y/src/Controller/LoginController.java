@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import DataBase.ClientRepository;
 import DataBase.DogRepository;
 import View.AdminUI;
+import View.ContactUs;
 import View.KennelUI;
 import View.Login;
 import View.SignUpUI;
@@ -27,8 +28,11 @@ public class LoginController {
 	this.theView.addLoginListener(new LoginListener());
 	// listener for login as guest button
 	this.theView.addGuestListener(new GuestListener());
-	
+	// listener for signup button
 	this.theView.addSignUpListener(new SignUpListener());
+	// listener for contact us button
+	this.theView.addContactUsListener(new ContactUsListener());
+
 	}
 	
 	//login listener class handle the button press
@@ -142,8 +146,27 @@ public class LoginController {
 					
 			}			
 				
-		
 	}
-
 	
+	class ContactUsListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+							
+				ContactUs view = new ContactUs();
+				
+				ContactUSController  controller =new ContactUSController(view);
+				
+				theView.exitPage();
+			}
+			// needs to put a proper message .
+			catch(Exception error) {
+				
+				theView.displayErrorMessage("Ops ! Something went wrong");
+			}
+					
+			}			
+	
+	
+	}
 }

@@ -2,6 +2,7 @@ package View;
 
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.List;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -9,13 +10,16 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import model.Dog;
@@ -26,6 +30,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
 
 
 
@@ -62,6 +69,7 @@ public class UserUI extends JFrame {
 	private ButtonGroup groupVaccine;
 	private DefaultListModel DLM_result;
 	private JList list;
+	private JLabel lblNewLabel;
 	/**
 	 * Launch the application.
 	 */
@@ -89,7 +97,7 @@ public class UserUI extends JFrame {
 		SingletonDogDetails details = SingletonDogDetails.getInstance();// adding dog details
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 851, 550);
+		setBounds(100, 100, 851, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -227,9 +235,11 @@ public class UserUI extends JFrame {
 		groupVaccine.add(rb_vaccine_yes);
 		groupVaccine.add(rb_vaccine_no);
 
-		
+				
 		list = new JList();
-		list.setBounds(274, 22, 530, 444);
+		list.setValueIsAdjusting(true);
+		list.setBackground(SystemColor.info);
+		list.setBounds(296, 100, 529, 500);
 		contentPane.add(list);
 		DLM_result=new DefaultListModel();
 		
@@ -239,9 +249,10 @@ public class UserUI extends JFrame {
 
 		
 		btn_goBack = new JButton("Go back");
-		btn_goBack.setBounds(54, 464, 89, 23);
+		btn_goBack.setBounds(10, 577, 89, 23);
 		contentPane.add(btn_goBack);
 		
+
 		txtpnGender = new JTextPane();
 		txtpnGender.setText("Gender:");
 		txtpnGender.setBounds(10, 259, 44, 20);
@@ -252,6 +263,16 @@ public class UserUI extends JFrame {
 		cb_Gender.setBounds(86, 259, 94, 20);
 		contentPane.add(cb_Gender);
 		cb_Gender.setVisible(false);
+
+		
+		JLabel lblDs = new JLabel("");
+		lblDs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDs.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDs.setBounds(505, 0, 109, 102);
+		lblDs.setIcon(new ImageIcon(SignUpUI.class.getResource("/Image/dog-icon.png")));
+		contentPane.add(lblDs);
+		
+
 			}
 	
 	//making the page visible and setting up the user name on top left
