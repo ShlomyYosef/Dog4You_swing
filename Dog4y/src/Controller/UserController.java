@@ -125,14 +125,14 @@ public class UserController {
 		
 			String 
 			 breed,character,location,age,
-			 vaccine,furtille,trained;
+			 vaccine,furtille,trained,gender;
 			Set<Dog> result;
 			
 			try {
 			breed = theView.getBreed();
 			location=theView.getDogLocation();
 			age=theView.getAge();
-
+			gender=theView.getGender();
 			
 			//clear last result .
 			theView.clearList();
@@ -148,7 +148,7 @@ public class UserController {
 					return;
 				}
 
-				if(breed.equals("")||character.equals("")||location.equals("")||age.equals("")||vaccine.equals("")||furtille.equals("")||trained.equals("")) {
+				if(breed.equals("")||character.equals("")||location.equals("")||age.equals("")||vaccine.equals("")||furtille.equals("")||trained.equals("")||gender.equals("")) {
 					theView.displayErrorMessage("Make sure to fill and search fields!");
 				}else {
 					
@@ -160,7 +160,9 @@ public class UserController {
 				}
 				theView.setListResult();
 				}
+				else {
 				theView.displayErrorMessage("Dog not found!");
+				}
 				}		
 			}
 			else {  // not advanced search
@@ -182,7 +184,6 @@ public class UserController {
 					}
 				}	
 			}
-			
 			theView.clearText();
 			}
 			catch(Exception err) {

@@ -44,11 +44,12 @@ public class UserUI extends JFrame {
 	private JComboBox cb_location;
 	private JComboBox cb_age;
 	private JCheckBox cb_AdvancedOptions;
+	private JComboBox cb_Gender;
 	private JTextPane txtpnPersonality;
 	private JTextPane txtpnFurtille;
 	private JTextPane txtpnTrained;
 	private JTextPane txtpnVaccine;
-	
+	private JTextPane txtpnGender;
 
 	private JRadioButton rb_vaccine_yes;
 	private JRadioButton rb_vaccine_no;
@@ -154,57 +155,57 @@ public class UserUI extends JFrame {
 		txtpnVaccine = new JTextPane();
 		txtpnVaccine.setEditable(false);
 		txtpnVaccine.setText("Vaccine:");
-		txtpnVaccine.setBounds(10, 271, 57, 20);
+		txtpnVaccine.setBounds(10, 303, 57, 20);
 		txtpnVaccine.setEditable(false);
 		contentPane.add(txtpnVaccine);
 		txtpnVaccine.setVisible(false);
 		
 		rb_vaccine_yes = new JRadioButton("Yes");
-		rb_vaccine_yes.setBounds(86, 271, 57, 23);
+		rb_vaccine_yes.setBounds(86, 303, 57, 23);
 		rb_vaccine_yes.setActionCommand("Yes");
 		contentPane.add(rb_vaccine_yes);
 		rb_vaccine_yes.setVisible(false);
 		
 		rb_vaccine_no = new JRadioButton("No");
-		rb_vaccine_no.setBounds(145, 271, 57, 23);
+		rb_vaccine_no.setBounds(146, 303, 57, 23);
 		rb_vaccine_no.setActionCommand("No");
 		contentPane.add(rb_vaccine_no);
 		rb_vaccine_no.setVisible(false);
 		
 		txtpnTrained = new JTextPane();
 		txtpnTrained.setText("Trained:");
-		txtpnTrained.setBounds(10, 311, 44, 20);
+		txtpnTrained.setBounds(10, 334, 44, 20);
 		txtpnTrained.setEditable(false);
 		contentPane.add(txtpnTrained);
 		txtpnTrained.setVisible(false);
 		
 		rb_trained_yes = new JRadioButton("Yes");
-		rb_trained_yes.setBounds(86, 308, 57, 23);
+		rb_trained_yes.setBounds(86, 331, 57, 23);
 		rb_trained_yes.setActionCommand("Yes");
 		contentPane.add(rb_trained_yes);
 		rb_trained_yes.setVisible(false);
 		
 		rb_trained_no = new JRadioButton("No");
-		rb_trained_no.setBounds(145, 308, 44, 23);
+		rb_trained_no.setBounds(146, 329, 44, 23);
 		rb_trained_no.setActionCommand("No");
 		contentPane.add(rb_trained_no);
 		rb_trained_no.setVisible(false);
 		
 		txtpnFurtille = new JTextPane();
 		txtpnFurtille.setText("Furtille:");
-		txtpnFurtille.setBounds(10, 347, 44, 20);
+		txtpnFurtille.setBounds(10, 365, 44, 20);
 		txtpnFurtille.setEditable(false);
 		contentPane.add(txtpnFurtille);
 		txtpnFurtille.setVisible(false);
 		
 		rb_furtille_yes = new JRadioButton("Yes");
-		rb_furtille_yes.setBounds(86, 344, 57, 23);
+		rb_furtille_yes.setBounds(86, 362, 57, 23);
 		rb_furtille_yes.setActionCommand("Yes");
 		contentPane.add(rb_furtille_yes);
 		rb_furtille_yes.setVisible(false);
 		
 		rb_furtille_no = new JRadioButton("No");
-		rb_furtille_no.setBounds(145, 344, 109, 23);
+		rb_furtille_no.setBounds(146, 362, 109, 23);
 		rb_furtille_no.setActionCommand("No");
 		contentPane.add(rb_furtille_no);
 		rb_furtille_no.setVisible(false);
@@ -240,7 +241,17 @@ public class UserUI extends JFrame {
 		btn_goBack = new JButton("Go back");
 		btn_goBack.setBounds(54, 464, 89, 23);
 		contentPane.add(btn_goBack);
-	
+		
+		txtpnGender = new JTextPane();
+		txtpnGender.setText("Gender:");
+		txtpnGender.setBounds(10, 259, 44, 20);
+		contentPane.add(txtpnGender);
+		txtpnGender.setVisible(false);
+		
+		cb_Gender = new JComboBox(details.getGender());
+		cb_Gender.setBounds(86, 259, 94, 20);
+		contentPane.add(cb_Gender);
+		cb_Gender.setVisible(false);
 			}
 	
 	//making the page visible and setting up the user name on top left
@@ -279,14 +290,16 @@ public class UserUI extends JFrame {
 	public void displayMessage(String errorMsg) {
 		JOptionPane.showMessageDialog(this,errorMsg);
 	}
+	
 	public void setAdvancedVisible(boolean flag) {
 	
     	txtpnPersonality.setVisible(flag);
     	txtpnFurtille.setVisible(flag);
     	txtpnTrained.setVisible(flag);
     	txtpnVaccine.setVisible(flag);
-    	
+    	txtpnGender.setVisible(flag);
     	cb_Presonality.setVisible(flag);
+    	cb_Gender.setVisible(flag);
     	rb_vaccine_yes.setVisible(flag);
     	rb_vaccine_no.setVisible(flag);
     	rb_furtille_yes.setVisible(flag);
@@ -297,7 +310,6 @@ public class UserUI extends JFrame {
 	
 
 	public String getBreed() {
-
 			
 		return cb_breed.getSelectedItem().toString();
 }
@@ -315,6 +327,10 @@ public class UserUI extends JFrame {
 		
 		return cb_Presonality.getSelectedItem().toString();
 }
+	
+	public String getGender() {
+		return cb_Gender.getSelectedItem().toString();
+	}
 	// get the button value
 	public String getFurtille() {
 		return groupFurtille.getSelection().getActionCommand();
@@ -358,6 +374,6 @@ public class UserUI extends JFrame {
 		cb_Presonality.setSelectedIndex(0);
 		cb_age.setSelectedIndex(0);
 		cb_breed.setSelectedIndex(0);
+		cb_Gender.setSelectedIndex(0);
 	}
-	
 }
