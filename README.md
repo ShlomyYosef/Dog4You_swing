@@ -25,3 +25,17 @@ Furthermore We implemented test on the DB and the Model using JUnit tests.
 * SignUp UI
 
 ## Pictures
+<img src=https://raw.githubusercontent.com/dt170/Dog4You_swing/master/images/Login%20screen.PNG>
+
+<img src=https://raw.githubusercontent.com/dt170/Dog4You_swing/master/images/UserUI.PNG>
+
+<img src=https://raw.githubusercontent.com/dt170/Dog4You_swing/master/images/signUp.PNG.PNG>
+
+<img src=https://raw.githubusercontent.com/dt170/Dog4You_swing/master/images/Kennel.PNG.PNG>
+
+<img src=https://raw.githubusercontent.com/dt170/Dog4You_swing/master/images/KeneelDoubleclick.PNG.PNG>
+
+<img src=https://raw.githubusercontent.com/dt170/Dog4You_swing/master/images/AdminUI.PNG>
+
+<img src=https://raw.githubusercontent.com/dt170/Dog4You_swing/master/images/contactus.PNG>
+
