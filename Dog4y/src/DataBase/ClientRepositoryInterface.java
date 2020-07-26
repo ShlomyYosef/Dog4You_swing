@@ -4,7 +4,7 @@
 	import java.util.Set;
 	import model.Client;
 
-	
+	// interface
 public interface ClientRepositoryInterface {
 
 		void add(Client user) throws Exception;
