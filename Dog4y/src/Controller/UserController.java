@@ -28,7 +28,7 @@ public class UserController {
 		this.theModel = theModel;
 		
 		theView.displayPage(userName);		
-		
+		loadAllDogs();
 		theView.addGoBackListener(new GoBackListener());
 		
 		theView.addSearchListener(new SearchListener());
@@ -210,5 +210,19 @@ public class UserController {
 		}
 	}
 	
+	//showing all dogs from the same kennel
+	public void loadAllDogs() {
+	Set<Dog> results;
+	
+	results=theModel.findAll();
+	if(!results.isEmpty()) {
+		isDisplay=true;
+		for(Dog dog:results) {
+				theView.setListElement(dog);	
+		}		
+	}
+	theView.setListResult();
+	return;
+}
 	
 }

@@ -103,8 +103,8 @@ public class ClientRepository implements ClientRepositoryInterface{
 		if(user.getPassword().equals(new String(password)))
 		return true;
 		
-		System.out.print(user.getPassword());
-		System.out.print(password);
+	//	System.out.print(user.getPassword());
+	//System.out.print(password);
 		
 		return false;
 	}

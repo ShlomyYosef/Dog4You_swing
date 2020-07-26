@@ -265,7 +265,7 @@ public class SignUpUI extends JFrame {
 	}
 	
 	public String getPermissons() {
-		System.out.print(cb_Permissions.getSelectedItem());
+		//System.out.print(cb_Permissions.getSelectedItem());
 		
 		return cb_Permissions.getSelectedItem().toString();
 }
